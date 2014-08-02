@@ -1,0 +1,14 @@
+*~
+*#
+*.elc
+*.dat
+.elpa
+bookmarks
+eshell
+swank
+tramp
+url
+server
+wget-log
+session.*
+recentf
