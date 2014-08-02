@@ -1,5 +1,5 @@
-(add-to-list 'load-path "~/.emacs.d/packages/ascope")
-(add-to-list 'load-path "~/.emacs.d/packages/clancs")
+(add-to-list 'load-path "~/.emacs.d/modules/ascope")
+;(add-to-list 'load-path "~/.emacs.d/packages/clancs")
 
 ;; Ascope configuration
 (require 'ascope)

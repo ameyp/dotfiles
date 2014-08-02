@@ -1,7 +1,7 @@
 ;; Install:
 ; gem install pry pry-nav pry-stack_explorer termios
 
-(add-to-list 'load-path "~/.emacs.d/packages/emacs-pry")
+(add-to-list 'load-path "~/.emacs.d/modes/emacs-pry")
 
 ;;; Enhanced ruby mode
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)

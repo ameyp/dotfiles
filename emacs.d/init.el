@@ -10,8 +10,9 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Add custom paths to 'load-path
-(add-to-list 'load-path "~/.emacs.d/packages")
-(add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/modules")
+(add-to-list 'load-path "~/.emacs.d/modes")
 
 ;; Set Cofi color theme
 (require 'cofi-color)
