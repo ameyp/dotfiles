@@ -17,7 +17,7 @@
 		   enh-ruby-mode
 		   epl
 		   find-file-in-project
-		   flymake-rust
+		   flycheck
 		   git-commit-mode
 		   git-rebase-mode
 		   glsl-mode
@@ -33,7 +33,6 @@
 		   lua-mode
 		   magit
 		   markdown-mode
-		   p4
 		   package-build
 		   paredit
 		   rainbow-delimiters

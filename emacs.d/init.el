@@ -1,8 +1,8 @@
 ;; Load package configuration
-(load-file "~/.emacs.d/packages.el")
+(load-file "~/.emacs.d/lisp/packages.el")
 
 ;; Load file that has common functions I use
-(load-file "~/.emacs.d/common.el")
+(load-file "~/.emacs.d/lisp/common.el")
 
 ;; Remove toolbar, menubar and scrollbar
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -10,7 +10,7 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Add custom paths to 'load-path
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/modes")
 
@@ -40,6 +40,9 @@
 
 ;; Load helm
 (require 'ameyp-helm)
+
+;; Enable flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Load config files
 (mapcar 'require '(ameyp-cmake
