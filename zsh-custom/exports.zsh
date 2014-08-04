@@ -1,4 +1,4 @@
-export PATH=/Users/amey/bin:$PATH
+export PATH=/Users/amey/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
