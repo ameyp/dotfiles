@@ -1,15 +1,24 @@
 # Fetch submodules if any
 git submodule update --init --recursive
 
-# Check if homebrew is installed
-which brew
+# Check if zsh is installed
+which zsh
 if [ $? -ne 0 ]; then
-    echo "## Intalling homebrew ##"
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    echo "## Install zsh and try again ##"
+    exit
 fi
 
-echo "## Installing brew packages from Brewfile ##"
-brew bundle
+# Check if homebrew is installed
+if [ `uname` = "Darwin" ]; then
+    which brew
+    if [ $? -ne 0 ]; then
+	echo "## Intalling homebrew ##"
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    fi
+
+    echo "## Installing brew packages from Brewfile ##"
+    brew bundle
+fi
 
 echo "## Fetching oh-my-zsh ##"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.zsh
