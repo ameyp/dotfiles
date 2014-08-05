@@ -24,7 +24,7 @@ echo "## Fetching oh-my-zsh ##"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.zsh
 
 echo "## Setting zsh as default shell ##"
-chsh -s /bin/zsh
+chsh -s `which zsh`
 
 if [ `uname` = "Darwin" ]; then
     echo "## Downloading Solarized themes ##"
@@ -41,7 +41,9 @@ ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/coffeelintrc ~/.coffeelintrc
 
-echo "## Instructions for necessary manual configuration ##"
+echo "## Instructions for necessary manual configuration (if any)##"
 if [ `uname` = "Darwin" ]; then
     echo "iTerm2 - Preferences -> Profiles -> Colors -> Load Presets... -> Solarized Dark"
 fi
+
+echo "## Done! ##"
