@@ -27,11 +27,14 @@ echo "## Setting zsh as default shell ##"
 chsh -s `which zsh`
 
 if [ `uname` = "Darwin" ]; then
-    echo "## Downloading Solarized themes ##"
-    curl https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Light.itermcolors -o "/tmp/Solarized Light.itermcolors"
-    curl https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors -o "/tmp/Solarized Dark.itermcolors"
-    echo "## Installing Solarized themes for iTerm2 ##"
-    open "/tmp/Solarized Light.itermcolors" "/tmp/Solarized Dark.itermcolors"
+    echo "## Installing Blazer theme for iTerm2 ##"
+    open $PWD/iterm2-themes/Blazer.itermcolors
+
+    echo "## Downloading Inconsolata Powerline font ##"
+    curl "https://gist.github.com/qrush/1595572/raw/51bdd743cc1cc551c49457fe1503061b9404183f/Inconsolata-dz-Powerline.otf" -o /tmp/Inconsolata-dz-Powerline.otf
+
+    echo "## Installing Inconsolata Powerline font ##"
+    open /tmp/Inconsolata-dz-Powerline.otf
 fi
 
 echo "## Setting up soft-links ##"
@@ -44,6 +47,8 @@ ln -s $PWD/coffeelintrc ~/.coffeelintrc
 echo "## Instructions for necessary manual configuration (if any)##"
 if [ `uname` = "Darwin" ]; then
     echo "iTerm2 - Preferences -> Profiles -> Colors -> Load Presets... -> Solarized Dark"
+    echo "iTerm2 - Preferences -> Profiles -> Text -> Regular Font -> Change Font -> Inconsolata dz for Powerline (size 13)"
+    echo "iTerm2 - Preferences -> Profiles -> Text -> Non-ASCII Font -> Change Font -> Inconsolata dz for Powerline (size 13)"
 fi
 
 echo "## Done! ##"
