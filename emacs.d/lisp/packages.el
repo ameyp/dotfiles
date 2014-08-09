@@ -10,6 +10,7 @@
 
 (dolist (package '(
 		   browse-kill-ring
+		   cider
 		   cmake-mode
 		   coffee-mode
 		   company
@@ -34,10 +35,10 @@
 		   magit
 		   markdown-mode
 		   package-build
-		   paredit
 		   rainbow-delimiters
 		   robe
 		   rust-mode
+		   smartparens
 		   yaml-mode
 		   yard-mode))
   (unless (package-installed-p package)

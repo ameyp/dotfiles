@@ -44,8 +44,12 @@
 ;; Enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Disable those god-awful documentation warnings
+(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
 ;; Load config files
-(mapcar 'require '(ameyp-cmake
+(mapcar 'require '(ameyp-clojure
+		   ameyp-cmake
 		   ameyp-coffee
 		   ameyp-company
 		   ameyp-cpp
