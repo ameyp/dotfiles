@@ -45,7 +45,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm osx sudo lein)
+plugins=(git npm osx sudo lein gitignore)
 
 source $ZSH/oh-my-zsh.sh
 
