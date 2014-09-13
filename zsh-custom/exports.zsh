@@ -4,5 +4,8 @@ export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Editor for git commits
+export GIT_EDITOR='emacsclient -c'
+
 # Preferred editor for local and remote sessions
 export EDITOR='emacsclient -c'
