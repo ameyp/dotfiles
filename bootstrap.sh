@@ -13,11 +13,24 @@ if [ `uname` = "Darwin" ]; then
     which brew
     if [ $? -ne 0 ]; then
 	echo "## Intalling homebrew ##"
-	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    echo "## Installing brew packages from Brewfile ##"
-    brew bundle
+    echo “## Running doctor ##”
+    brew doctor
+    echo "## Installing brew packages ##"
+    brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
+    brew install graphicsmagick
+    brew install node
+
+    brew install caskroom/cask/brew-cask
+
+    brew cask install google-chrome
+    brew cask install iterm2
+    brew cask install flux
+    brew cask install dropbox
+    brew cask install evernote
+    brew linkapps
 fi
 
 echo "## Fetching oh-my-zsh ##"
@@ -31,10 +44,11 @@ if [ `uname` = "Darwin" ]; then
     open $PWD/iterm2-themes/Blazer.itermcolors
 
     echo "## Downloading Inconsolata Powerline font ##"
-    curl "https://gist.github.com/qrush/1595572/raw/51bdd743cc1cc551c49457fe1503061b9404183f/Inconsolata-dz-Powerline.otf" -o /tmp/Inconsolata-dz-Powerline.otf
+    curl "https://gist.github.com/qrush/1595572/raw/51bdd743cc1cc551c49457fe1503061b9404183f/Inconsolata-dz-Powerline.otf" -o ~/Downloads/Inconsolata-dz-Powerline.otf
 
     echo "## Installing Inconsolata Powerline font ##"
-    open /tmp/Inconsolata-dz-Powerline.otf
+    open ~/Downloads/Inconsolata-dz-Powerline.otf
+    rm ~/Downloads/Inconsolata-dz-Powerline.otf
 fi
 
 echo "## Setting up soft-links ##"
