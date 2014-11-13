@@ -19,12 +19,13 @@ if [ `uname` = "Darwin" ]; then
     echo “## Running doctor ##”
     brew doctor
     echo "## Installing brew packages ##"
-    brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
+    # brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
     brew install graphicsmagick
     brew install node
 
     brew install caskroom/cask/brew-cask
 
+    brew cask install emacs
     brew cask install google-chrome
     brew cask install iterm2
     brew cask install flux
