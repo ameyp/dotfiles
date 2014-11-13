@@ -27,7 +27,7 @@
       ((eq system-type 'windows-nt)
        (set-face-attribute 'default nil :height 130))
       (t
-       (set-face-attribute 'default nil :height 120)))
+       (set-face-attribute 'default nil :height 130)))
 
 ;; Keybindings to increase and decrease font size
 (define-key global-map (kbd "M-+")
@@ -71,6 +71,7 @@
 		   ameyp-python
 		   ameyp-ruby
 		   ameyp-rust
+		   ameyp-web
 		   ameyp-yaml))
 
 ;; Rainbow Delimiters

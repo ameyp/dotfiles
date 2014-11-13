@@ -39,6 +39,7 @@
 		   robe
 		   rust-mode
 		   smartparens
+		   web-mode
 		   yaml-mode
 		   yard-mode))
   (unless (package-installed-p package)
