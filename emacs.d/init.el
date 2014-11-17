@@ -19,9 +19,10 @@
 (cofi/colorscheme 'cofi-dark)
 
 ;; Set font size
-;(if (find-font (font-spec :name "Inconsolata"))
-;    (set-face-attribute 'default nil
-;                        :font "Inconsolata"))
+(if (find-font (font-spec :name "Inconsolata"))
+    (set-face-attribute 'default nil
+                        :font "Inconsolata"))
+
 (cond ((eq system-type 'darwin)
        (set-face-attribute 'default nil :height 140))
       ((eq system-type 'windows-nt)
