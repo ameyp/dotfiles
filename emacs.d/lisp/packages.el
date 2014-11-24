@@ -28,6 +28,7 @@
 		   helm-cmd-t
 		   helm-company
 		   helm-dash
+		   helm-projectile
 		   inf-ruby
 		   jade-mode
 		   js2-mode
@@ -35,6 +36,7 @@
 		   magit
 		   markdown-mode
 		   package-build
+		   projectile
 		   rainbow-delimiters
 		   robe
 		   rust-mode

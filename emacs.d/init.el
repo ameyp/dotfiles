@@ -127,11 +127,11 @@
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local options" t)
 
-(require 'browse-kill-ring)
-(define-key global-map (kbd "C-c k") 'browse-kill-ring)
-(eval-after-load "browse-kill-ring"
-  '(progn
-     (setq browse-kill-ring-quit-action 'save-and-restore)))
+;(require 'browse-kill-ring)
+;(define-key global-map (kbd "C-c k") 'browse-kill-ring)
+;(eval-after-load "browse-kill-ring"
+;  '(progn
+;     (setq browse-kill-ring-quit-action 'save-and-restore)))
 
 ;; Show current file name
 (define-key global-map (kbd "C-<f1>") '(lambda () (message (buffer-file-name))))

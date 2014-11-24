@@ -22,6 +22,7 @@ if [ `uname` = "Darwin" ]; then
     # brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
     brew install graphicsmagick
     brew install node
+    brew install ack
 
     brew install caskroom/cask/brew-cask
 

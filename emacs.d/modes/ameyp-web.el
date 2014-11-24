@@ -8,5 +8,14 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
+;; Indentation settings
+;; Markup
+(setq web-mode-markup-indent-offset 2)
+;; CSS
+(setq web-mode-css-indent-offset 2)
+;; Script
+(setq web-mode-code-indent-offset 2)
 
 (provide 'ameyp-web)
