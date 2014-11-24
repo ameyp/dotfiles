@@ -1,0 +1,1 @@
+("/Volumes/workplace/grepDump/PrimeADXStaticAssets/" "~/Developer/dotfiles/" "~/Developer/dotfiles/emacs.d/modules/ascope/")
