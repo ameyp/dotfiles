@@ -1,1 +1,0 @@
-("~/Developer/dotfiles/" "~/Documents/sop/" "/Volumes/workplace/grepDump/PrimeADXStaticAssets/" "~/Developer/dotfiles/emacs.d/modules/ascope/")
