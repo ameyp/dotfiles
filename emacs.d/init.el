@@ -1,3 +1,5 @@
+(server-start)
+
 ;; Load package configuration
 (load-file "~/.emacs.d/lisp/packages.el")
 
