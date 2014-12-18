@@ -9,6 +9,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+;; Inhibit startup screen
+(setq inhibit-startup-screen t)
+
 ;; Add custom paths to 'load-path
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/modules")
@@ -24,7 +27,11 @@
                         :font "Inconsolata"))
 
 (cond ((eq system-type 'darwin)
-       (set-face-attribute 'default nil :height 140))
+       (cond
+        ((string-match "\.amazon\.com" system-name)
+         (set-face-attribute 'default nil :height 160))
+        (t
+         (set-face-attribute 'default nil :height 140))))
       ((eq system-type 'windows-nt)
        (set-face-attribute 'default nil :height 130))
       (t
@@ -52,28 +59,28 @@
 
 ;; Load config files
 (mapcar 'require '(ameyp-clojure
-		   ameyp-cmake
-		   ameyp-coffee
-		   ameyp-company
-		   ameyp-cpp
-		   ameyp-elisp
-		   ameyp-haskell
-		   ameyp-haxe
-		   ameyp-hiccough
-		   ameyp-html
-		   ameyp-jade
-		   ;ameyp-jekyll
-		   ameyp-javascript
-		   ameyp-lua
-		   ameyp-markdown
-		   ameyp-opengl
-		   ameyp-org
-		   ;ameyp-poet
-		   ameyp-python
-		   ameyp-ruby
-		   ameyp-rust
-		   ameyp-web
-		   ameyp-yaml))
+                   ameyp-cmake
+                   ameyp-coffee
+                   ameyp-company
+                   ameyp-cpp
+                   ameyp-elisp
+                   ameyp-haskell
+                   ameyp-haxe
+                   ameyp-hiccough
+                   ameyp-html
+                   ameyp-jade
+                   ;ameyp-jekyll
+                   ameyp-javascript
+                   ameyp-lua
+                   ameyp-markdown
+                   ameyp-opengl
+                   ameyp-org
+                   ;ameyp-poet
+                   ameyp-python
+                   ameyp-ruby
+                   ameyp-rust
+                   ameyp-web
+                   ameyp-yaml))
 
 ;; Rainbow Delimiters
 (require 'rainbow-delimiters)
@@ -84,9 +91,13 @@
 
 ;; Disable autosave
 (setq auto-save-default nil)
+;; So the next line shouldn't be required
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
 
 ;; Disable backup
 (setq backup-inhibited t)
+;; So the next line shouldn't be required
+(setq backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
 
 ;; ---- unzip files in-line from dired ------
 (eval-after-load "dired-aux"
@@ -165,12 +176,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(inhibit-startup-screen t)
- '(js2-cleanup-whitespace t)
- '(js2-enter-indents-newline t)
- '(js2-indent-on-enter-key t)
- '(js2-mirror-mode nil)
- '(js2-mode-show-parse-errors t))
 (put 'downcase-region 'disabled nil)

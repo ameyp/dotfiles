@@ -14,7 +14,13 @@
 
 	    ;; indentation
 	    (setq js2-consistent-level-indent-inner-bracket-p t)
-	    (setq js2-pretty-multiline-decl-indentation-p t)))
+	    (setq js2-pretty-multiline-decl-indentation-p t))
+
+	   (setq js2-cleanup-whitespace t)
+	   (setq js2-enter-indents-newline t)
+	   (setq js2-indent-on-enter-key t)
+	   (setq js2-mirror-mode nil)
+	   (setq js2-mode-show-parse-errors t))
 
 ;; After js2 has parsed a js file, we look for jslint globals decl comment ("/* global Fred, _, Harry */") and
 ;; add any symbols to a buffer-local var of acceptable global vars
