@@ -28,7 +28,7 @@
       helm-ff-file-name-history-use-recentf t) ; use recent history
 
 ;; Find files fast (somewhat)
-(define-key global-map (kbd "C-,") 'helm-cmd-t)
+(define-key global-map (kbd "C-,") 'helm-projectile-find-file)
 
 ;; Helm kill ring
 (define-key global-map (kbd "C-c k") 'helm-show-kill-ring)

@@ -56,7 +56,8 @@
      `(helm-selection ((t (:background "gray20"))))
      `(helm-source-header ((t (:foreground "gold" :background "black" :height 1.1))))
      `(helm-header ((t (:foreground "gold" :background "black" :height 1.0))))
-     `(helm-ff-directory ((t (:foreground "dark red" :background ,bg))))
+     `(helm-ff-directory ((t (:foreground "#cyan" :background ,bg))))
+     `(helm-visible-mark ((t (:foreground "#fff" :background "#444"))))
 
      ;; company
      `(company-tooltip ((t :foreground ,fg :background "gray30")))
