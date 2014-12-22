@@ -3,3 +3,5 @@
 	email = amey@wirywolf.com
 [core]
 	fileMode = false
+[push]
+	default = simple

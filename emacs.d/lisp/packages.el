@@ -14,6 +14,7 @@
 		   cmake-mode
 		   coffee-mode
 		   company
+		   company-tern
 		   dash
 		   enh-ruby-mode
 		   epl
@@ -41,6 +42,7 @@
 		   robe
 		   rust-mode
 		   smartparens
+		   tern
 		   web-mode
 		   yaml-mode
 		   yard-mode))
