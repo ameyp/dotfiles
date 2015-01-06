@@ -168,3 +168,4 @@
 
 (define-key global-map (kbd "M-s") 'isearch-forward-regexp)
 (define-key global-map (kbd "M-r") 'isearch-backward-regexp)
+(put 'set-goal-column 'disabled nil)
