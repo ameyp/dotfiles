@@ -15,6 +15,7 @@
 	    ;; indentation
 	    (setq js2-consistent-level-indent-inner-bracket-p t)
 	    (setq js2-pretty-multiline-decl-indentation-p t)
+	    (setq js2-basic-offset 2)
 
 	    (setq js2-cleanup-whitespace t)
 	    (setq js2-enter-indents-newline t)
