@@ -59,7 +59,6 @@ ln -s $PWD/zsh-custom ~/.zsh-custom
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/coffeelintrc.json ~/.coffeelintrc
-ln -s $PWD/lein ~/.lein
 
 echo "## Instructions for necessary manual configuration (if any)##"
 if [ `uname` = "Darwin" ]; then
