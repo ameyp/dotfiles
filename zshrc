@@ -1,3 +1,6 @@
+# Load Amazon things
+source $HOME/.zshrc-amazon
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh
 
