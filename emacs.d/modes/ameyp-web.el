@@ -14,6 +14,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+(setq web-mode-engines-alist
+      '(("freemarker"    . "\\.html\\'")))
+
 ;(defadvice web-mode-highlight-part (around tweak-jsx activate)
 ;  (if (equal web-mode-content-type "jsx")
 ;      (let ((web-mode-enable-part-face nil))
