@@ -49,8 +49,8 @@
       (replace-string "<" "&lt;")
       (goto-char (point-min))
       (replace-string ">" "&gt;")
-      (goto-char (point-min))
-      (replace-string "\"" "&quot;")
+      ;(goto-char (point-min))
+      ;(replace-string "\"" "&quot;")
       (clipboard-kill-region (point-min) (point-max)))))
 
 (defun ameyp-web/html-decode ()
