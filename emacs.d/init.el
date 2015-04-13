@@ -1,11 +1,5 @@
 (server-start)
 
-;; Load package configuration
-(load-file "~/.emacs.d/lisp/packages.el")
-
-;; Load file that has common functions I use
-(load-file "~/.emacs.d/lisp/common.el")
-
 ;; Remove toolbar, menubar and scrollbar
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -19,14 +13,35 @@
 (add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/modes")
 
+;; Load package configuration
+(require 'ameyp-packages)
+
+;; Load file that has common functions I use
+(require 'ameyp-common)
+
 ;; Set Cofi color theme
 (require 'cofi-color)
 (cofi/colorscheme 'cofi-dark)
+
+;; expand-region
+(require 'expand-region)
+(define-key global-map (kbd "C-=") 'er/expand-region)
+(define-key global-map (kbd "C-+") 'er/contract-region)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Set font size
 (if (find-font (font-spec :name "Inconsolata"))
     (set-face-attribute 'default nil
                         :font "Inconsolata"))
+
+;; Replace selected text while mark is active
+(delete-selection-mode 1)
 
 (cond ((eq system-type 'darwin)
        (cond

@@ -79,3 +79,21 @@
   "Delete duplicate lines in buffer and keep first occurrence."
   (interactive "*")
   (uniquify-all-lines-region (point-min) (point-max)))
+
+(defun ameyp-common/dump-vars-to-file (varlist filename)
+  "simplistic dumping of variables in VARLIST to a file FILENAME"
+  (save-excursion
+    (let ((buf (find-file-noselect filename)))
+      (set-buffer buf)
+      (erase-buffer)
+      (ameyp-common/dump-vars-to-buffer varlist buf)
+      (save-buffer)
+      (kill-buffer))))
+
+(defun ameyp-common/dump-vars-to-buffer (varlist buffer)
+  "insert into buffer the setq statement to recreate the variables in VARLIST"
+  (loop for var in varlist do
+        (print (list 'setq var (list 'quote (symbol-value var)))
+               buffer)))
+
+(provide 'ameyp-common)
