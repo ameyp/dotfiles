@@ -28,5 +28,6 @@
 	 "* %?\nEntered on %U\n  %i\n  %a")))
 
 (setq org-agenda-files '("~/Documents/agenda"))
+(setq org-startup-truncated nil)
 
 (provide 'ameyp-org)
