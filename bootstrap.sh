@@ -21,7 +21,6 @@ if [ `uname` = "Darwin" ]; then
     echo "## Installing brew packages ##"
     # brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
     brew install graphicsmagick
-    brew install node
     brew install ack
 
     brew install caskroom/cask/brew-cask
@@ -31,7 +30,6 @@ if [ `uname` = "Darwin" ]; then
     brew cask install iterm2
     brew cask install flux
     brew cask install dropbox
-    brew cask install evernote
     brew linkapps
 fi
 
