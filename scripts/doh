@@ -76,17 +76,6 @@ setimageid() {
   imgid=${BASH_REMATCH[1]}
 }
 
-# Find key ID for this host
-setkeyid() {
-  key=$( tugboat keys | grep -i $( hostname -s ) )
-  regex="id: ([0-9]+)"
-  [[ $key =~ $regex ]]
-  keyid=${BASH_REMATCH[1]}
-  if [ -z "$keyid" ]; then
-    cout "No ssh key for this host. Please upload one on digitalocean.com."
-  fi
-}
-
 # Terminate if droplet already exists
 exit_if_exists() {
   tugboat info $name &>/dev/null
@@ -98,15 +87,13 @@ exit_if_exists() {
 # Restore snapshot
 restore() {
   setimageid
-  wout "$imgid"
-  #setkeyid
   if [ -z "$imgid" ]; then
     wout "No existing snapshots with this name"
     read -n 1 -p " > Do you want to create a new [y/N]? " response
     echo
     case $response in
       [yY])
-            run tugboat create -k $keyid $name
+            run tugboat create $name
             newdroplet=true
             ;;
       *)
@@ -114,7 +101,7 @@ restore() {
             exit
     esac
   else
-    run tugboat create -i $imgid -k $keyid $name
+    run tugboat create -i $imgid $name
   fi
   run tugboat wait $name
   run tugboat info $name
