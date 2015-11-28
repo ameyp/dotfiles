@@ -46,7 +46,7 @@ if [ `uname` = "Darwin" ]; then
     open $PWD/iterm2-themes/Blazer.itermcolors
 
     echo "## Downloading Inconsolata Powerline font ##"
-    curl "https://gist.github.com/qrush/1595572/raw/51bdd743cc1cc551c49457fe1503061b9404183f/Inconsolata-dz-Powerline.otf" -o ~/Downloads/Inconsolata-dz-Powerline.otf
+    curl "https://github.com/powerline/fonts/blob/master/InconsolataDz/Inconsolata-dz%20for%20Powerline.otf?raw=true" -o ~/Downloads/Inconsolata-dz-Powerline.otf
 
     echo "## Installing Inconsolata Powerline font ##"
     open ~/Downloads/Inconsolata-dz-Powerline.otf
