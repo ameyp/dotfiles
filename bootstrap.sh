@@ -22,6 +22,8 @@ if [ `uname` = "Darwin" ]; then
     # brew install emacs --HEAD --use-git-head --cocoa --with-gnutls
     brew install graphicsmagick
     brew install ack
+    brew install the_silver_searcher
+    brew install fzf
 
     brew install caskroom/cask/brew-cask
 
@@ -32,6 +34,8 @@ if [ `uname` = "Darwin" ]; then
     brew cask install dropbox
     brew cask install vlc
     brew linkapps
+
+    /usr/local/opt/fzf/install
 fi
 
 echo "## Fetching oh-my-zsh ##"

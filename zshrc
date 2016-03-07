@@ -71,3 +71,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 DEFAULT_USER=`whoami`
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

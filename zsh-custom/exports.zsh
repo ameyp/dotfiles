@@ -13,3 +13,8 @@ export EDITOR='emacsclient -c'
 # Pyenv shims
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# Use the_silver_searcher with fzf
+_fzf_compgen_path() {
+  ag -g "" "$1"
+}
