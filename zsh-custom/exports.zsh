@@ -14,7 +14,13 @@ export EDITOR='emacsclient -c'
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Activate fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Use the_silver_searcher with fzf
 _fzf_compgen_path() {
   ag -g "" "$1"
 }
+
+# Activate torch
+. /Users/amey/Applications/torch/install/bin/torch-activate
