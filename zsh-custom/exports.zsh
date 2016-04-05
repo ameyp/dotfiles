@@ -23,4 +23,13 @@ _fzf_compgen_path() {
 }
 
 # Activate torch
-. /Users/amey/Applications/torch/install/bin/torch-activate
+if [[ -a /Users/amey/Applications/torch/install/bin/torch-activate ]]; then
+    . /Users/amey/Applications/torch/install/bin/torch-activate
+fi
+
+# Paths for CUDA
+if [[ -d /usr/local/cuda-7.5 ]]; then
+    export PATH="/usr/local/cuda-7.5/bin/:$PATH"
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64
+    export CUDA_ROOT=/usr/local/cuda-7.5
+fi

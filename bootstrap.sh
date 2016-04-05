@@ -36,6 +36,39 @@ if [ `uname` = "Darwin" ]; then
     brew linkapps
 
     /usr/local/opt/fzf/install
+elif [ `uname` = "Linux" ]; then
+    if hash apt-get 2>/dev/null; then
+        # Install common stuff
+        sudo apt-get install build-essential
+        sudo apt-get install zsh git
+
+        # Install SciPy dependencies
+        sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
+
+        # Install pyenv
+        curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+
+        # Install python 3.5.0
+        env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.5.0
+
+        # Install emacs
+        sudo apt-get build-dep emacs24
+        pushd /tmp
+        wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
+        tar -xf emacs-24.5.tar.xz
+        pushd emacs-24.5
+        ./configure
+        make
+        sudo make install
+        popd
+        
+        # Install cuda
+        wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+        sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+        sudo apt-get update
+        sudo apt-get install cuda
+        popd
+    fi
 fi
 
 echo "## Fetching oh-my-zsh ##"
@@ -54,6 +87,21 @@ if [ `uname` = "Darwin" ]; then
     echo "## Installing Inconsolata Powerline font ##"
     open ~/Downloads/Inconsolata-dz-Powerline.otf
     rm ~/Downloads/Inconsolata-dz-Powerline.otf
+elif [ `uname` = "Linux" ]; then
+    echo "## Install Solarized Dark ##"
+    pushd /tmp
+    git clone https://github.com/Anthony25/gnome-terminal-colors-solarized
+    pushd gnome-terminal-colors-solarized
+    ./install.sh
+    popd
+    popd
+
+    echo "## Downloading Inconsolata Powerline font ##"
+    mkdir ~/.fonts
+    pushd ~/.fonts
+    wget "https://github.com/powerline/fonts/blob/master/InconsolataDz/Inconsolata-dz%20for%20Powerline.otf?raw=true"
+    fc-cache -f -v
+    popd
 fi
 
 echo "## Setting up soft-links ##"
@@ -61,7 +109,6 @@ ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zsh-custom ~/.zsh-custom
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/emacs.d ~/.emacs.d
-ln -s $PWD/coffeelintrc.json ~/.coffeelintrc
 ln -s $PWD/scripts ~/bin
 
 echo "## Instructions for necessary manual configuration (if any)##"
