@@ -1,6 +1,3 @@
-[submodule "emacs.d/modules/ascope"]
-	path = emacs.d/modules/ascope
-	url = https://github.com/ameyp/ascope
 [submodule "emacs.d/modules/emacs-pry"]
 	path = emacs.d/modules/emacs-pry
 	url = https://github.com/jacott/emacs-pry

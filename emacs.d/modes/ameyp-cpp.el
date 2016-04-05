@@ -1,9 +1,9 @@
-(add-to-list 'load-path "~/.emacs.d/modules/ascope")
+;(add-to-list 'load-path "~/.emacs.d/modules/ascope")
 ;(add-to-list 'load-path "~/.emacs.d/packages/clancs")
 
 ;; Ascope configuration
-(require 'ascope)
-(setq ascope-name-line-width -24)
+;(require 'ascope)
+;(setq ascope-name-line-width -24)
 
 (add-to-list 'auto-mode-alist '("\\.h" . c++-mode))
 
