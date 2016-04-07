@@ -11,6 +11,9 @@ export GIT_EDITOR='emacsclient -c'
 export EDITOR='emacsclient -c'
 
 # Pyenv shims
+if [[ -d $HOME/.pyenv ]]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
