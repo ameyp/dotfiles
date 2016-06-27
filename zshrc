@@ -1,3 +1,7 @@
+if [[ -f $HOME/.zsh-extra ]]; then
+    source $HOME/.zsh-extra
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh
 
