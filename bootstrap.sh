@@ -25,7 +25,8 @@ if [ `uname` = "Darwin" ]; then
     brew install the_silver_searcher
     brew install fzf
 
-    brew install caskroom/cask/brew-cask
+    # Supposedly not required anymore
+    # brew install caskroom/cask/brew-cask
 
     brew cask install emacs
     brew cask install google-chrome
