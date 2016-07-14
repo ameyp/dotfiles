@@ -108,6 +108,7 @@ echo "## Setting up soft-links ##"
 ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zsh-custom ~/.zsh-custom
 ln -s $PWD/gitconfig ~/.gitconfig
+ln -s $PWD/gitexcludes ~/.gitexcludes
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/scripts ~/bin
 

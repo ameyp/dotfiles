@@ -3,23 +3,31 @@
 	email = amey@wirywolf.com
 [core]
 	fileMode = false
-	excludesfile = /home/aparulek/.config/git/excludes
+	excludesfile = ~/.gitexcludes
 	pager = less -FMRiX
 [push]
 	default = simple
 
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "ediff"]
+	cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [merge]
         keepBackup = false
-        tool = custom
-
-[mergetool "custom"]
-        cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
+        tool = meld
+[mergetool]
+	keepBackup = false
+[mergetool "ediff"]
+        cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
         keepTemporaries = false
         trustExitCode = false
         keepBackup = false
-[mergetool]
-	keepBackup = false
 [color]
 	ui = auto
 [alias]
 	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[amazon]
+	append-cr-url = true
+	pull-request-by-default = true
