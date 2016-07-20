@@ -36,3 +36,6 @@ if [[ -d /usr/local/cuda-7.5 ]]; then
     export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64
     export CUDA_ROOT=/usr/local/cuda-7.5
 fi
+
+# Enable iterm2 shell integration
+source ~/.iterm2_shell_integration.`basename $SHELL`

@@ -1,3 +1,6 @@
 [submodule "emacs.d/modules/emacs-pry"]
 	path = emacs.d/modules/emacs-pry
 	url = https://github.com/jacott/emacs-pry
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot

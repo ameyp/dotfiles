@@ -62,7 +62,7 @@ elif [ `uname` = "Linux" ]; then
         make
         sudo make install
         popd
-        
+
         # Install cuda
         wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
         sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
@@ -106,10 +106,10 @@ elif [ `uname` = "Linux" ]; then
 fi
 
 echo "## Setting up soft-links ##"
-ln -s $PWD/zshrc ~/.zshrc
-ln -s $PWD/zsh-custom ~/.zsh-custom
-ln -s $PWD/gitconfig ~/.gitconfig
-ln -s $PWD/gitexcludes ~/.gitexcludes
+ln -s $PWD/zsh/zshrc ~/.zshrc
+ln -s $PWD/zsh/custom ~/.zsh-custom
+ln -s $PWD/git/config ~/.gitconfig
+ln -s $PWD/git/excludes ~/.gitexcludes
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/scripts ~/bin
 
