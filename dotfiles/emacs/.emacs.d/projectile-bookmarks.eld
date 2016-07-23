@@ -1,0 +1,1 @@
+("~/Developer/dotfiles/" "~/Developer/zshrc/" "~/Developer/workplace/BluCore/src/BluEntitySearch/")
