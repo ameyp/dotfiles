@@ -35,6 +35,4 @@ if [[ -d $HOME/.zgen ]]; then
   puts 'Installed' 'zgen'
 fi
 
-echo $PWD
-
 exit

@@ -4,4 +4,3 @@ if ! [[ -d $HOME/.linuxbrew ]]; then
 fi
 
 brew doctor
-brew install stow
