@@ -87,7 +87,6 @@
                    ameyp-html
                    ameyp-jade
                    ;ameyp-jekyll
-                   ameyp-javascript
                    ameyp-lua
                    ameyp-markdown
                    ameyp-opengl

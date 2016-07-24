@@ -10,9 +10,12 @@
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
 
 (setq web-mode-engines-alist
       '(("freemarker"    . "\\.html\\'")))
