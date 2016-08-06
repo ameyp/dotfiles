@@ -72,7 +72,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Disable those god-awful documentation warnings
-(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 ;; Load config files
 (mapcar 'require '(ameyp-clojure

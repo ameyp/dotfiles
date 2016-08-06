@@ -10,6 +10,7 @@
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
 	    (define-key emacs-lisp-mode-map (kbd "C-c d") 'popup-documentation-at-point)
-	    (setq-local company-backends '(company-capf company-elisp))))
+	    (setq-local company-backends '(company-capf company-elisp))
+	    (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))))
 
 (provide 'ameyp-elisp)
