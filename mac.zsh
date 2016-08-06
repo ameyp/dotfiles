@@ -5,6 +5,7 @@ fi
 
 brew doctor
 brew install stow
+brew install zsh
 brew install ack
 brew install the_silver_searcher
 brew install fzf
