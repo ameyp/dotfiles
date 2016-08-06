@@ -1,6 +1,6 @@
 [user]
 	name = Amey Parulekar
-	email = amey@wirywolf.com
+	email = aparulek@amazon.com
 [core]
 	fileMode = false
 	excludesfile = ~/.gitexcludes
@@ -27,6 +27,9 @@
 	ui = auto
 [alias]
 	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+	co = checkout
+	st = status
+	rb = rebase
 [amazon]
 	append-cr-url = true
 	pull-request-by-default = true
