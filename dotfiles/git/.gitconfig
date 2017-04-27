@@ -1,21 +1,25 @@
 [user]
 	name = Amey Parulekar
-	email = aparulek@amazon.com
+	email = amey@wirywolf.com
+	# for work, use
+	# alias git='git -c user.name="John Doe" -c user.email="a@b.com"'
 [core]
 	fileMode = false
 	excludesfile = ~/.gitexcludes
 	pager = less -FMRiX
+	autocrlf = input
 [push]
 	default = simple
 [diff]
-	tool = meld
+	tool = diffmerge
 [difftool]
 	prompt = false
 [difftool "ediff"]
 	cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
-        keepBackup = false
-        tool = meld
+        tool = diffmerge
 [mergetool]
 	keepBackup = false
 [mergetool "ediff"]
@@ -23,6 +27,9 @@
         keepTemporaries = false
         trustExitCode = false
         keepBackup = false
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
 [color]
 	ui = auto
 [alias]
