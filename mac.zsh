@@ -12,6 +12,7 @@ brew install fzf
 
 brew cask install emacs
 brew cask install google-chrome
+brew cask install hammerspoon
 brew cask install iterm2
 brew cask install flux
 brew cask install dropbox
