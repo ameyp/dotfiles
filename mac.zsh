@@ -17,6 +17,7 @@ brew cask install iterm2
 brew cask install flux
 brew cask install dropbox
 brew cask install vlc
+brew cask install spotify
 brew linkapps
 
 # /usr/local/opt/fzf/install
