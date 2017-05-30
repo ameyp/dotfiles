@@ -33,8 +33,7 @@
 	 (cons
 	  (cond ((symbolp package-name-or-desc) package-name-or-desc)
 		((stringp package-name-or-desc) (intern package-name-or-desc))
-		((fboundp 'package-desc-name) (package-desc-name package-name-or-desc))))
-	 ameyp-package-list))
+		((fboundp 'package-desc-name) (package-desc-name package-name-or-desc))) ameyp-package-list)))
   (ameyp-common/dump-vars-to-file '(ameyp-package-list) "package-list.el"))
 
 (ad-enable-advice 'package-install 'after 'ameyp/package-install)
