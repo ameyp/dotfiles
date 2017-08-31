@@ -12,6 +12,7 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -22,18 +23,20 @@
       '(("freemarker"    . "\\.html\\'")))
 
 (add-hook 'web-mode-hook
-	  (lambda ()
-	    ;; Indentation settings
-	    ;; Markup
-	    (setq web-mode-markup-indent-offset 2)
-	    ;; CSS
-	    (setq web-mode-css-indent-offset 2)
-	    ;; Script
-	    (setq web-mode-code-indent-offset 2)
-	    ;; JSX
-	    (setq jsx-indent-level 2)
-	    ;; Enable flycheck
-	    (add-hook 'javascript-mode-hook 'flycheck-mode)))
+          (lambda ()
+            ;; Indentation settings
+            ;; Enough with the tabs
+            (setq-default indent-tabs-mode nil)
+            ;; Markup
+            (setq web-mode-markup-indent-offset 2)
+            ;; CSS
+            (setq web-mode-css-indent-offset 2)
+            ;; Script
+            (setq web-mode-code-indent-offset 4)
+            ;; JSX
+            (setq jsx-indent-level 2)
+            ;; Enable flycheck
+            (add-hook 'javascript-mode-hook 'flycheck-mode)))
 
 (flycheck-def-args-var flycheck-javascript-flow-args javascript-flow)
 (customize-set-variable 'flycheck-javascript-flow-args '("status"))
@@ -49,14 +52,14 @@ See URL `http://flowtype.org/'."
               source-original)
     :error-patterns
     ((error line-start
-	    (file-name)
-	    ":"
-	    line
-	    ":"
-	    (minimal-match (one-or-more not-newline))
-	    ": "
-	    (message (minimal-match (and (one-or-more anything) "\n")))
-	    line-end))
+            (file-name)
+            ":"
+            line
+            ":"
+            (minimal-match (one-or-more not-newline))
+            ": "
+            (message (minimal-match (and (one-or-more anything) "\n")))
+            line-end))
     :modes (web-mode js2-mode))
 
 (add-to-list 'flycheck-checkers 'javascript-flow t)
