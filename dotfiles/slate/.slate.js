@@ -4,6 +4,10 @@ var grid = slate.operation("grid", {
             "width": 3,
             "height": 1
         },
+        "1920x1080": {
+            "width": 4,
+            "height": 4
+        },
         "1280x800": {
             "width": 2,
             "height": 1
