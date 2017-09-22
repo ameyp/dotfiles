@@ -41,3 +41,5 @@ if ! zgen saved; then
 
   zgen save
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
