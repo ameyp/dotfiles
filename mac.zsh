@@ -20,4 +20,4 @@ brew cask install slate
 brew cask install spotify
 brew linkapps
 
-# /usr/local/opt/fzf/install
+/usr/local/opt/fzf/install
