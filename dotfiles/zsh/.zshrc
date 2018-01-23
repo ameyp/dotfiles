@@ -1,7 +1,3 @@
-if [[ -f $HOME/.zsh-extra ]]; then
-  source $HOME/.zsh-extra
-fi
-
 if [[ -f $HOME/.zshrc.preinstall ]]; then
   source $HOME/.zshrc.preinstall
 fi
@@ -41,3 +37,7 @@ if ! zgen saved; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [[ -f $HOME/.zsh-extra ]]; then
+  source $HOME/.zsh-extra
+fi
