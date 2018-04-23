@@ -11,7 +11,7 @@ unsetopt CORRECT
 
 # append history list to the history file; this is the default but we make sure
 # because it's required for share_history.
-setopt append_history
+setopt inc_append_history
 
 # import new commands from the history file also in other zsh-session
 setopt share_history
