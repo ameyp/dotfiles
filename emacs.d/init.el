@@ -149,9 +149,6 @@
 ;; Create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
 
-;; ---- magit ---------------------------------
-(require 'magit)
-
 ;; ---- whitespace-mode ---------------------
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local options" t)
