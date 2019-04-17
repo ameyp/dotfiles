@@ -30,13 +30,15 @@
 
 ;;; For running pry from inside emacs
 (add-hook 'enh-ruby-mode-hook
-	  (lambda ()
-	    ;; Activate helm-dash docsets
-	    (setq-local helm-dash-docsets '("Ruby"))
+          (lambda ()
+            ;; Activate helm-dash docsets
+            (setq-local helm-dash-docsets '("Ruby"))
 
-	    ;; Enable pry
-	    (require 'pry)
-	    (define-key enh-ruby-mode-map (kbd "S-<f9>") 'pry-intercept)
-	    (define-key enh-ruby-mode-map (kbd "<f9>") 'pry-intercept-rerun)))
+            (setq-local tab-width 4)
+
+            ;; Enable pry
+            (require 'pry)
+            (define-key enh-ruby-mode-map (kbd "S-<f9>") 'pry-intercept)
+            (define-key enh-ruby-mode-map (kbd "<f9>") 'pry-intercept-rerun)))
 
 (provide 'ameyp-ruby)
