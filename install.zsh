@@ -23,32 +23,14 @@ eval $INSTALL \
      tree \
      wget
 
-eval $GUI_INSTALL \
-     emacs \
-     firefox \
-     vlc
-
 if isdarwin; then
   eval $INSTALL \
        ack \
        fzf \
        the_silver_searcher
-
-  eval $GUI_INSTALL \
-       dropbox \
-       flux \
-       google--chrome \
-       iterm2 \
-       slate \
-       spotify
 fi
 
 if islinux; then
-  # For spotify
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
-       --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
   # For google chrome
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key -y add -
 
@@ -64,8 +46,7 @@ if islinux; then
   eval $INSTALL \
        ack-grep \
        google-chrome-stable \
-       silversearcher-ag \
-       spotify-client
+       silversearcher-ag
 
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-update-rc
