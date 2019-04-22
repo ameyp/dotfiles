@@ -30,13 +30,6 @@
 (define-key global-map (kbd "C-=") 'er/expand-region)
 (define-key global-map (kbd "C-+") 'er/contract-region)
 
-;; multiple-cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 ;; Set font size
 (if (find-font (font-spec :name "Inconsolata"))
     (set-face-attribute 'default nil
@@ -67,9 +60,6 @@
 ;; Indent newline by default
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; Load helm
-(require 'ameyp-helm)
-
 ;; Enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -85,6 +75,7 @@
                    ameyp-elisp
                    ameyp-haskell
                    ameyp-haxe
+                   ameyp-helm
                    ameyp-hiccough
                    ameyp-html
                    ameyp-jade
@@ -182,17 +173,6 @@
 (define-key global-map (kbd "M-s") 'isearch-forward-regexp)
 (define-key global-map (kbd "M-r") 'isearch-backward-regexp)
 (put 'set-goal-column 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (json-snatcher json-mode go-mode magit yard-mode yaml-mode web-mode smartparens rust-mode robe rainbow-delimiters package-build multiple-cursors markdown-mode lua-mode js2-mode jade-mode inf-ruby helm-projectile helm-dash helm-company helm-cmd-t helm haxe-mode haskell-mode glsl-mode flycheck find-file-in-project expand-region enh-ruby-mode company-tern company coffee-mode cmake-mode cider browse-kill-ring))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
