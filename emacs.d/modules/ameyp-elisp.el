@@ -1,16 +1,28 @@
-(defun popup-documentation-at-point ()
-  (interactive)
-  (let* ((position (point))
-         (string-under-cursor (buffer-substring-no-properties
-                         (progn (skip-syntax-backward "w_") (point))
-                         (progn (skip-syntax-forward "w_") (point)))))
-    (goto-char position)
-    (popup-tip (ac-symbol-documentation (intern string-under-cursor)))))
+(use-package emacs-lisp-mode
+  :mode "\\.el\\'"
+  :config
+  (setq company-backends '(company-capf company-elisp)
+	flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  :bind (:map emacs-lisp-mode-map
+	      ("C-c d" . ameyp-elisp/popup-documentation-at-point)))
 
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (define-key emacs-lisp-mode-map (kbd "C-c d") 'popup-documentation-at-point)
-	    (setq-local company-backends '(company-capf company-elisp))
-	    (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))))
+(use-package pos-tip
+  :ensure
+  :config
+  (defun ameyp-elisp/popup-documentation-at-point (function)
+   "Display the full documentation of FUNCTION (a symbol) in tooltip."
+   (interactive (list (function-called-at-point)))
+   (if (null function)
+       (pos-tip-show
+        "** You didn't specify a function! **" '("red"))
+     (pos-tip-show
+      (with-temp-buffer
+        (let ((standard-output (current-buffer))
+              (help-xref-following t))
+          (prin1 function)
+          (princ " is ")
+          (describe-function-1 function)
+          (buffer-string)))
+      nil nil nil 0))))
 
 (provide 'ameyp-elisp)
