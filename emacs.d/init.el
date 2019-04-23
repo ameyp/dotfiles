@@ -10,14 +10,15 @@
 
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
-		   ameyp-packages
-		   ameyp-text
-		   ameyp-gui
+                   ameyp-packages
+                   ameyp-text
+                   ameyp-gui
                    ameyp-company
                    ameyp-helm
+                   ameyp-flycheck
 
-		   ;; load language-specific packages next
-		   ameyp-clojure
+                   ;; load language-specific packages next
+                   ameyp-clojure
                    ameyp-cmake
                    ameyp-coffee
                    ameyp-elisp
