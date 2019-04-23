@@ -11,9 +11,7 @@
 (setq inhibit-startup-screen t)
 
 ;; Add custom paths to 'load-path
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/modules")
-(add-to-list 'load-path "~/.emacs.d/modes")
 
 ;; Load package configuration
 (require 'ameyp-packages)
@@ -93,13 +91,9 @@
 
 ;; Disable autosave
 (setq auto-save-default nil)
-;; So the next line shouldn't be required
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
 
 ;; Disable backup
 (setq backup-inhibited t)
-;; So the next line shouldn't be required
-(setq backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
 
 ;; ---- unzip files in-line from dired ------
 (eval-after-load "dired-aux"
@@ -130,21 +124,9 @@
                (and (get-buffer buffer)
                     (kill-buffer buffer)))))
 
-;; Create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs.d/autosaves/" t)
-
 ;; ---- whitespace-mode ---------------------
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local options" t)
-
-;(require 'browse-kill-ring)
-;(define-key global-map (kbd "C-c k") 'browse-kill-ring)
-;(eval-after-load "browse-kill-ring"
-;  '(progn
-;     (setq browse-kill-ring-quit-action 'save-and-restore)))
-
-;; Show current file name
-(define-key global-map (kbd "C-<f1>") '(lambda () (message (buffer-file-name))))
 
 ;; Set path
 (if (eq system-type 'windows-nt)
