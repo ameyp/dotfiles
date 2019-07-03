@@ -72,5 +72,4 @@ link-file zsh/zshrc ~/.zshrc
 link-file zsh/plugins ~/.zsh
 
 # Download iterm2 shell integration
-curl -L https://iterm2.com/shell_integration/zsh \
--o ~/.iterm2_shell_integration.zsh
+curl -L https://iterm2.com/shell_integration/install_shell_integration.sh | bash
