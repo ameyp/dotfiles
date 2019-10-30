@@ -40,7 +40,9 @@
     (setq exec-path (append exec-path '("/usr/local/bin")))
     (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
     (setq exec-path (append exec-path '("~/Apps/bin")))
-    (setenv "PATH" (concat (getenv "PATH") ":~/Apps/bin"))))
+    (setenv "PATH" (concat (getenv "PATH") ":~/Apps/bin"))
+    (setq exec-path (append exec-path '("~/.cargo/bin")))
+    (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))))
 
 
 (setq custom-file "~/.emacs.d/custom.el")
