@@ -1,8 +1,8 @@
 (use-package lsp-mode
   :commands lsp
-  :config (require 'lsp-clients))
-
-(use-package lsp-ui)
+  :config
+  (require 'lsp-clients)
+  (setq lsp-enable-snippet nil))
 
 (use-package company-lsp)
 
@@ -15,7 +15,6 @@
 
 (use-package flycheck-rust
   :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (setq lsp-enable-snippet nil))
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'ameyp-rust)
