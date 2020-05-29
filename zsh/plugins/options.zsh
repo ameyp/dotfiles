@@ -4,6 +4,7 @@ mkdir -p $XDG_CACHE_HOME/zsh
 # Set history file.
 HISTSIZE=2000
 HISTFILE=$XDG_CACHE_HOME/zsh/history
+SAVEHIST=$HISTSIZE
 
 # Do not add commands with leading space to history.
 setopt histignorespace
