@@ -28,6 +28,8 @@
                    ameyp-python
                    ameyp-ruby
                    ameyp-rust
+                   ameyp-swift
+                   ameyp-warnings
                    ameyp-web
                    ameyp-yaml))
 

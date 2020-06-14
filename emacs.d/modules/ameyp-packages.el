@@ -55,6 +55,7 @@
               robe
               rust-mode
               smartparens
+              swift-mode
               tern
               web-mode
               yaml-mode
