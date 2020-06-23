@@ -46,6 +46,7 @@
               jade-mode
               js2-mode
               lsp-mode
+              lsp-sourcekit
               lua-mode
               markdown-mode
               multiple-cursors
