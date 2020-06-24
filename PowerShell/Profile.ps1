@@ -20,6 +20,9 @@ Set-PSReadLineKeyHandler -Chord Alt+f  -Function ForwardWord
 Set-PSReadLineKeyHandler -Chord Ctrl+a -Function BeginningOfLine
 Set-PSReadLineKeyHandler -Chord Ctrl+e -Function EndOfLine
 
+Set-PSReadLineKeyHandler -Chord Ctrl+h -Function BackwardDeleteChar
+Set-PSReadLineKeyHandler -Chord Ctrl+w -Function BackwardDeleteWord
+Set-PSReadLineKeyHandler -Chord Alt+d  -Function DeleteWord
 Set-PSReadLineKeyHandler -Chord Ctrl+u -Function RevertLine
 Set-PSReadLineKeyHandler -Chord Ctrl+k -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::DeleteToEnd()
