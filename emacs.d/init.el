@@ -1,9 +1,13 @@
 ;(package-initialize)
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 (server-start)
 
 ;; Add custom paths to 'load-path
 (add-to-list 'load-path "~/.emacs.d/modules")
+(add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; Disable those god-awful documentation warnings
 ;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
@@ -23,6 +27,7 @@
                    ameyp-coffee
                    ameyp-elisp
                    ameyp-haskell
+                   ameyp-java
                    ameyp-markdown
                    ameyp-org
                    ameyp-python
@@ -45,7 +50,3 @@
     (setenv "PATH" (concat (getenv "PATH") ":~/Apps/bin"))
     (setq exec-path (append exec-path '("~/.cargo/bin")))
     (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))))
-
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
