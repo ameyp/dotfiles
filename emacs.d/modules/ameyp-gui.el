@@ -23,11 +23,15 @@
 (load-theme 'brutalist)
 
 ;; Instead of an annoying ding as a bell, flash the modeline instead.
-(defun flash-mode-line ()
-  (invert-face 'mode-line)
-  (run-with-timer 0.1 nil #'invert-face 'mode-line))
+;; Disabled because it still causes the rest of the window to flash on windows.
+;; (defun flash-mode-line ()
+;;   (invert-face 'mode-line)
+;;   (run-with-timer 0.5 nil #'invert-face 'mode-line))
+;;
+;; (setq visible-bell nil
+;;       ring-bell-function 'flash-mode-line)
 
 (setq visible-bell nil
-      ring-bell-function 'flash-mode-line)
+      ring-bell-function 'ignore)
 
 (provide 'ameyp-gui)
