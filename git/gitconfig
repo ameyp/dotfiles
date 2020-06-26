@@ -5,6 +5,7 @@
         fileMode = false
         excludesfile = ~/.gitexcludes
         pager = less -FMRiX
+        editor = emacsclient -c
 [push]
         default = simple
 [diff]
@@ -28,7 +29,7 @@
         cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
         trustExitCode = true
 [mergetool "bc"]
-	trustExitCode = true
+        trustExitCode = true
 [color]
         ui = auto
 [alias]
@@ -41,4 +42,4 @@
         append-cr-url = true
         pull-request-by-default = true
 [credential]
-	helper = cache
+        helper = cache
