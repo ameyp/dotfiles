@@ -42,9 +42,9 @@
 (cond ((eq system-type 'darwin)
        (cond
         ((string-match "\.amazon\.com" system-name)
-         (set-face-attribute 'default nil :height 160)
-         (set-face-attribute 'mode-line nil :height 160)
-         (set-face-attribute 'mode-line-inactive nil :height 160))
+         (set-face-attribute 'default nil :height 150)
+         (set-face-attribute 'mode-line nil :height 150)
+         (set-face-attribute 'mode-line-inactive nil :height 150))
         (t
          (set-face-attribute 'default nil :height 130)
          (set-face-attribute 'mode-line nil :height 130)
