@@ -34,20 +34,25 @@
  `(helm-keyword-face ((t (:inherit default))))
  `(helm-selection ((t (:inherit whitespace-line))))
  `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
- `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold)))))
+ `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
+ `(mode-line-inactive ((t (:inherit default :foreground "#666666" :distant-foreground "#666666"))))
+ )
 
 ;; 3. Set font size and line spacing
 (cond ((eq system-type 'darwin)
        (cond
         ((string-match "\.amazon\.com" system-name)
          (set-face-attribute 'default nil :height 160)
-         (set-face-attribute 'mode-line nil :height 160))
+         (set-face-attribute 'mode-line nil :height 160)
+         (set-face-attribute 'mode-line-inactive nil :height 160))
         (t
          (set-face-attribute 'default nil :height 130)
-         (set-face-attribute 'mode-line nil :height 130))))
+         (set-face-attribute 'mode-line nil :height 130)
+         (set-face-attribute 'mode-line-inactive nil :height 130))))
       (t
        (set-face-attribute 'default nil :height 110)
-       (set-face-attribute 'mode-line nil :height 110)))
+       (set-face-attribute 'mode-line nil :height 110)
+       (set-face-attribute 'mode-line-inactive nil :height 110)))
 
 (setq-default line-spacing 3)
 
