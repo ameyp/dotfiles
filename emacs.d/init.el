@@ -36,7 +36,8 @@
                    ameyp-swift
                    ameyp-warnings
                    ameyp-web
-                   ameyp-yaml))
+                   ameyp-yaml
+                   ameyp-zig))
 
 ;; Set path
 (if (eq system-type 'windows-nt)
