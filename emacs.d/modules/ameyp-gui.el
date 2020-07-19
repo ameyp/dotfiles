@@ -21,7 +21,9 @@
 ;; The order of the next three segments is *extremely* important.
 
 ;; 1. Load theme
-(load-theme 'brutalist)
+(use-package brutalist-theme
+  :config
+  (load-theme 'brutalist))
 
 ;; 2. Customize theme
 (custom-theme-set-faces
