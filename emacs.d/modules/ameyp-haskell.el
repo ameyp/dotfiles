@@ -1,8 +1,7 @@
 (use-package haskell-mode
   :mode "\\.hs\\'"
   :config
-  (setq helm-dash-docsets '("Haskell"))
-  (turn-on-haskell-indentation)
+  (haskell-indentation-mode)
   :bind (:map haskell-mode-map
          ("C-," . haskell-move-nested-left)
          ("C-." . haskell-move-nested-right)

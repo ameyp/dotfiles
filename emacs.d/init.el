@@ -26,8 +26,10 @@
                    ameyp-cmake
                    ameyp-coffee
                    ameyp-elisp
+                   ameyp-git
                    ameyp-haskell
                    ameyp-java
+                   ameyp-lsp
                    ameyp-markdown
                    ameyp-org
                    ameyp-python

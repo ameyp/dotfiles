@@ -65,8 +65,11 @@
         projectile-completion-system 'helm
         projectile-switch-project-action 'helm-projectile))
 
+;; helm-projectile doesn't work without tramp, complains about void-variable tramp-methods.
+(use-package tramp)
+
 (use-package helm-projectile
-  :after (projectile)
+  :after (projectile tramp)
   :bind ("C-," . helm-projectile-find-file)
   :config
   (helm-projectile-on)
