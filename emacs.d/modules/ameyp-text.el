@@ -1,12 +1,10 @@
 ;; ---- whitespace-mode ---------------------
-(use-package whitespace
-  :ensure)
+(use-package whitespace)
 
 ;; expand-region
 (use-package expand-region
   :bind (("C-=" . 'er/expand-region)
-         ("C-+" . 'er/contract-region))
-  :ensure)
+         ("C-+" . 'er/contract-region)))
 
 (require 'bind-key)
 (bind-keys* ("C-w" . backward-kill-word)

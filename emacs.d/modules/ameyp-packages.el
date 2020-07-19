@@ -13,6 +13,9 @@
 (eval-when-compile
   (require 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 (defvar ameyp-package-list)
 (setq ameyp-package-list
       (quote (

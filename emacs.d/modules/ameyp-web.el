@@ -1,5 +1,4 @@
 (use-package web-mode
-  :ensure
   :mode ("\\.phtml\\'"
          "\\.php\\'"
          "\\.[gj]sp\\'"

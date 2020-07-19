@@ -1,6 +1,5 @@
 (use-package haskell-mode
   :mode "\\.hs\\'"
-  :ensure
   :config
   (setq helm-dash-docsets '("Haskell"))
   (turn-on-haskell-indentation)

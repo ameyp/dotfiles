@@ -4,7 +4,6 @@
 (use-package enh-ruby-mode
   :mode "\\.rb\\'"
   :interpreter "ruby"
-  :ensure
   :config
   (setq helm-dash-docsets '("Ruby")
         tab-width 4)
