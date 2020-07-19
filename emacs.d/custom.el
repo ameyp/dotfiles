@@ -32,7 +32,7 @@
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
    (quote
-    (git-rebase-mode git-commit-mode))))
+    (eldoc-mode delight git-rebase-mode git-commit-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -56,4 +56,7 @@
 
 (setq-default line-spacing 3)
 
+;; 4. Modeline customization
+(use-package delight)
+
 (provide 'ameyp-gui)
