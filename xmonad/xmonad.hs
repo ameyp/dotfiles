@@ -280,6 +280,7 @@ myStartupHook = do
   spawnOnce "compton &"
   spawnOnce "emacs --daemon &"
   spawnOnce "trayer --edge top --align right --widthtype request --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x000000 --height 22 &"
+  spawnOnce "dunst -conf $HOME/.xmonad/dunst.config"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
