@@ -53,7 +53,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["browse","idea","mail","r&r","5","6","7","8","trash"]
+myWorkspaces    = ["browse","idea","mail","r&r","5","6","7","kb","trash"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -127,6 +127,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- See also the statusBar function from Hooks.DynamicLog.
     --
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+
+    -- TODO Remove this once I have a keyboard with qmk.
+    -- Cycle keyboard layouts.
+    , ((modm .|. shiftMask, xK_a      ), spawn "$HOME/bin/cycle-layouts")
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
