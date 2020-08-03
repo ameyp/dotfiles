@@ -8,6 +8,7 @@
 --
 
 import XMonad
+import XMonad.Actions.CopyWindow
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
@@ -224,7 +225,7 @@ myLayout = spacingRaw True (Border 0 5 0 5) True (Border 5 0 5 0) True $
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "Evolution-alarm-notify" --> doFloat
+    , className =? "Evolution-alarm-notify" --> doFloat <+> doF copyToAll
     , className =? "trayer"         --> doIgnore
     , resource  =? "trayer"         --> doIgnore
     , resource  =? "desktop_window" --> doIgnore
