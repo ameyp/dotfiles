@@ -75,6 +75,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
+    -- launch emacsclient
+    , ((modm .|. shiftMask, xK_s     ), spawn "emacsclient -c")
+
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
