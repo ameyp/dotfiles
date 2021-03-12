@@ -1,5 +1,6 @@
 *.iml
 *.pyc
+*.class
 build
 .DS_Store
 .rakeTasks
@@ -8,3 +9,5 @@ build
 .gradle
 .project
 eclipse-bin
+.bemol
+.settings
