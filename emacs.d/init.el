@@ -12,6 +12,9 @@
 ;; Disable those god-awful documentation warnings
 ;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
+;; Print complete messages for C-x C-e
+(setq eval-expression-print-length 10000)
+
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
@@ -36,6 +39,7 @@
                    ameyp-ruby
                    ameyp-rust
                    ameyp-swift
+                   ameyp-typescript
                    ameyp-warnings
                    ameyp-web
                    ameyp-yaml
