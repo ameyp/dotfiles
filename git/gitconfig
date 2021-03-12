@@ -43,3 +43,5 @@
         pull-request-by-default = true
 [credential]
         helper = cache
+[pull]
+	rebase = true
