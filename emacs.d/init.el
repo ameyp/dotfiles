@@ -1,5 +1,8 @@
 ;(package-initialize)
 
+;; For native compilation
+(setq comp-speed 2)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
@@ -21,8 +24,8 @@
                    ameyp-text
                    ameyp-gui
                    ameyp-company
-                   ameyp-helm
                    ameyp-flycheck
+                   ameyp-ivy
 
                    ;; load language-specific packages next
                    ameyp-clojure
