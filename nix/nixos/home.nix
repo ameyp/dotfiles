@@ -321,4 +321,6 @@ in
 
   # Ripgrep
   home.file.".ripgreprc".source = ./ripgreprc;
+
+  # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
 }
