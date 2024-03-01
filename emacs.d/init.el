@@ -35,7 +35,7 @@
                    ameyp-cmake
                    ameyp-coffee
                    ameyp-docker
-                   ameyp-eglot
+                   ;ameyp-eglot
                    ameyp-elisp
                    ameyp-git
                    ameyp-go

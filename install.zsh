@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -euo pipefail
+
 source ./os-detect.sh
 
 if isdarwin; then
@@ -46,22 +48,11 @@ if isdarwin; then
 fi
 
 if islinux; then
-  # For google chrome
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key -y add -
-
-  # Dropbox
-  wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb && \
-      sudo dpkg -i ./dropbox_2015.10.28_amd64.deb && \
-      rm ./dropbox_2015.10.28_amd64.deb
-
-  sudo apt-get update
-
   eval $INSTALL -f
 
   eval $INSTALL \
        ack-grep \
-       google-chrome-stable \
-       silversearcher-ag
+       ripgrep
 
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-update-rc
@@ -70,7 +61,6 @@ fi
 
 # Install fzf
 isdarwin && /usr/local/opt/fzf/install
-islinux && /home/linuxbrew/.linuxbrew/opt/fzf/install
 
 # Create symlinks
 
