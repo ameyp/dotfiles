@@ -23,7 +23,6 @@
                    ameyp-coffee
                    ameyp-elisp
                    ameyp-haskell
-                   ameyp-lua
                    ameyp-markdown
                    ameyp-opengl
                    ameyp-org
