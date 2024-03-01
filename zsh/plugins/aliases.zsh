@@ -31,3 +31,5 @@ alias trail="less +F -n"
 
 # Convenient git aliases
 alias gca="git commit -a --amend --no-edit"
+
+alias ag="ag --pager 'less -R'"
