@@ -323,4 +323,12 @@ in
   home.file.".ripgreprc".source = ./ripgreprc;
 
   # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
+
+  # Lockscreen
+  # Initialize it with images by running
+  # betterlockscreen -b /path/to/folder/or/image
+  services.betterlockscreen = {
+    enable = true;
+    arguments = ["--blur"];
+  };
 }
