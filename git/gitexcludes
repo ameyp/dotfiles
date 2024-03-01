@@ -11,3 +11,4 @@ build
 eclipse-bin
 .bemol
 .settings
+.solargraph.yml
