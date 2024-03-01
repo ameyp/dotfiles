@@ -3,6 +3,16 @@
 source ./os-detect.sh
 
 if isdarwin; then
+  INSTALL='brew install'
+  GUI_INSTALL='brew cask install'
+fi
+
+if islinux; then
+  INSTALL='sudo apt-get -y install'
+  GUI_INSTALL=$INSTALL
+fi
+
+if isdarwin; then
   # Install homebrew
   if ! [[ -x $(command -v brew) ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -25,6 +35,7 @@ eval $INSTALL \
 
 if isdarwin; then
   eval $INSTALL \
+       coreutils \
        ack \
        fzf \
        the_silver_searcher
