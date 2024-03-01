@@ -98,7 +98,11 @@ See `org-capture-templates' for more information."
 
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
-         ("C-c c" . org-capture))
+         ("C-c c" . org-capture)
+         (:map org-mode-map
+               ("C-," . nil))
+         ("C-," . consult-projectile-find-file)
+         )
   :hook
   (org-mode . visual-line-mode))
 
