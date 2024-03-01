@@ -85,7 +85,7 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
   :preface
   (setq modus-themes-org-blocks 'gray-background)
   :config
-  (load-theme 'modus-vivendi-deuteranopia :no-confirm))
+  (load-theme 'modus-vivendi :no-confirm))
 
 ;; (setq custom--inhibit-theme-enable nil)
 
