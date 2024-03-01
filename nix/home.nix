@@ -54,4 +54,63 @@ in
   # https://github.com/nix-community/nix-direnv
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  # Git config
+  programs.git = {
+    enable = true;
+    userName = "Amey Parulekar";
+    userEmail = "amey@wirywolf.com";
+    extraConfig = {
+      core = {
+        fileMode = false;
+        pager = "less -FMRiX";
+        editor = "emacsclient -c";
+      };
+      push = {
+        default = "current";
+      };
+      remote = {
+        pushDefault = "origin";
+      };
+      color = {
+        ui = "auto";
+      };
+      credential = {
+        helper = "cache";
+      };
+      pull = {
+        rebase = true;
+      };
+      init = {
+        defaultBranch = "main";
+      };
+    };
+    aliases = {
+      dag = "log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\\\"%an\\\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order";
+      co = "checkout";
+      st = "status";
+      rb = "rebase";
+      br = "branch";
+    };
+    ignores = [
+      "*.~undo-tree~"
+      "*.iml"
+      "*.pyc"
+      "*.class"
+      "*.bak"
+      "build"
+      ".DS_Store"
+      ".rakeTasks"
+      "._.DS_Store"
+      ".classpath"
+      ".gradle"
+      ".project"
+      "eclipse-bin"
+      ".bemol"
+      ".settings"
+      ".solargraph.yml"
+      ".direnv"
+      ".idea"
+    ];
+  };
 }
