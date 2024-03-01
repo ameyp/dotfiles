@@ -44,6 +44,7 @@ in
     pkgs.htop
     pkgs.lsd
     pkgs.pandoc
+    pkgs.pyenv
     pkgs.ripgrep
     pkgs.starship
     pkgs.tree
@@ -235,13 +236,13 @@ in
     initExtra = ''
       ## Late-init environment variables
       # Direnv
-      [ -x $(command -v direnv) ] && eval "$(direnv hook zsh)"
+      eval "$(direnv hook zsh)"
 
       # Starship
-      [ -x $(command -v starship) ] && eval "$(starship init zsh)"
+      eval "$(starship init zsh)"
 
       # Pyenv
-      [ -x $(command -v pyenv) ] && eval "$(pyenv init -)"
+      eval "$(pyenv init -)"
 
       ## Options
 

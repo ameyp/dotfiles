@@ -47,7 +47,11 @@
       };
 
       darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+          # This should work, but complains about systemd being a missing attribute.
+          # home-manager.nixosModules.home-manager
+        ];
       };
 
       # Expose the package set, including overlays, for convenience.
