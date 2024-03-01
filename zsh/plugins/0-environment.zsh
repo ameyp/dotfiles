@@ -52,6 +52,12 @@ if [[ -d $HOME/Applications/Emacs.app ]]; then
   PATH=$HOME/Applications/Emacs.app/Contents/MacOS/bin:$PATH
 fi
 
+# Disable fancy prompts for tramp to work.
+if [[ "$TERM" == "dumb" ]]; then
+    unsetopt zle
+    PS1='$ '
+fi
+
 # Activate torch if available.
 if [[ -d $HOME/Applications/torch ]]; then
   . $HOME/Applications/torch/install/bin/torch-activate
@@ -63,9 +69,4 @@ if [[ -d /usr/local/cuda-7.5 ]]; then
   export CUDA_HOME=/usr/local/cuda-7.5
   PATH=$CUDA_ROOT:/bin/:$PATH
   export LD_LIBRARY_PATH=$CUDA_ROOT/lib64
-fi
-
-# Enable iTerm2 shell integration.
-if [[ -d $HOME/.iterm2_shell_integration ]]; then
-  source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
