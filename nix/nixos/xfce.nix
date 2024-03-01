@@ -52,6 +52,12 @@
     setSocketVariable = true;
   };
 
+  # Enable avahi for local network name resolution
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -105,7 +111,11 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    browsing = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
 
   sound.enable = true;
   hardware.pulseaudio = {
