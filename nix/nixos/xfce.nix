@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -25,7 +25,13 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+  };
+  # Enabling tailscale triggers https://github.com/NixOS/nixpkgs/issues/180175
+  # Adding the tailscale interface to unmanaged does nothing, so I'm just disabling
+  # the service that probably waits for all interfaces to be up.
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -55,7 +61,11 @@
   # Enable avahi for local network name resolution
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
+  };
+
+  services.tailscale = {
+    enable = true;
   };
 
   # Enable the X11 windowing system.
@@ -188,6 +198,8 @@
     feh
     # status bar
     polybar
+
+    mullvad-vpn
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -216,6 +228,12 @@
   services.emacs = {
     enable = true;
     package = pkgs.emacs29;
+  };
+
+  services.syncthing = {
+    enable = true;
+    relay.enable = false;
+    systemService = true;
   };
 
   # Enable the OpenSSH daemon.
