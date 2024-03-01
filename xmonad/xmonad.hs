@@ -216,9 +216,11 @@ myLayout = spacingRaw True (Border 0 5 0 5) True (Border 5 0 5 0) True $
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
+myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "trayer"         --> doIgnore
+    , resource  =? "trayer"         --> doIgnore
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -254,6 +256,7 @@ myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "compton &"
   spawnOnce "emacs --daemon &"
+  spawnOnce "trayer --edge top --align right --widthtype request --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x000000 --height 22 &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
