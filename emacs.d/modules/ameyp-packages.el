@@ -26,8 +26,8 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
+;(require 'use-package-ensure)
+;(setq use-package-always-ensure t)
 
 (use-package package-build)
 

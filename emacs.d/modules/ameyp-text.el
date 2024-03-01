@@ -16,7 +16,6 @@
             ("M-r" . isearch-backward-regexp))
 
 (use-package smartparens
-  :ensure t
   :config
   (require 'smartparens-config)
   (smartparens-global-mode)

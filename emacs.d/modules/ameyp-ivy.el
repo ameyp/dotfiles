@@ -1,7 +1,6 @@
 (use-package counsel-projectile)
 
-(use-package ivy :ensure t
-  :ensure t
+(use-package ivy
   :diminish (ivy-mode . "")
   :bind
   (("C-'" . ivy-avy)
@@ -58,7 +57,6 @@
   (setq ivy-use-selectable-prompt t)
   (setq ag-highlight-search t))
 
-(use-package counsel
-  :ensure t)
+(use-package counsel)
 
 (provide 'ameyp-ivy)
