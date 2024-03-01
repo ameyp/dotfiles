@@ -2,6 +2,7 @@
 mkdir -p $XDG_CACHE_HOME/zsh
 
 # Set history file.
+HISTSIZE=2000
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 
 # Do not add commands with leading space to history.
@@ -47,3 +48,7 @@ setopt noshwordsplit
 autoload compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 compinit
+
+# What zsh identifies as a word delimiter
+autoload -U select-word-style
+select-word-style bash
