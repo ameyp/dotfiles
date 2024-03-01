@@ -25,6 +25,8 @@
   :config
   (load-theme 'brutalist))
 
+(setq custom--inhibit-theme-enable nil)
+
 ;; 2. Customize theme
 (custom-theme-set-faces
  'brutalist
