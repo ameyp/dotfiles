@@ -33,9 +33,30 @@
 ;; Enable minibuffer-in-minibuffer
 (setq enable-recursive-minibuffers t)
 
+;; Macro for keybindings, copied from prot's dotemacs.
+(defmacro ameyp-emacs-keybind (keymap &rest definitions)
+  "Expand key binding DEFINITIONS for the given KEYMAP.
+DEFINITIONS is a sequence of string and command pairs."
+  (declare (indent 1))
+  (unless (zerop (% (length definitions) 2))
+    (error "Uneven number of key+command pairs"))
+  (let ((keys (seq-filter #'stringp definitions))
+        ;; We do accept nil as a definition: it unsets the given key.
+        (commands (seq-remove #'stringp definitions)))
+    `(when-let (((keymapp ,keymap))
+                (map ,keymap))
+       ,@(mapcar
+          (lambda (pair)
+            (let* ((key (car pair))
+                   (command (cdr pair)))
+              (unless (and (null key) (null command))
+                `(define-key map (kbd ,key) ,command))))
+          (cl-mapcar #'cons keys commands)))))
+
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
+                   ameyp-dired
                    ameyp-direnv
                    ameyp-text
                    ameyp-gui
@@ -47,6 +68,7 @@
                    ameyp-clojure
                    ameyp-cmake
                    ameyp-coffee
+                   ameyp-dired
                    ameyp-docker
                    ameyp-elisp
                    ameyp-git
@@ -83,3 +105,4 @@
 (setq epg-pinentry-mode 'loopback)
 (require 'epa-file)
 (epa-file-enable)
+

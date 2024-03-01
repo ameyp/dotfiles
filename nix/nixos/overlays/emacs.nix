@@ -143,6 +143,11 @@ self: super: rec {
       apheleia
       jest-test-mode
       eglot-java
+
+      # For gpg
       pinentry
+
+      # PDF viewer that can read from stdin
+      zathura
     ]));
 }
