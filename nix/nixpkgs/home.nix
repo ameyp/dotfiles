@@ -7,7 +7,6 @@ in
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "amey";
-  home.homeDirectory = "/home/amey";
 
   # Enable font management
   fonts.fontconfig.enable = true;
@@ -268,5 +267,5 @@ in
   };
 
   # Starship
-  home.file.".config/starship.toml".source = ../../starship.toml;
+  home.file.".config/starship.toml".source = ./starship.toml;
 }
