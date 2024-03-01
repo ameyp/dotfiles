@@ -15,10 +15,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
     let
+      configuration = ./system-macos.nix;
     in {
       homeConfigurations = {
         "linux" = home-manager.lib.homeManagerConfiguration {
@@ -42,5 +45,12 @@
           ];
         };
       };
+
+      darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
+        modules = [ configuration ];
+      };
+
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."macos".pkgs;
     };
 }

@@ -25,7 +25,7 @@
       {
         # Must run manually after installation:
         # ln -s /opt/homebrew/Cellar/emacs-plus@30/30.1/Emacs.app /Applications
-        name = "emacs-plus@30";
+        name = "emacs-plus@29";
         args = [ "with-imagemagick" "with-native-comp" ];
       }
     ];
