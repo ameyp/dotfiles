@@ -39,20 +39,18 @@
  )
 
 ;; 3. Set font size and line spacing
-(cond ((eq system-type 'darwin)
-       (cond
-        ((string-match "\.amazon\.com" system-name)
-         (set-face-attribute 'default nil :height 150)
-         (set-face-attribute 'mode-line nil :height 150)
-         (set-face-attribute 'mode-line-inactive nil :height 150))
-        (t
-         (set-face-attribute 'default nil :height 130)
-         (set-face-attribute 'mode-line nil :height 130)
-         (set-face-attribute 'mode-line-inactive nil :height 130))))
-      (t
-       (set-face-attribute 'default nil :height 110)
-       (set-face-attribute 'mode-line nil :height 110)
-       (set-face-attribute 'mode-line-inactive nil :height 110)))
+(let ((face-height
+       (cond ((eq system-type 'darwin)
+              (cond
+               ;; Work machine
+               ((string-match "\.amazon\.com" (system-name)) 150)
+               ;; Personal macOS
+               (t 130)))
+             ;; Default (linux/windows)
+             (t 105))))
+  (progn (set-face-attribute 'default nil :height face-height)
+         (set-face-attribute 'mode-line nil :height face-height)
+         (set-face-attribute 'mode-line-inactive nil :height face-height)))
 
 (setq-default line-spacing 3)
 
