@@ -28,9 +28,8 @@
                    ameyp-text
                    ameyp-gui
                    ameyp-company
-                   ;ameyp-eglot
+                   ameyp-eglot
                    ameyp-flycheck
-                   ameyp-ivy
 
                    ;; load language-specific packages next
                    ameyp-clojure
@@ -43,11 +42,11 @@
                    ameyp-haskell
                    ameyp-java
                    ameyp-jsonnet
-                   ;ameyp-lsp
                    ameyp-markdown
                    ameyp-nix
                    ameyp-org
                    ameyp-protobuf
+                   ameyp-projectile
                    ameyp-python
                    ameyp-ruby
                    ameyp-rust
@@ -55,6 +54,7 @@
                    ameyp-syntax
                    ameyp-terraform
                    ameyp-typescript
+                   ameyp-vertico
                    ameyp-warnings
                    ameyp-web
                    ameyp-yaml

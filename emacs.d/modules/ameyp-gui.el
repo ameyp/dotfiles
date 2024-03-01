@@ -72,28 +72,28 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
 ;; The order of the next three segments is *extremely* important.
 
-;; 1. Load theme
-(use-package brutalist-theme
-  :config
-  (load-theme 'brutalist))
+;; ;; 1. Load theme
+;; (use-package brutalist-theme
+;;   :config
+;;   (load-theme 'brutalist))
 
-(setq custom--inhibit-theme-enable nil)
+;; (setq custom--inhibit-theme-enable nil)
 
-;; 2. Customize theme
-(custom-theme-set-faces
- 'brutalist
- `(default ((t (:family "Hack Nerd Font"))))
- `(fixed-pitch ((t (:family "Hack Nerd Font"))))
- `(helm-bookmark-file ((t (:inherit default))))
- `(helm-buffer-file ((t (:inherit default))))
- `(helm-ff-file ((t (:inherit default))))
- `(helm-keyword-face ((t (:inherit default))))
- `(helm-selection ((t (:inherit whitespace-line))))
- `(lsp-face-highlight-textual ((t (:inherit lazy-highlight :underline nil))))
- `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
- `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
- `(mode-line-inactive ((t (:inherit default :box '(:width 1) :foreground "#666666" :background "#fffff8"))))
- )
+;; ;; 2. Customize theme
+;; (custom-theme-set-faces
+;;  'brutalist
+;;  `(default ((t (:family "Hack Nerd Font"))))
+;;  `(fixed-pitch ((t (:family "Hack Nerd Font"))))
+;;  `(helm-bookmark-file ((t (:inherit default))))
+;;  `(helm-buffer-file ((t (:inherit default))))
+;;  `(helm-ff-file ((t (:inherit default))))
+;;  `(helm-keyword-face ((t (:inherit default))))
+;;  `(helm-selection ((t (:inherit whitespace-line))))
+;;  `(lsp-face-highlight-textual ((t (:inherit lazy-highlight :underline nil))))
+;;  `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
+;;  `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
+;;  `(mode-line-inactive ((t (:inherit default :box '(:width 1) :foreground "#666666" :background "#fffff8"))))
+;;  )
 
 ;; 3. Set font size and line spacing
 (let ((face-height
