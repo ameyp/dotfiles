@@ -1,4 +1,4 @@
-ns(use-package clojure-mode
+(use-package clojure-mode
   :mode "\\.cljs?\\'"
   :ensure t
   :hook ((clojure-mode . eglot-ensure)
