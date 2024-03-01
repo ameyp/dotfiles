@@ -33,6 +33,7 @@
 ;; 1. Untabify if indent-tabs-mode is off
 ;; 2. Delete trailing whitespace
 ;; 3. Set line-endings to unix
+(setq delete-trailing-lines nil)
 (add-hook 'before-save-hook
           (lambda ()
             (set-buffer-file-coding-system 'utf-8-unix)
