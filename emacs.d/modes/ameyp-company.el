@@ -1,12 +1,13 @@
 ;; Activate company-mode
-(add-hook 'after-init-hook
-          (lambda ()
-            (global-company-mode)
-            (setq-local company-dabbrev-downcase nil)
-            (define-key global-map (kbd "C-<tab>") 'company-complete)
-            (define-key company-active-map (kbd "C-n") 'company-select-next)
-            (define-key company-active-map (kbd "C-p") 'company-select-previous)
-            (define-key company-active-map (kbd "C-d") 'company-show-doc-buffer)
-            (define-key company-active-map (kbd "<tab>") 'company-complete)))
+(use-package company
+  :config
+  (setq company-dabbrev-downcase nil)
+  ;(global-company-mode)
+  :bind (("C-<tab>" . 'company-complete)
+	 :map company-active-map
+	 ("C-n" . 'company-select-next)
+	 ("C-p" . 'company-select-previous)
+	 ("C-d" . 'company-show-doc-buffer)
+	 ("<tab>" . 'company-complete)))
 
 (provide 'ameyp-company)
