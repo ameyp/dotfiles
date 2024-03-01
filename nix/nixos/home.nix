@@ -39,6 +39,7 @@ in
     (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
     pkgs.curl
     pkgs.direnv
+    pkgs.discord
     pkgs.fd
     pkgs.fzf
     pkgs.git
