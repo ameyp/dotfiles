@@ -148,7 +148,7 @@ in
       # XDG Base Directory Specification.
       export XDG_DATA_HOME=$HOME/.local/share
       export XDG_CONFIG_HOME=$HOME/.config
-      export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
+      export XDG_DATA_DIRS=$HOME/.nix-profile/share/applications:/usr/local/share/:/usr/share/
       export XDG_CONFIG_DIRS=/etc/xdg
       export XDG_CACHE_HOME=$HOME/.cache
       ! [ -d $XDG_CACHE_HOME/zsh ] && mkdir -p $XDG_CACHE_HOME/zsh
