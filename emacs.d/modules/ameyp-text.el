@@ -5,14 +5,14 @@
 ;; expand-region
 (use-package expand-region
   :bind (("C-=" . 'er/expand-region)
-	 ("C-+" . 'er/contract-region))
+         ("C-+" . 'er/contract-region))
   :ensure)
 
 (require 'bind-key)
 (bind-keys* ("C-w" . backward-kill-word)
-	    ("C-x C-k" . kill-region)
-	    ("M-s" . isearch-forward-regexp)
-	    ("M-r" . isearch-backward-regexp))
+            ("C-x C-k" . kill-region)
+            ("M-s" . isearch-forward-regexp)
+            ("M-r" . isearch-backward-regexp))
 
 ;; Rainbow Delimiters
 (use-package rainbow-delimiters
@@ -25,6 +25,7 @@
 (delete-selection-mode 1)
 
 ;; Tabs are evil
+(setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 
 ;; Before saving:
