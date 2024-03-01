@@ -9,7 +9,7 @@
 [push]
         default = simple
 [diff]
-        tool = diffmerge
+        tool = bc
 [difftool]
         prompt = false
 [difftool "ediff"]
@@ -17,7 +17,7 @@
 [difftool "diffmerge"]
         cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
-        tool = diffmerge
+        tool = bc
 [mergetool]
         keepBackup = false
 [mergetool "ediff"]
@@ -44,4 +44,4 @@
 [credential]
         helper = cache
 [pull]
-	rebase = true
+        rebase = true
