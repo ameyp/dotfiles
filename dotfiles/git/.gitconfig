@@ -1,43 +1,41 @@
 [user]
-	name = Amey Parulekar
-	email = amey@wirywolf.com
-	# for work, use
-	# alias git='git -c user.name="John Doe" -c user.email="a@b.com"'
+        name = Amey Parulekar
+        email = ameyzing@amazon.com
 [core]
-	fileMode = false
-	excludesfile = ~/.gitexcludes
-	pager = less -FMRiX
-	autocrlf = input
+        fileMode = false
+        excludesfile = ~/.gitexcludes
+        pager = less -FMRiX
+        autocrlf = input
 [push]
-	default = simple
+        default = simple
 [diff]
-	tool = diffmerge
+        tool = diffmerge
 [difftool]
-	prompt = false
+        prompt = false
 [difftool "ediff"]
-	cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+        cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+        cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
         tool = diffmerge
 [mergetool]
-	keepBackup = false
+        keepBackup = false
 [mergetool "ediff"]
         cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
         keepTemporaries = false
         trustExitCode = false
         keepBackup = false
 [mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
+        cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+        trustExitCode = true
 [color]
-	ui = auto
+        ui = auto
 [alias]
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-	co = checkout
-	st = status
-	rb = rebase
-	br = branch
+        dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+        co = checkout
+        st = status
+        rb = rebase
+        br = branch
 [amazon]
-	append-cr-url = true
-	pull-request-by-default = true
+        append-cr-url = true
+        pull-request-by-default = true
