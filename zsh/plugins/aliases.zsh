@@ -1,5 +1,8 @@
-# Always display colors.
-alias ls='ls -G'
+if isdarwin; then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
 
 # ack is ack-grep on some systems.
 [[ -x $(command -v ack-grep) ]] && alias ack='ack-grep'

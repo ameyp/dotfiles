@@ -1,3 +1,5 @@
+source $HOME/.dotfiles/os-detect.sh
+
 # Set editor.
 export EDITOR='emacsclient -c'
 
