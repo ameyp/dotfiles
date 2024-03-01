@@ -5,8 +5,11 @@ import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks
 
+import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
+import XMonad.Layout.StackTile
 import XMonad.Layout.ToggleLayouts
 
 import XMonad.Util.EZConfig
@@ -23,9 +26,16 @@ main = do
   xmprocFeh <- spawnPipe ("killall feh; feh --bg-scale ~/Pictures/wallpapers/6.jpeg")
   xmonad $ docks . ewmh $ myConfig
 
+myLayoutHook = tiled ||| Grid ||| Mirror tiled ||| Full
+  where
+    tiled = Tall nmaster delta ratio
+    nmaster = 1
+    ratio = 1/2
+    delta = 3/100
+
 myConfig = def
     { modMask = mod4Mask -- Rebind Mod to the Super key
-    , layoutHook = avoidStruts $ spacingWithEdge 3 $ layoutHook def
+    , layoutHook = avoidStruts $ spacingWithEdge 3 $ myLayoutHook
     , manageHook = manageHook def <+> manageDocks
     }
   `additionalKeysP`
