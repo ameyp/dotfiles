@@ -82,6 +82,7 @@ in
       st = "status";
       rb = "rebase";
       br = "branch";
+      ec = "emacsclient";
     };
     ignores = [
       "*.~undo-tree~"
@@ -102,6 +103,7 @@ in
       ".solargraph.yml"
       ".direnv"
       ".idea"
+      ".envrc"
     ];
   };
 
@@ -136,6 +138,7 @@ in
     '';
     shellAliases = {
       gca = "git commit -a --amend --no-edit";
+      ec = "emacsclient -c";
     };
     envExtra = ''
       export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

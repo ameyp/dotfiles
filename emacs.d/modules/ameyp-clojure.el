@@ -1,13 +1,16 @@
 (use-package clojure-mode
   :mode "\\.cljs?\\'"
-  :hook (clojure-mode . cider-mode))
-
-(use-package cider
-  :after (clojure-mode rainbow-delimiters smartparens)
+  :ensure t
+  :hook ((clojure-mode . lsp-deferred)
+         (clojurec-mode . lsp-deferred)
+         (clojurescript-mode . lsp-deferred))
   :config
-  (setq nrepl-hide-special-buffers t)
-  :hook
-  (cider-repl-mode . 'rainbow-delimiters-mode)
-  (cider-repl-mode . 'smartparens-strict-mode))
+  (dolist (m '(clojure-mode
+               clojurec-mode
+               clojurescript-mode
+               clojurex-mode))
+     (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
+     ;(setq lsp-clojure-server-command '("/path/to/clojure-lsp"))) ;; Optional: In case `clojure-lsp` is not in your $PATH
+  )
 
 (provide 'ameyp-clojure)

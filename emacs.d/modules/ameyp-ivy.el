@@ -44,7 +44,6 @@
       (defconst ameyp/rg-arguments
         `("--line-number"                     ; line numbers
           "--smart-case"
-          "--follow"                          ; follow symlinks
           "--mmap")                           ; apply memory map optimization when possible
         "Default rg arguments used in the functions in `projectile' package.")
 
@@ -57,6 +56,7 @@
                              "--files" ; get file names matching the regex '' (all files)
                              "--hidden" ; include hidden files and folders...
                              "-g '!.git/'" ; ...except .git/
+                             "-g '!.#*'"   ; ...except emacs temp files
                              ))
                    " "))
 

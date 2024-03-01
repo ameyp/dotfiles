@@ -2,6 +2,7 @@
 (setq package-user-dir "~/.emacs.d/.elpa")
 
 ;; Bootstrap https://github.com/raxod502/straight.el
+(setq straight-repository-branch "develop")
 (setq straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file

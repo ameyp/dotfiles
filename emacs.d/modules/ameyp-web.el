@@ -17,10 +17,10 @@
         indent-tabs-mode nil
         web-mode-markup-indent-offset 4 ;; Markup
         web-mode-css-indent-offset 4  ;; CSS
-        web-mode-code-indent-offset 2  ;; Script tags
+        web-mode-code-indent-offset 4  ;; Script tags
         web-mode-attr-indent-offset 4 ;; So that HTML/JSX attributes aren't aligned at their names
         web-mode-enable-auto-quoting nil ;; So that attributes don't get an automatic quote after =
-        jsx-indent-level 2)
+        jsx-indent-level 4)
   :hook
   (javascript-mode . flycheck-mode))
 

@@ -3,9 +3,6 @@
 {
   home.homeDirectory = "/Users/amey";
   home.packages = [
-    # Disabled because of https://github.com/NixOS/nixpkgs/issues/127902
-    # pkgs.emacsMacport
-    pkgs.emacs
   ];
 
   programs.zsh = {
@@ -13,7 +10,7 @@
       hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#amey@macos\"";
     };
     envExtra = ''
-      [[ -f /opt/homebrew/bin/brew ]] && export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
+      [[ -f /opt/homebrew/bin/brew ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
       # Nix
       NIX_DAEMON="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"

@@ -21,6 +21,7 @@
   :commands (tsi-typescript-mode tsi-json-mode tsi-css-mode)
   :init
   (add-hook 'typescript-mode-hook (lambda () (tsi-typescript-mode 1)))
+  (add-hook 'typescript-mode-hook 'lsp-deferred)
   (add-hook 'json-mode-hook (lambda () (tsi-json-mode 1)))
   (add-hook 'css-mode-hook (lambda () (tsi-css-mode 1)))
   (add-hook 'scss-mode-hook (lambda () (tsi-scss-mode 1)))
