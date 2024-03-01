@@ -79,7 +79,6 @@ link-file git/gitconfig ~/.gitconfig
 link-file git/gitexcludes ~/.gitexcludes
 link-file xmonad ~/.xmonad
 link-file ruby/gemrc ~/.gemrc
-link-file slate/slate.js ~/.slate.js
 link-file zsh/zshrc ~/.zshrc
 link-file zsh/plugins ~/.zsh
 
