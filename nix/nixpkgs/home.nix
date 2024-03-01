@@ -33,6 +33,7 @@ in
     pkgs.fzf
     pkgs.git
     pkgs.htop
+    pkgs.pandoc
     pkgs.ripgrep
     pkgs.starship
     pkgs.tree
