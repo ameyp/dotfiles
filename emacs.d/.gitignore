@@ -3,6 +3,7 @@
 *.elc
 *.dat
 .elpa
+elpa
 bookmarks
 eshell
 swank
@@ -12,3 +13,4 @@ server
 wget-log
 session.*
 recentf
+projectile-bookmarks.eld
