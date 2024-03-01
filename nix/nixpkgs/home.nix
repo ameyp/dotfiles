@@ -224,10 +224,6 @@ in
           export PATH=$GOPATH/bin:$PATH
       fi
 
-      if [[ -d $HOME/.pyenv ]]; then
-          export PATH=$HOME/.pyenv/bin:$PATH
-      fi
-
       if [[ -d $HOME/.config/nvm ]]; then
           export NVM_DIR="$HOME/.config/nvm"
           . "$NVM_DIR/nvm.sh"
