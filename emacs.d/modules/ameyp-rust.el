@@ -1,7 +1,6 @@
 (use-package lsp-mode
-  :commands lsp
-  :config
-  (require 'lsp-clients))
+  :ensure t
+  :commands lsp)
 
 (use-package rust-mode
   :mode ("\\.rs\\'" . rust-mode)
