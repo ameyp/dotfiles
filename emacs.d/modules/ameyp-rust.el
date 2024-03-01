@@ -5,10 +5,7 @@
 
 (use-package rust-mode
   :mode ("\\.rs\\'" . rust-mode)
-  :hook (rust-mode . lsp)
-  :config
-  (setq helm-dash-docsets '("Rust")))
-  ;(setq indent-tabs-mode nil))
+  :hook (rust-mode . lsp))
 
 (use-package flycheck
   :hook (rust-mode . flycheck-mode))

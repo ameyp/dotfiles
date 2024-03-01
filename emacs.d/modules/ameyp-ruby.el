@@ -5,8 +5,13 @@
   :mode "\\.rb\\'"
   :interpreter "ruby"
   :config
-  (setq helm-dash-docsets '("Ruby")
-        tab-width 4)
+  (setq tab-width 4)
   :hook (enh-ruby-mode . eldoc-mode))
+
+(use-package inf-ruby)
+
+(use-package robe)
+
+(use-package yard-mode)
 
 (provide 'ameyp-ruby)

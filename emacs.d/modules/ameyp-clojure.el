@@ -2,9 +2,11 @@
   :mode "\\.cljs?\\'"
   :hook (clojure-mode . cider-mode))
 
+(use-package smartparens)
+
 (use-package cider-mode
   :ensure cider
-  :after (clojure-mode)
+  :after (clojure-mode rainbow-delimiters smartparens)
   :config
   (setq nrepl-hide-special-buffers t)
   :hook
