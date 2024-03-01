@@ -34,10 +34,31 @@
    ("C-c t" . counsel-load-theme)
    ("C-c F" . counsel-org-file)
    ("C-," . counsel-projectile-find-file)
-   ("C-c p s" . counsel-projectile-ag) ; C-c C-o to open results in new frame.
+   ("C-c p s" . counsel-projectile-rg) ; C-c C-o to open results in new frame.
    :map ivy-minibuffer-map
    ("TAB" . ivy-alt-done))
   :config
+  ;; Use ripgrep to inform completions for projectile
+  (when (executable-find "rg")
+    (progn
+      (defconst ameyp/rg-arguments
+        `("--line-number"                     ; line numbers
+          "--smart-case"
+          "--follow"                          ; follow symlinks
+          "--mmap")                           ; apply memory map optimization when possible
+        "Default rg arguments used in the functions in `projectile' package.")
+
+      (defun ameyp/advice-projectile-use-rg (mode)
+        "Always use `rg' for getting a list of all files in the project."
+        (mapconcat 'identity
+                   (append '("\\rg") ; used unaliased version of `rg': \rg
+                           ameyp/rg-arguments
+                           '("--null" ; output null separated results,
+                             "--files")) ; get file names matching the regex '' (all files)
+                   " "))
+
+      (advice-add 'projectile-get-ext-command :override #'ameyp/advice-projectile-use-rg)))
+
   (ivy-mode 1)
   (counsel-projectile-mode t)
   ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.

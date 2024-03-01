@@ -34,11 +34,12 @@
                    ameyp-clojure
                    ameyp-cmake
                    ameyp-coffee
+                   ameyp-eglot
                    ameyp-elisp
                    ameyp-git
                    ameyp-haskell
                    ameyp-java
-                   ameyp-lsp
+                   ;ameyp-lsp
                    ameyp-markdown
                    ameyp-org
                    ameyp-protobuf
@@ -46,6 +47,7 @@
                    ameyp-ruby
                    ameyp-rust
                    ameyp-swift
+                   ameyp-syntax
                    ameyp-terraform
                    ameyp-typescript
                    ameyp-warnings
