@@ -184,7 +184,7 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
   "Faces for my custom modeline."
   :group 'ameyp-modeline)
 
-(defcustom ameyp-modeline-string-truncate-length 9
+(defcustom ameyp-modeline-string-truncate-length 20
   "String length after which truncation should be done in small windows."
   :type 'natnum)
 
@@ -412,9 +412,12 @@ Specific to the current window's mode line.")
 (defvar-local ameyp-modeline-buffer-status
     '(:eval
       (when (file-remote-p default-directory)
-        (propertize " @ "
-                    'face 'ameyp-modeline-indicator-red-bg
-                    'mouse-face 'mode-line-highlight)))
+        (concat
+         (propertize " @ "
+                     'face 'ameyp-modeline-indicator-red-bg
+                     'mouse-face 'mode-line-highlight)
+         " "
+         )))
   "Mode line construct for showing remote file name.")
 
 ;;;; Buffer name and modified status
@@ -674,7 +677,6 @@ Specific to the current window's mode line.")
                 ameyp-modeline-kbd-macro
                 ameyp-modeline-narrow
                 ameyp-modeline-buffer-status
-                " "
                 ameyp-modeline-input-method
                 ameyp-modeline-buffer-identification
                 "  "
