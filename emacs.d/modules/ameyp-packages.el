@@ -17,11 +17,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-
-                                        ;(package-initialize)
-
 (straight-use-package 'use-package)
 
 (straight-use-package 'exec-path-from-shell)
