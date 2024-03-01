@@ -114,4 +114,14 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 ;; 4. Modeline customization
 (use-package delight)
 
+;; Ediff settings
+(setq ediff-keep-variants nil)
+(setq ediff-make-buffers-readonly-at-startup nil)
+(setq ediff-merge-revisions-with-ancestor t)
+(setq ediff-show-clashes-only t)
+
+(setq ediff-split-window-function 'split-window-horizontally)
+;; instead of creating a new frame for ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (provide 'ameyp-gui)
