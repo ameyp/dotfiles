@@ -5,6 +5,10 @@
 
 ;; For native compilation
 (setq comp-speed 2)
+;; Make native compilation silent and prune its cache.
+(when (native-comp-available-p)
+  (setq native-comp-async-report-warnings-errors 'silent)
+  (setq native-compile-prune-cache t))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
