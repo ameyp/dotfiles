@@ -32,6 +32,7 @@ in
     pkgs.direnv
     pkgs.fzf
     pkgs.git
+    pkgs.gopls
     pkgs.htop
     pkgs.pandoc
     pkgs.ripgrep
@@ -201,6 +202,11 @@ in
           export GOPATH=$HOME/Developer/go
           export PATH=$GOPATH/bin:$PATH
       fi
+
+      if [[ -d $HOME/.pyenv ]]; then
+          export PATH=$HOME/.pyenv/bin:$PATH
+      fi
+
           '';
     initExtra = ''
       ## Late-init environment variables
@@ -209,6 +215,9 @@ in
 
       # Starship
       [ -x $(command -v starship) ] && eval "$(starship init zsh)"
+
+      # Pyenv
+      [ -x $(command -v pyenv) ] && eval "$(pyenv init -)"
 
       ## Options
 
@@ -278,5 +287,4 @@ in
 
   # Starship
   home.file.".config/starship.toml".source = ./starship.toml;
-
 }
