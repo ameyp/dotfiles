@@ -266,6 +266,13 @@ in
     '';
   };
 
+  # Bash
+  programs.bash = let bash_attrs = {
+  }; in {
+    enable = true;
+  };
+
   # Starship
   home.file.".config/starship.toml".source = ./starship.toml;
+
 }
