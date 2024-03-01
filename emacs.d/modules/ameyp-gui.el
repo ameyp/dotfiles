@@ -72,14 +72,17 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
 ;; The order of the next three segments is *extremely* important.
 
-;; ;; 1. Load theme
+;; 1. Load theme
 ;; (use-package brutalist-theme
 ;;   :config
 ;;   (load-theme 'brutalist))
+(use-package color-theme-sanityinc-tomorrow
+  :config
+  (color-theme-sanityinc-tomorrow-eighties))
 
 ;; (setq custom--inhibit-theme-enable nil)
 
-;; ;; 2. Customize theme
+;; 2. Customize theme
 ;; (custom-theme-set-faces
 ;;  'brutalist
 ;;  `(default ((t (:family "Hack Nerd Font"))))

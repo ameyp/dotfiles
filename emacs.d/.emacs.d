@@ -1,0 +1,1 @@
+/home/amey/.emacs.d

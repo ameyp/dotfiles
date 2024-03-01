@@ -96,6 +96,7 @@ See `org-capture-templates' for more information."
           ))
 
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("src" . "src"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 
   (require 'org-tempo)
@@ -105,6 +106,8 @@ See `org-capture-templates' for more information."
          ("C-c c" . org-capture))
   :hook
   (org-mode . visual-line-mode))
+
+(use-package org-roam)
 
 (use-package ox-hugo
  :after ox)
