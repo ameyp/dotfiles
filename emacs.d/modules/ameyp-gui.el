@@ -21,8 +21,7 @@
   (global-undo-tree-mode))
 
 (setq visible-bell nil
-      ring-bell-function 'ignore
-      pixel-scroll-precision-mode t)
+      ring-bell-function 'ignore)
 
 ;; Resizes windows on splitting and unsplitting
 (defadvice split-window-right (after balance-out-windows activate)
