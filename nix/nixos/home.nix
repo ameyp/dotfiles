@@ -37,6 +37,9 @@
     pkgs.wget
 
     pkgs.master.gnupg
+
+    # PDF viewer that can read from stdin
+    pkgs.zathura
   ];
 
   # Enable direnv
@@ -48,14 +51,6 @@
 
   # Temporarily enabled until gpg 2.4.4 is in the release channel.
   programs.gpg.package = pkgs.master.gnupg;
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "curses";
-    extraConfig = ''
-      allow-emacs-pinentry
-      allow-loopback-pinentry
-    '';
-  };
 
   # Git config
   programs.git = {

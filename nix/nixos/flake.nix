@@ -27,6 +27,12 @@
           config.allowUnfree = true;
         };
       };
+      overlay-macos-master = final: prev: {
+        master = import nixpkgs-master {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+      };
       common-overlays = [
         (import (builtins.fetchTarball {
           url = https://github.com/nix-community/emacs-overlay/archive/3ab303101f287c1769f0a0dc4f7ec5473e61f94f.tar.gz;
@@ -38,7 +44,7 @@
       darwin-pkgs = import nixpkgs {
         system = "aarch64-darwin";
         config = pkg-config;
-        overlays = common-overlays;
+        overlays = common-overlays ++ [ overlay-macos-master ];
       };
       linux-system = ./system-linux.nix;
       linux-pkgs = import nixpkgs {

@@ -146,8 +146,5 @@ self: super: rec {
 
       # For gpg
       pinentry
-
-      # PDF viewer that can read from stdin
-      zathura
     ]));
 }
