@@ -2,7 +2,7 @@ if [[ -f ${HOME}/.zshrc.preinstall ]]; then
   source ${HOME}/.zshrc.preinstall
 fi
 
-if [ -e /home/amey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 for p in `ls ${HOME}/.zsh`; do
   source ${HOME}/.zsh/$p

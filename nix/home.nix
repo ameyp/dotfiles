@@ -3,8 +3,15 @@
 let attrs = {
   equalsCurrentSystem = x : x == builtins.currentSystem;
   isMacOS = if builtins.any attrs.equalsCurrentSystem [ "x86_64-darwin" "aarch64-darwin" ] then true else false;
-  macOSPackages = [ pkgs.emacsMacport ];
-  linuxPackages = [ pkgs.emacs-gtk ];
+
+  macOSPackages = [
+    # Disabled because of https://github.com/NixOS/nixpkgs/issues/127902
+    # pkgs.emacsMacport
+  ];
+
+  linuxPackages = [
+    pkgs.emacs-gtk
+  ];
 };
 in
 {
@@ -12,6 +19,9 @@ in
   # paths it should manage.
   home.username = "amey";
   home.homeDirectory = if attrs.isMacOS then "/Users/amey" else "/home/amey";
+
+  # Enable font management
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -28,6 +38,7 @@ in
 
   # Packages to install
   home.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
     pkgs.curl
     pkgs.fzf
     pkgs.git
