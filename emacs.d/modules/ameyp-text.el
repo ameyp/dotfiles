@@ -15,6 +15,13 @@
             ("M-s" . isearch-forward-regexp)
             ("M-r" . isearch-backward-regexp))
 
+(use-package smartparens
+  :ensure t
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode)
+  :delight smartparens-mode)
+
 ;; Rainbow Delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)
