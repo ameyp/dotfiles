@@ -97,7 +97,7 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
        (cond ((eq system-type 'darwin)
               (cond
                ;; Work machine
-               ((string-match "\.amazon\.com" (system-name)) 150)
+               ((string-match "\.tetra\.ai" (system-name)) 150)
                ;; Personal macOS
                (t 130)))
              ;; Default (linux/windows)

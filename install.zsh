@@ -4,7 +4,7 @@ source ./os-detect.sh
 
 if isdarwin; then
   INSTALL='brew install'
-  GUI_INSTALL='brew cask install'
+  GUI_INSTALL='brew install --cask'
 fi
 
 if islinux; then
@@ -16,6 +16,7 @@ if isdarwin; then
   # Install homebrew
   if ! [[ -x $(command -v brew) ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
   brew doctor
@@ -39,6 +40,9 @@ if isdarwin; then
        ack \
        fzf \
        the_silver_searcher
+
+  brew tap homebrew/cask-fonts
+  brew install font-hack
 fi
 
 if islinux; then

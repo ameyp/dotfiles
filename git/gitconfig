@@ -1,13 +1,15 @@
 [user]
         name = Amey Parulekar
-        email = ameyzing@amazon.com
+        email = amey@tetra.ai
 [core]
         fileMode = false
         excludesfile = ~/.gitexcludes
         pager = less -FMRiX
         editor = emacsclient -c
 [push]
-        default = simple
+        default = current
+[remote]
+        pushDefault = origin
 [diff]
         tool = bc
 [difftool]
