@@ -1,0 +1,13 @@
+if [[ -f $HOME/.zshrc.preinstall ]]; then
+  source $HOME/.zshrc.preinstall
+fi
+
+for p in `ls ${HOME}/.zsh`; do
+  source ${HOME}/.zsh/$p
+done
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [[ -f $HOME/.zsh-extra ]]; then
+  source $HOME/.zsh-extra
+fi

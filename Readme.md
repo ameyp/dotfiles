@@ -2,10 +2,10 @@ Setup
 ========
 
 Clone the repo:
-	git clone https://github.com/ameyp/dotfiles
+    git clone https://github.com/ameyp/dotfiles
 
 Change directory to where you cloned the repo
-	cd dotfiles
+    cd dotfiles
 
 Run the bootstrap script
-	sh bootstrap.sh
+    sh install.sh
