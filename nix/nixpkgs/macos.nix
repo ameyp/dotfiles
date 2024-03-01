@@ -12,5 +12,8 @@
     shellAliases = {
       hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#amey@macos\"";
     };
+    envExtra = ''
+      [[ -f /opt/homebrew/bin/brew ]] && export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
+    '';
   };
 }
