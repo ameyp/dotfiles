@@ -8,7 +8,7 @@
   :straight t
   :mode ("\\.org\\'" . org-mode)
   :config
-  (setq org-hide-emphasis-markers t
+  (setq org-hide-emphasis-markers nil
         org-log-done t
         org-startup-truncated nil
         org-todo-keywords '((sequence "TODO" "REVIEW" "VERIFY" "|" "DONE" "DELEGATED"))
@@ -94,6 +94,8 @@ See `org-capture-templates' for more information."
 
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+
+  (require 'org-tempo)
 
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
