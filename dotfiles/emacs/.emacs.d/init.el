@@ -150,7 +150,7 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 
 ;; ---- magit ---------------------------------
-;(require 'magit)
+(require 'magit)
 
 ;; ---- whitespace-mode ---------------------
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
