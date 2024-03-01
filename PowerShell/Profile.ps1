@@ -31,6 +31,8 @@ Set-PSReadLineKeyHandler -Chord Ctrl+k -ScriptBlock {
 
 Set-PSReadLineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
 
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
+
 function refresh-path {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") +
                 ";" +
