@@ -1,13 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  home.homeDirectory = "/Users/amey";
   home.packages = [
   ];
 
   programs.zsh = {
     shellAliases = {
-      hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#amey@macos\"";
+      hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#macos\"";
     };
     envExtra = ''
       [[ -f /opt/homebrew/bin/brew ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH

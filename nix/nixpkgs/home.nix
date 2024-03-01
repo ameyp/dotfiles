@@ -1,12 +1,18 @@
 { config, pkgs, ... }:
 
 let attrs = {
+  # Create this file manually for each installation.
+  user = import ./user.nix;
 };
 in
 {
+  news.display = "silent";
+
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "amey";
+  home.username = attrs.user.name;
+  home.homeDirectory = attrs.user.homeDirectory;
 
   # Enable font management
   fonts.fontconfig.enable = true;
@@ -19,11 +25,12 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.home-manager.path = "$HOME/Applications/home-manager";
+  # Doesn't work on linux, maybe not needed anymore even for Mac?
+  # programs.home-manager.path = "$HOME/Applications/home-manager";
 
   # Packages to install
   home.packages = [
@@ -46,6 +53,7 @@ in
   # Enable direnv
   # https://github.com/nix-community/nix-direnv
   programs.direnv.enable = true;
+
   programs.direnv.nix-direnv.enable = true;
 
   # Git config

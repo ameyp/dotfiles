@@ -10,9 +10,10 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -21,7 +22,7 @@
     let
     in {
       homeConfigurations = {
-        "amey@linux" = home-manager.lib.homeManagerConfiguration {
+        "linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
           # Specify your home configuration modules here, for example,
@@ -31,7 +32,7 @@
             ./linux.nix
           ];
         };
-        "amey@macos" = home-manager.lib.homeManagerConfiguration {
+        "macos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
           # Specify your home configuration modules here, for example,
