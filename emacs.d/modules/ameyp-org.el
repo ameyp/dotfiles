@@ -43,13 +43,11 @@
   ;;    `(variable-pitch ((t (:family "Verdana" :height 160 :weight thin))))
   ;;    ))
 
-  (defconst ameyp/org-tasks-personal-file "~/Nextcloud/Documents/org-mode/tasks.org")
-  (defconst ameyp/org-tasks-work-file "~/Nextcloud/Documents/org-mode/tetra-tasks.org")
-  (defconst ameyp/org-journal-personal-file "~/Nextcloud/Documents/org-mode/journal.org")
-  (defconst ameyp/org-journal-work-file "~/Nextcloud/Documents/org-mode/tetra-journal.org")
+  (defconst ameyp/org-tasks-personal-file "~/Sync/Documents/org-mode/tasks.org")
+  (defconst ameyp/org-journal-personal-file "~/Sync/Documents/org-mode/journal.org")
 
-  (setq org-agenda-files (list ameyp/org-tasks-personal-file ameyp/org-tasks-work-file))
-  (setq org-default-notes-file "~/Dropbox/org-mode/tasks.org")
+  (setq org-agenda-files (list ameyp/org-tasks-personal-file))
+  (setq org-default-notes-file "~/Sync/Documents/org-mode/tasks.org")
 
   (defcustom hugo-post-root nil "Path to the folder in which you want Hugo posts to be stored.")
 
@@ -78,10 +76,10 @@ See `org-capture-templates' for more information."
   (setq org-capture-templates
         '(
           ("t" "Todo"
-           entry (file+headline "~/Nextcloud/Documents/org-mode/tasks.org" "Tasks")
+           entry (file+headline "~/Sync/Documents/org-mode/tasks.org" "Tasks")
            "* TODO %? \nCREATED: %U\n")
           ("j" "Journal Entry"
-           entry (file+datetree "~/Nextcloud/Documents/org-mode/journal.org")
+           entry (file+datetree "~/Sync/Documents/org-mode/journal.org")
            "* %(format-time-string \"%H:%M:%S\") %?\n"
            :empty-lines 1)
           ("h" "Hugo post"
@@ -118,7 +116,7 @@ See `org-capture-templates' for more information."
   )
 
 (use-package ox-hugo
- :after ox)
+  :after ox)
 
 (use-package ox-pandoc)
 
