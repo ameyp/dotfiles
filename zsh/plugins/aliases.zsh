@@ -36,3 +36,7 @@ alias trail="less +F -n"
 alias gca="git commit -a --amend --no-edit"
 
 alias ag="ag --pager 'less -R'"
+
+# Clipboard
+alias cs="xclip -selection clipboard"
+alias vs="xclip -o -selection clipboard"
