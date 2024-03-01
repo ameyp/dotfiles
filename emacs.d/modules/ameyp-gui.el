@@ -132,4 +132,43 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 ;; instead of creating a new frame for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; spacious-padding
+(use-package spacious-padding
+  :config
+  ;; These is the default value, but I keep it here for visiibility.
+  (setq spacious-padding-widths
+        '( :internal-border-width 15
+           :header-line-width 4
+           :mode-line-width 6
+           :tab-width 4
+           :right-divider-width 30
+           :scroll-bar-width 8))
+
+  ;; Read the doc string of `spacious-padding-subtle-mode-line' as it
+  ;; is very flexible and provides several examples.
+  (setq spacious-padding-subtle-mode-line
+        `( :mode-line-active 'default
+           :mode-line-inactive vertical-border))
+
+  (spacious-padding-mode 1)
+  )
+
+(use-package pulsar
+  :config
+  (setopt pulsar-pulse t
+          pulsar-delay 0.055
+          pulsar-iterations 10
+          pulsar-face 'pulsar-magenta
+          pulsar-highlight-face 'pulsar-cyan)
+
+  (pulsar-global-mode 1)
+
+  ;; There are convenience functions/commands which pulse the line using
+  ;; a specific colour: `pulsar-pulse-line-red' is one of them.
+  (add-hook 'next-error-hook #'pulsar-pulse-line-red)
+  (add-hook 'next-error-hook #'pulsar-recenter-top)
+  (add-hook 'next-error-hook #'pulsar-reveal-entry)
+
+  (add-hook 'minibuffer-setup-hook #'pulsar-pulse-line-red))
+
 (provide 'ameyp-gui)
