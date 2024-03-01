@@ -38,3 +38,6 @@ function refresh-path {
                 ";" +
                 [System.Environment]::GetEnvironmentVariable("Path","User")
 }
+
+# Customizations to shell behavior
+Set-PSReadlineOption -BellStyle None
