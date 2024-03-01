@@ -71,20 +71,13 @@
                    ameyp-cmake
                    ameyp-coffee
                    ameyp-company
-                   ameyp-cpp
                    ameyp-elisp
                    ameyp-haskell
-                   ameyp-haxe
                    ameyp-helm
-                   ameyp-hiccough
-                   ameyp-html
-                   ameyp-jade
-                   ;ameyp-jekyll
                    ameyp-lua
                    ameyp-markdown
                    ameyp-opengl
                    ameyp-org
-                   ;ameyp-poet
                    ameyp-python
                    ameyp-ruby
                    ameyp-rust
