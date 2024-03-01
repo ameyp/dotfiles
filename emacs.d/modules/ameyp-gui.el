@@ -18,6 +18,19 @@
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
+;; Resizes windows on splitting and unsplitting
+(defadvice split-window-right (after balance-out-windows activate)
+  (balance-windows))
+(defadvice split-window-below (after balance-out-windows activate)
+  (balance-windows))
+(defadvice find-file-other-window (after balance-out-windows activate)
+  (balance-windows))
+(defadvice delete-window (after balance-out-windows activate)
+  (balance-windows))
+
+;; TODO Use this for centering text based on window size.
+;; (set-window-margins (frame-selected-window) 50 50)
+
 ;; Show line numbers by default
 (global-display-line-numbers-mode)
 
