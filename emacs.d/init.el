@@ -21,6 +21,9 @@
 ;; Echo keystrokes faster in minibuffer
 (setq echo-keystrokes 0.01)
 
+;; Enable minibuffer-in-minibuffer
+(setq enable-recursive-minibuffers t)
+
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
