@@ -4,7 +4,7 @@
 (setq package-user-dir "~/.emacs.d/.elpa")
 
 (add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (unless package-archive-contents
