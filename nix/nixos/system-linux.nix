@@ -77,10 +77,6 @@
     #   xrandr --output DP-4 --mode 2560x1440 --rate 180
     # '';
 
-    # Enable the XFCE Desktop Environment.
-    # displayManager.lightdm.enable = true;
-    # desktopManager.xfce.enable = true;
-
     # Use Awesome
     displayManager = {
       sddm.enable = true;
@@ -153,6 +149,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable zsh
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amey = {
     isNormalUser = true;
@@ -166,20 +165,15 @@
       pavucontrol
       tmux
     ];
+    shell = pkgs.zsh;
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Enable Pulseaudio support
-  nixpkgs.config.pulseaudio = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     cryptsetup
     dig
-    emacs29
+    emacsAmeyWithPackages
     git
     kitty
     nfs-utils
@@ -225,11 +219,6 @@
   services.udisks2.enable = true; # DBus service that allows applications to query and manipulate storage devices
   services.gvfs.enable = true; # Mount, trash and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-  };
 
   services.syncthing = {
     enable = true;

@@ -1,20 +1,5 @@
-{ config, pkgs, ... }:
-
-let attrs = {
-      user = {
-        name = "amey";
-        homeDirectory = "/home/amey";
-      };
-    };
-in
-{
+{ config, pkgs, ... }: {
   news.display = "silent";
-
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = attrs.user.name;
-  home.homeDirectory = attrs.user.homeDirectory;
 
   # Enable font management
   fonts.fontconfig.enable = true;
@@ -37,10 +22,8 @@ in
   # Packages to install
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
-    pkgs.betterlockscreen
     pkgs.curl
     pkgs.direnv
-    pkgs.discord
     pkgs.fd
     pkgs.fzf
     pkgs.git
@@ -48,6 +31,7 @@ in
     pkgs.htop
     pkgs.lsd
     pkgs.pandoc
+    pkgs.pyenv
     pkgs.ripgrep
     pkgs.starship
     pkgs.wget
@@ -55,15 +39,14 @@ in
 
   # Enable direnv
   # https://github.com/nix-community/nix-direnv
-  programs.direnv.enable = true;
-
-  programs.direnv.nix-direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # Git config
   programs.git = {
     enable = true;
-    userName = "Amey Parulekar";
-    userEmail = "amey@wirywolf.com";
     extraConfig = {
       core = {
         fileMode = false;
@@ -125,15 +108,7 @@ in
   # Disabled due to https://github.com/nix-community/home-manager/issues/2995
   # https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enable
 
-  programs.zsh = let zsh_attrs = {
-    linuxEnv = ''
-    '';
-    macOSEnv = ''
-      HOMEBREW_BINARY=/opt/homebrew/bin/brew
-      [[ -f $HOMEBREW_BINARY ]] && eval "$($HOMEBREW_BINARY shellenv)"
-
-    '';
-  }; in {
+  programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";
     history = {
@@ -337,21 +312,4 @@ in
   #     extraOptions = ["-corners 000-"];
   #   };
   # };
-
-  services.xidlehook = {
-    enable = true;
-    not-when-audio = true;
-    timers = [
-      {
-        # Lock after 10 minutes
-        delay = 600;
-        command = "${pkgs.betterlockscreen}/bin/betterlockscreen -l blur";
-      }
-      {
-        # Suspend after 20 minutes
-        delay = 1200;
-        command = "systemctl suspend";
-      }
-    ];
-  };
 }

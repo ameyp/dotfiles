@@ -41,7 +41,7 @@
                    ameyp-gui
                    ameyp-company
                    ameyp-eglot
-                   ameyp-flycheck
+                   ;; ameyp-flycheck
 
                    ;; load language-specific packages next
                    ameyp-clojure
@@ -60,7 +60,7 @@
                    ameyp-protobuf
                    ameyp-projectile
                    ameyp-python
-                   ameyp-ruby
+                   ;; ameyp-ruby
                    ameyp-rust
                    ameyp-swift
                    ameyp-syntax

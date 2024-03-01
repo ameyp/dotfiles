@@ -122,9 +122,6 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
 (setq-default line-spacing 3)
 
-;; 4. Modeline customization
-(use-package delight)
-
 ;; Ediff settings
 (setq ediff-keep-variants nil)
 (setq ediff-make-buffers-readonly-at-startup nil)
@@ -174,7 +171,7 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
   (add-hook 'minibuffer-setup-hook #'pulsar-pulse-line-red))
 
-;; Modeline
+;; 4. Modeline
 
 (defgroup ameyp-modeline nil
   "Custom modeline that is stylistically close to the default."

@@ -1,3 +1,3 @@
-(straight-use-package 'magit)
+(use-package magit)
 
 (provide 'ameyp-git)

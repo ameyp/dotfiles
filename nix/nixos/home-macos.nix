@@ -6,8 +6,8 @@
 
   programs.zsh = {
     shellAliases = {
-      hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#macos\"";
-      nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixpkgs#macos\"";
+      hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos\"";
+      nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos\"";
     };
     envExtra = ''
       [[ -f /opt/homebrew/bin/brew ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH

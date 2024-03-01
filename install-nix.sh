@@ -26,10 +26,10 @@ rm -f $HOME/.bashrc $HOME/.profile
 
 if [[ $(uname) == "linux" || $(uname) == "Linux" ]]; then
     nix run home-manager --extra-experimental-features "nix-command flakes" -- \
-        switch --flake "path:$HOME/.dotfiles/nix/nixpkgs#linux" \
+        switch --flake "path:$HOME/.dotfiles/nix/nixos#linux" \
         --extra-experimental-features "nix-command flakes"
 else
     nix run home-manager --extra-experimental-features "nix-command flakes" -- \
-        switch --flake "path:$HOME/.dotfiles/nix/nixpkgs#macos" \
+        switch --flake "path:$HOME/.dotfiles/nix/nixos#macos" \
         --extra-experimental-features "nix-command flakes"
 fi

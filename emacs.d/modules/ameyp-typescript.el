@@ -12,23 +12,6 @@
   ;; use our derived mode to map both .tsx AND .ts -> typescriptreact-mode -> treesitter tsx
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx)))
 
-;; https://github.com/orzechowskid/tsi.el/
-;; great tree-sitter-based indentation for typescript/tsx, css, json
-(use-package tsi
-  :after tree-sitter
-  :straight '(tsi :fetcher github :repo "https://github.com/orzechowskid/tsi.el")
-  ;; define autoload definitions which when actually invoked will cause package to be loaded
-  :commands (tsi-typescript-mode tsi-json-mode tsi-css-mode)
-  :init
-  (add-hook 'typescript-mode-hook (lambda () (tsi-typescript-mode 1)))
-  (add-hook 'typescript-mode-hook 'eglot-ensure)
-  (add-hook 'json-mode-hook (lambda () (tsi-json-mode 1)))
-  (add-hook 'css-mode-hook (lambda () (tsi-css-mode 1)))
-  (add-hook 'scss-mode-hook (lambda () (tsi-scss-mode 1)))
-  :config
-  (setq tsi-typescript-indent-offset 2)
-  )
-
 ;; Automatic formatting on save
 (use-package apheleia
   :ensure t

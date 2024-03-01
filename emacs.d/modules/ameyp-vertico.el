@@ -69,7 +69,6 @@ folder, otherwise delete a character backward"
          ("C-c C-o" . embark-export)))
 
 (use-package consult-projectile
-  :straight (consult-projectile :type git :host gitlab :repo "OlMon/consult-projectile" :branch "master")
   :bind (
          ("C-," . projectile-find-file)
          ))

@@ -4,7 +4,8 @@
 
 (use-package rustic
   :config
-  (push 'rustic-clippy flycheck-checkers)
+  ;; Deleted flycheck.
+  ; (push 'rustic-clippy flycheck-checkers)
   ;; Disable function signature documentation windows from popping up automatically.
   ;; lsp-signature-activate pops it up.
   (setq lsp-signature-auto-activate nil)

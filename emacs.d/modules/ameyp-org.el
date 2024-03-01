@@ -5,7 +5,6 @@
 ;; C-c a t shows complete todo list
 
 (use-package org
-  :straight t
   :mode ("\\.org\\'" . org-mode)
   :config
   (setq org-hide-emphasis-markers nil

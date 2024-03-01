@@ -1,8 +1,7 @@
 ;; ---- whitespace-mode ---------------------
 (use-package whitespace)
 
-(use-package eldoc
-  :delight eldoc-mode)
+(use-package eldoc)
 
 ;; expand-region
 (use-package expand-region
@@ -18,8 +17,7 @@
 (use-package smartparens
   :config
   (require 'smartparens-config)
-  (smartparens-global-mode)
-  :delight smartparens-mode)
+  (smartparens-global-mode))
 
 ;; Rainbow Delimiters
 (use-package rainbow-delimiters
