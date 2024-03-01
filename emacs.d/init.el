@@ -45,6 +45,7 @@
                    ameyp-ruby
                    ameyp-rust
                    ameyp-swift
+                   ameyp-terraform
                    ameyp-typescript
                    ameyp-warnings
                    ameyp-web
