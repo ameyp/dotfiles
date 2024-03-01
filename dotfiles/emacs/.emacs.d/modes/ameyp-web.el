@@ -1,4 +1,5 @@
 (require 'web-mode)
+(require 'flycheck)
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -20,21 +21,45 @@
 (setq web-mode-engines-alist
       '(("freemarker"    . "\\.html\\'")))
 
-;(defadvice web-mode-highlight-part (around tweak-jsx activate)
-;  (if (equal web-mode-content-type "jsx")
-;      (let ((web-mode-enable-part-face nil))
-;        ad-do-it)
-;    ad-do-it))
+(add-hook 'web-mode-hook
+	  (lambda ()
+	    ;; Indentation settings
+	    ;; Markup
+	    (setq web-mode-markup-indent-offset 2)
+	    ;; CSS
+	    (setq web-mode-css-indent-offset 2)
+	    ;; Script
+	    (setq web-mode-code-indent-offset 2)
+	    ;; JSX
+	    (setq jsx-indent-level 2)
+	    ;; Enable flycheck
+	    (add-hook 'javascript-mode-hook 'flycheck-mode)))
 
-;; Indentation settings
-;; Markup
-(setq web-mode-markup-indent-offset 2)
-;; CSS
-(setq web-mode-css-indent-offset 2)
-;; Script
-(setq web-mode-code-indent-offset 2)
-;; JSX
-(setq jsx-indent-level 2)
+(flycheck-def-args-var flycheck-javascript-flow-args javascript-flow)
+(customize-set-variable 'flycheck-javascript-flow-args '("status"))
+
+(flycheck-define-checker javascript-flow
+    "A JavaScript syntax and style checker using Flow.
+See URL `http://flowtype.org/'."
+    :command (
+              "flow"
+              (eval flycheck-javascript-flow-args)
+              "--old-output-format"
+              "--color=never"
+              source-original)
+    :error-patterns
+    ((error line-start
+	    (file-name)
+	    ":"
+	    line
+	    ":"
+	    (minimal-match (one-or-more not-newline))
+	    ": "
+	    (message (minimal-match (and (one-or-more anything) "\n")))
+	    line-end))
+    :modes (web-mode js2-mode))
+
+(add-to-list 'flycheck-checkers 'javascript-flow t)
 
 (defun ameyp-web/html-encode ()
   (interactive)
