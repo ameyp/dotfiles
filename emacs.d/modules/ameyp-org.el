@@ -51,30 +51,6 @@
 
   (defcustom hugo-post-root nil "Path to the folder in which you want Hugo posts to be stored.")
 
-  (defun org-capture-hugo-post ()
-    (if (not hugo-post-root)
-        (customize-set-variable 'hugo-post-root (read-string "Path to Hugo posts root: ")))
-    (let* ((title (read-string "Title: "))
-           (date (format-time-string "%Y-%m-%d"))
-           (slug (downcase
-                  ;; Replace any whitespace in the title with -,
-                  ;; and then remove any non-alphanumeric characters.
-                  (replace-regexp-in-string
-                   "[^a-z0-9\-]" ""
-                   (replace-regexp-in-string "\s" "-" title))))
-
-           ;; Format is YYYY-MM-DD-title-in-lower-case-with-dashes-separating-words.org
-           (file-name (format "%s/%s-%s.org" hugo-post-root date slug))
-           (post-buffer (find-file-noselect file-name)))
-      (with-current-buffer post-buffer
-        (insert "#+draft: true\n")
-        (insert "#+type: post\n")
-        (insert (format "#+title: %s\n" title))
-        (insert (format "#+date: %s\n" date))
-        (insert "#+tags: []\n")
-        )
-      (switch-to-buffer post-buffer)))
-
   (defun org-hugo-get-all-posts ()
     (if (not hugo-post-root)
         (customize-set-variable 'hugo-post-root
