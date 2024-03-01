@@ -171,6 +171,9 @@ in
       # Set git editor.
       export GIT_EDITOR='emacsclient -c'
 
+      # Configure ripgrep defaults
+      export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
       # Set fzf default command.
       if [[ -x $(command -v fzf) && \
             -x $(command -v rg) ]]; then
@@ -217,6 +220,10 @@ in
           export PATH=$HOME/.pyenv/bin:$PATH
       fi
 
+      if [[ -d $HOME/.config/nvm ]]; then
+          export NVM_DIR="$HOME/.config/nvm"
+          . "$NVM_DIR/nvm.sh"
+      fi
           '';
     initExtra = ''
       ## Late-init environment variables
@@ -302,4 +309,7 @@ in
 
   # Starship
   home.file.".config/starship.toml".source = ./starship.toml;
+
+  # Ripgrep
+  home.file.".ripgreprc".source = ./ripgreprc;
 }
