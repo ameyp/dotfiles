@@ -28,3 +28,6 @@ fi
 # Ctrl-C to pause scrolling and navigate
 # F while paused to resume
 alias trail="less +F -n"
+
+# Convenient git aliases
+alias gca="git commit -a --amend --no-edit"
