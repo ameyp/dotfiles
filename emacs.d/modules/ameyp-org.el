@@ -46,7 +46,12 @@
      `(variable-pitch ((t (:family "Verdana" :height 160 :weight thin))))
      ))
 
-  (setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"))
+  (defconst ameyp/org-tasks-personal-file "~/Nextcloud/Documents/org-mode/tasks.org")
+  (defconst ameyp/org-tasks-work-file "~/Nextcloud/Documents/org-mode/tetra-tasks.org")
+  (defconst ameyp/org-journal-personal-file "~/Nextcloud/Documents/org-mode/journal.org")
+  (defconst ameyp/org-journal-work-file "~/Nextcloud/Documents/org-mode/tetra-journal.org")
+
+  (setq org-agenda-files (list ameyp/org-tasks-personal-file ameyp/org-tasks-work-file))
   (setq org-default-notes-file "~/Dropbox/org-mode/tasks.org")
 
   (defcustom hugo-post-root nil "Path to the folder in which you want Hugo posts to be stored.")
@@ -76,10 +81,10 @@ See `org-capture-templates' for more information."
   (setq org-capture-templates
         '(
           ("t" "Todo"
-           entry (file+headline "~/Dropbox/org-mode/tasks.org" "Tasks")
+           entry (file+headline "~/Nextcloud/Documents/org-mode/tasks.org" "Tasks")
            "* TODO %? \nCREATED: %U\n")
           ("j" "Journal Entry"
-           entry (file+datetree "~/Dropbox/org-mode/journal.org")
+           entry (file+datetree "~/Nextcloud/Documents/org-mode/journal.org")
            "* %(format-time-string \"%H:%M:%S\") %?\n"
            :empty-lines 1)
           ("h" "Hugo post"
@@ -89,8 +94,6 @@ See `org-capture-templates' for more information."
 
           ;; ... other templates
           ))
-
-  (setq org-capture-templates (list))
 
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
@@ -103,8 +106,8 @@ See `org-capture-templates' for more information."
   :hook
   (org-mode . visual-line-mode))
 
-;(use-package ox-hugo
-;  :after ox)
+(use-package ox-hugo
+ :after ox)
 
 (use-package ox-pandoc)
 
