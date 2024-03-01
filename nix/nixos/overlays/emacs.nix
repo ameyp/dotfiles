@@ -86,6 +86,7 @@ self: super: rec {
 
       use-package
       vterm
+      multi-vterm
       exec-path-from-shell
       package-build
       ag
@@ -146,5 +147,9 @@ self: super: rec {
 
       # For gpg
       pinentry
+
+      # For icons
+      nerd-icons
+      nerd-icons-dired
     ]));
 }

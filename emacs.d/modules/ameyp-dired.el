@@ -1,4 +1,5 @@
-(add-hook 'dired-mode-hook 'dired-hide-details-mode)
+(add-hook 'dired-mode-hook #'dired-hide-details-mode)
+(add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 
 (defun ameyp-dired-do-encrypt ()
   "Encrypt marked files."
