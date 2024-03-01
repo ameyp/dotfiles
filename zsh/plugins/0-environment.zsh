@@ -6,21 +6,6 @@ export EDITOR='emacsclient -c'
 # Set git editor.
 export GIT_EDITOR='emacsclient -c'
 
-# Set Base16 Shell path.
-if [[ -z $BASE16_SHELL ]]; then
-  export BASE16_SHELL=$HOME/.zgen/chriskempson/base16-shell-master
-fi
-
-# Set Base16 theme.
-if [[ -z $BASE16_THEME ]]; then
-  export BASE16_THEME=default
-fi
-
-# Set Base16 background type.
-if [[ -z $BASE16_TYPE ]]; then
-  export BASE16_TYPE=dark
-fi
-
 # XDG Base Directory Specification.
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
