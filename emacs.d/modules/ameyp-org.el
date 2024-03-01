@@ -11,8 +11,9 @@
   (setq org-hide-emphasis-markers nil
         org-log-done t
         org-startup-truncated nil
-        org-todo-keywords '((sequence "TODO" "REVIEW" "VERIFY" "|" "DONE" "DELEGATED"))
-        org-todo-keywords '((sequence "TODO(t)" "REVIEW(r)" "VERIFY(v)" "|" "DONE(d)" "DELEGATED(l)")))
+        ;; TODO Look up how to set these per-file.
+        org-todo-keywords '((sequence "TODO" "REVIEW" "|" "DONE"))
+        org-todo-keywords '((sequence "TODO(t)" "REVIEW(r)" "|" "DONE(d)")))
 
   ;; (let* ((variable-tuple
   ;;         (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
