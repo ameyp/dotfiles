@@ -26,8 +26,14 @@
   (add-hook 'css-mode-hook (lambda () (tsi-css-mode 1)))
   (add-hook 'scss-mode-hook (lambda () (tsi-scss-mode 1)))
   :config
-  (setq tsi-typescript-indent-offset 4)
+  (setq tsi-typescript-indent-offset 2)
   )
+
+;; Automatic formatting on save
+(use-package apheleia
+  :ensure t
+  :config
+  (apheleia-global-mode +1))
 
 
 (provide 'ameyp-typescript)

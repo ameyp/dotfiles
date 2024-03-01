@@ -1,4 +1,4 @@
-;(package-initialize)
+                                        ;(package-initialize)
 
 ;; Disable notifications when a buffer is auto-reverted.
 (setq auto-revert-verbose nil)
@@ -16,7 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; Disable those god-awful documentation warnings
-;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+                                        ;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 ;; Print complete messages for C-x C-e
 (setq eval-expression-print-length 10000)
@@ -62,7 +62,6 @@
                    ameyp-typescript
                    ameyp-vertico
                    ameyp-warnings
-                   ameyp-web
                    ameyp-yaml
                    ameyp-zig
                    ))
