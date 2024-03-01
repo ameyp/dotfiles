@@ -1,2 +1,0 @@
-
-(setq ameyp-package-list (quote (browse-kill-ring cider cmake-mode coffee-mode company company-tern dash enh-ruby-mode epl expand-region find-file-in-project flycheck git-commit-mode git-rebase-mode glsl-mode haskell-mode haxe-mode helm helm-cmd-t helm-company helm-dash helm-projectile inf-ruby jade-mode js2-mode lua-mode markdown-mode multiple-cursors package-build projectile rainbow-delimiters robe rust-mode smartparens tern web-mode yaml-mode yard-mode)))
