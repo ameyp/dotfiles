@@ -22,10 +22,8 @@
         web-mode-enable-auto-quoting nil ;; So that attributes don't get an automatic quote after =
         jsx-indent-level 4)
   :hook
-  (javascript-mode . flycheck-mode))
-
-(use-package lsp-mode
-  :hook (web-mode . lsp-deferred))
+  (javascript-mode . flycheck-mode)
+  (web-mode . eglot-ensure))
 
 (defun ameyp-web/html-encode ()
   (interactive)

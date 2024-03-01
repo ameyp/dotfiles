@@ -1,13 +1,11 @@
-(use-package lsp-java
+(use-package eglot-java
   :config
-  (setq lsp-headerline-breadcrumb-enable nil
-        lsp-java-enable-file-watch nil
-        lsp-java-vmargs
+  (setq eglot-java-eclipse-jdt-args
         '("-noverify"
         "-Xmx1G"
         "-XX:+UseG1GC"
         "-XX:+UseStringDeduplication"
         ))
-  (add-hook 'java-mode-hook #'lsp))
+  (add-hook 'java-mode-hook #'eglot-ensure))
 
 (provide 'ameyp-java)
