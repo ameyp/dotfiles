@@ -8,9 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      # Containerized downloaders
-      ./downloaders.nix
     ];
 
   # Bootloader.
@@ -165,8 +162,9 @@
       chromium
       firefox
       jellyfin-media-player
-      pavucontrol
       lens
+      pavucontrol
+      tmux
     ];
   };
 
@@ -287,6 +285,21 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # containers.test = {
+  #   autoStart = true;
+  #   privateNetwork = true;
+
+  #   config = { config, pkgs, ... }: {
+  #     system.stateVersion = "23.11";
+
+  #     fileSystems."/mnt/cgroup_net_cls" = {
+  #       device = "net_cls";
+  #       fsType = "cgroup";
+  #       options = [ "net_cls" ];
+  #     };
+  #   };
+  # };
 
   # fileSystems."/mnt/backups" = {
   #   device = "192.168.1.52:/mnt/nas/backups";
