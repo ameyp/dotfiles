@@ -1,4 +1,3 @@
-;(use-package git-commit-mode)
-;(use-package git-rebase-mode)
+(straight-use-package 'magit)
 
 (provide 'ameyp-git)
