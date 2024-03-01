@@ -1,6 +1,4 @@
-if [[ -f ~/.config/nvm.sh ]]; then
-    function init_nvm() {
-        export NVM_DIR="$HOME/.config"
-        source $NVM_DIR/nvm.sh
-    }
+if [[ -f "$HOME"/.config/nvm/nvm.sh ]]; then
+    export NVM_DIR="$HOME/.config/nvm"
+    source $NVM_DIR/nvm.sh
 fi
