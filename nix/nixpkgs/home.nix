@@ -133,6 +133,9 @@ in
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       compinit
     '';
+    shellAliases = {
+      gca = "git commit -a --amend --no-edit";
+    };
     envExtra = ''
       export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
