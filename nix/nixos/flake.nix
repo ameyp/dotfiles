@@ -2,9 +2,8 @@
   description = "flake for nixOS";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,11 +15,17 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, sops-nix, emacs-overlay, nix-darwin, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, sops-nix, emacs-overlay, nix-darwin, ... }:
     let
       pkg-config = {
         allowUnfree = true;
         allowInsecure = false;
+      };
+      overlay-linux-master = final: prev: {
+        master = import nixpkgs-master {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
       };
       common-overlays = [
         (import (builtins.fetchTarball {
@@ -42,7 +47,7 @@
           # Enable Pulseaudio support
           pulseaudio = true;
         };
-        overlays = common-overlays;
+        overlays = common-overlays ++ [ overlay-linux-master ];
       };
     in {
       # Linux NixOS configurations
