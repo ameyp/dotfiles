@@ -42,6 +42,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Enable docker daemon
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -127,14 +134,12 @@
   users.users.amey = {
     isNormalUser = true;
     description = "amey";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
     packages = with pkgs; [
       chromium
       firefox
       pavucontrol
       lens
-      xfce.thunar
-      xfce.thunar-volman
     ];
   };
 
@@ -150,9 +155,13 @@
     emacs29
     git
     kitty
+    usbutils
     vim
     xorg.xrandr
-    # wget
+
+    # For Thunar
+    xfce.thunar
+    xfce.thunar-volman
 
     # For XMonad
     # launcher
@@ -163,6 +172,14 @@
     polybar
   ];
 
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+
+  # To safe preferences for thunar since I'm not using xfce as a desktop.
+  programs.xfconf.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -172,6 +189,11 @@
   # };
 
   # List services that you want to enable:
+
+  services.devmon.enable = true; # Automount devices
+  services.udisks2.enable = true; # DBus service that allows applications to query and manipulate storage devices
+  services.gvfs.enable = true; # Mount, trash and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
