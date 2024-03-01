@@ -328,8 +328,30 @@ in
   # Lockscreen
   # Initialize it with images by running
   # betterlockscreen -b /path/to/folder/or/image
-  services.screen-locker = {
+  # services.screen-locker = {
+  #   enable = true;
+  #   lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen -l blur";
+  #   xautolock = {
+  #     # Use xidlehook instead of xautolook because it supports detecting when audio is playing.
+  #     # Otherwise, use the "-corners" option (see man xautolook).
+  #     extraOptions = ["-corners 000-"];
+  #   };
+  # };
+
+  services.xidlehook = {
     enable = true;
-    lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen -l blur";
+    not-when-audio = true;
+    timers = [
+      {
+        # Lock after 10 minutes
+        delay = 600;
+        command = "${pkgs.betterlockscreen}/bin/betterlockscreen -l blur";
+      }
+      {
+        # Suspend after 20 minutes
+        delay = 1200;
+        command = "systemctl suspend";
+      }
+    ];
   };
 }
