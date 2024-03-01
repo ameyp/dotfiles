@@ -68,6 +68,14 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
               (member major-mode display-line-numbers-exempt-modes))
     (display-line-numbers-mode)))
 
+;; Makes it so that the line number gutter is wide enough for the max line number in the visited file.
+;; Otherwise, the default behavior makes it wide enough for the max visible line number.
+(defun display-line-numbers-equalize ()
+  "Equalize The width"
+  (setq display-line-numbers-width (length (number-to-string (line-number-at-pos (point-max))))))
+
+(add-hook 'find-file-hook 'display-line-numbers-equalize)
+
 (global-display-line-numbers-mode)
 
 ;; The order of the next three segments is *extremely* important.
