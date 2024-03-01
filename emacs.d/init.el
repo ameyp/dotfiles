@@ -37,6 +37,7 @@
                    ameyp-eglot
                    ameyp-elisp
                    ameyp-git
+                   ameyp-go
                    ameyp-haskell
                    ameyp-java
                    ;ameyp-lsp
