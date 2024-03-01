@@ -1,4 +1,7 @@
-                                        ;(package-initialize)
+;(package-initialize)
+
+;; Disable the custom file altogether.
+(setq custom-file (make-temp-file "emacs-custom-"))
 
 ;; Disable notifications when a buffer is auto-reverted.
 (setq auto-revert-verbose nil)
@@ -9,9 +12,6 @@
 (when (native-comp-available-p)
   (setq native-comp-async-report-warnings-errors 'silent)
   (setq native-compile-prune-cache t))
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 
 (server-start)
 
