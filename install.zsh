@@ -75,6 +75,8 @@ link-file xmonad ~/.xmonad
 link-file ruby/gemrc ~/.gemrc
 link-file zsh/zshrc ~/.zshrc
 link-file zsh/plugins ~/.zsh
+link-file nix/config ~/.config/nix/nix.conf
+link-file nix/home.nix ~/.config/nixpkgs/home.nix
 
 # Download iterm2 shell integration
 curl -L https://iterm2.com/shell_integration/install_shell_integration.sh | bash
