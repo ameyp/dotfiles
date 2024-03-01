@@ -4,6 +4,7 @@
 *.dat
 .elpa
 .cache
+custom.el
 workspace
 elpa
 bookmarks
