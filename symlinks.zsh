@@ -9,7 +9,7 @@ if [[ -f $HOME/.gitconfig ]]; then
 fi
 
 pushd dotfiles
-for dir in `ls`; do
+for dir in `ls -d */`; do
   stow $dir -t $HOME
 done
 popd
