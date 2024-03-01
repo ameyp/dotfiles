@@ -49,22 +49,10 @@
                    ameyp-warnings
                    ameyp-web
                    ameyp-yaml
-                   ameyp-zig))
+                   ameyp-zig
+                   ))
 
 ;; Load modules that live outside of my dotfiles.
 (add-to-list 'load-path "~/.emacs-custom")
 (if (file-readable-p "~/.emacs-custom/init.el")
     (load "~/.emacs-custom/init.el"))
-
-;; Set path
-(if (eq system-type 'windows-nt)
-    (progn
-      (setq exec-path (append exec-path '("%HOME%/Apps/bin")))
-      (setenv "PATH" (concat (getenv "PATH") ";%HOME%\\Apps\\bin")))
-  (progn
-    (setq exec-path (append exec-path '("/usr/local/bin")))
-    (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-    (setq exec-path (append exec-path '("~/Apps/bin")))
-    (setenv "PATH" (concat (getenv "PATH") ":~/Apps/bin"))
-    (setq exec-path (append exec-path '("~/.cargo/bin")))
-    (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))))
