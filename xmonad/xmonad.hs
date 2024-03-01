@@ -8,6 +8,7 @@
 --
 
 import XMonad
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Spacing
@@ -52,7 +53,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["browse","idea","mail","r&r","5","6","7","8","trash"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -235,13 +236,35 @@ myManageHook = manageDocks <+> composeAll
 --
 myEventHook = mempty
 
+-- Colors
+colorBlack           = "#020202" --Background (Dzen_BG)
+colorBlackAlt        = "#1c1c1c" --Black Xdefaults
+colorGray            = "#444444" --Gray       (Dzen_FG2)
+colorGrayAlt         = "#161616" --Gray dark
+colorWhite           = "#a9a6af" --Foreground (Shell_FG)
+colorWhiteAlt        = "#9d9d9d" --White dark (Dzen_FG)
+colorMagenta         = "#8e82a2"
+colorBlue            = "#3475aa"
+colorRed             = "#d74b73"
+colorGreen           = "#99cc66"
+
 ------------------------------------------------------------------------
 -- Status bars and logging
 
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook h = dynamicLogWithPP $ xmobarPP {
+  ppOutput = hPutStrLn h
+  , ppOrder = \(ws:l:t:_)   -> [ws]
+  , ppCurrent             = xmobarColor   colorBlue       colorGrayAlt
+  , ppUrgent              = xmobarColor   colorGreen      colorGrayAlt
+  , ppVisible             = xmobarColor   colorGray       colorGrayAlt
+  , ppHidden              = xmobarColor   colorWhite      colorGrayAlt
+  , ppHiddenNoWindows     = xmobarColor   colorGray       colorGrayAlt
+  , ppWsSep               = " "
+  , ppSep                 = ""
+  }
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -264,8 +287,10 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobar.config"
-  xmonad $ docks defaults
+  xmobarProc <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobar.config"
+  xmonad $ docks defaults {
+    logHook            = myLogHook xmobarProc
+    }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -292,7 +317,6 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
         startupHook        = myStartupHook
     }
 
