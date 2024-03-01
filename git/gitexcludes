@@ -14,3 +14,6 @@ eclipse-bin
 .bemol
 .settings
 .solargraph.yml
+.direnv
+.envrc
+.idea

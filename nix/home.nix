@@ -7,6 +7,7 @@ let attrs = {
   macOSPackages = [
     # Disabled because of https://github.com/NixOS/nixpkgs/issues/127902
     # pkgs.emacsMacport
+    pkgs.emacs
   ];
 
   linuxPackages = [
@@ -48,4 +49,9 @@ in
     pkgs.tree
     pkgs.wget
   ] ++ (if attrs.isMacOS then attrs.macOSPackages else attrs.linuxPackages);
+
+  # Enable direnv
+  # https://github.com/nix-community/nix-direnv
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }

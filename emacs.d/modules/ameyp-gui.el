@@ -82,8 +82,8 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 ;; 2. Customize theme
 (custom-theme-set-faces
  'brutalist
- `(default ((t (:family "Hack"))))
- `(fixed-pitch ((t (:family "Hack"))))
+ `(default ((t (:family "Hack Nerd Font"))))
+ `(fixed-pitch ((t (:family "Hack Nerd Font"))))
  `(helm-bookmark-file ((t (:inherit default))))
  `(helm-buffer-file ((t (:inherit default))))
  `(helm-ff-file ((t (:inherit default))))
