@@ -103,7 +103,7 @@ See `org-capture-templates' for more information."
   :hook
   (org-mode . visual-line-mode))
 
-(use-package ox-hugo
-  :after ox)
+;(use-package ox-hugo
+;  :after ox)
 
 (provide 'ameyp-org)
