@@ -1,0 +1,43 @@
+if [[ -f $HOME/.zsh-extra ]]; then
+  source $HOME/.zsh-extra
+fi
+
+if [[ -f $HOME/.zshrc.preinstall ]]; then
+  source $HOME/.zshrc.preinstall
+fi
+
+source "${HOME}/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+  echo "Creating a zgen save".
+
+  # Clone Base16 Shell.
+  zgen clone chriskempson/base16-shell master
+
+  # Load Prezto.
+  zgen prezto
+
+  # Load a theme
+  # 'minimal' is pretty good too.
+  zgen prezto prompt theme 'nicoulaj'
+
+  # Prezto plugins to load.
+  prezto_plugins=(
+    completion
+    git
+    node
+    ruby
+    python
+    syntax-highlighting
+  )
+
+  # Load Prezto plugins.
+  for plugin in $prezto_plugins; do
+    zgen prezto $plugin
+  done
+
+  # Load this plugin.
+  zgen pmodule ameyp/zshrc master
+
+  zgen save
+fi

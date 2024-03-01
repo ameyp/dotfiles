@@ -36,7 +36,7 @@ if [ `uname` = "Darwin" ]; then
     brew cask install vlc
     brew linkapps
 
-    /usr/local/opt/fzf/install
+
 elif [ `uname` = "Linux" ]; then
     if hash apt-get 2>/dev/null; then
         # Install common stuff
