@@ -286,6 +286,11 @@ in
 
         tar -czf $1.tar.gz $1
       }
+
+      # Delete local branches that have been merged to main.
+      function gitprune () {
+        git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done
+      }
     '';
   };
 
