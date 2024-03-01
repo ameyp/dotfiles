@@ -26,7 +26,7 @@ folder, otherwise delete a character backward"
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
   :bind (:map minibuffer-local-map
-         ("<backspace>" . dw/minibuffer-backward-kill))
+         ("<left>" . dw/minibuffer-backward-kill))
   )
 
 ;; Optionally use the `orderless' completion style.
