@@ -116,6 +116,9 @@ in
       ".envrc"
       ".venv.*"
     ];
+    lfs = {
+      enable = true;
+    };
   };
 
   # ZSH
@@ -266,6 +269,8 @@ in
       # What zsh identifies as a word delimiter
       autoload -U select-word-style
       select-word-style bash
+
+      [ -f "$HOME/.zsh-extra" ] && source "$HOME/.zsh-extra"
 
       ## Functions
 
