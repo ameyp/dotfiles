@@ -5,7 +5,6 @@
         fileMode = false
         excludesfile = ~/.gitexcludes
         pager = less -FMRiX
-        autocrlf = input
 [push]
         default = simple
 [diff]
