@@ -51,7 +51,7 @@
                ;; Personal macOS
                (t 130)))
              ;; Default (linux/windows)
-             (t 105))))
+             (t 115))))
   (progn (set-face-attribute 'default nil :height face-height)
          (set-face-attribute 'mode-line nil :height face-height)
          (set-face-attribute 'mode-line-inactive nil :height face-height)
