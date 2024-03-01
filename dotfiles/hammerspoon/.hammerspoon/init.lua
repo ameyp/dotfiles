@@ -17,10 +17,10 @@ local gridshow = function()
   }, {
     ";", "Q", "J", "K", "X", "B", "M", "W", "V", "Z"
   }}
-  hs.grid.setMargins(hs.geometry(nil,nil,1,1))
   hs.grid.show()
 end
 
+hs.grid.setMargins(hs.geometry(nil,nil,1,1))
 local mash = {"cmd", "alt"}
 hs.hotkey.bind(mash, "1", gridset(0.0))
 hs.hotkey.bind(mash, "2", gridset(1.0))
