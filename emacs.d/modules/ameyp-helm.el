@@ -8,10 +8,13 @@
   :init
   (custom-set-variables '(helm-command-prefix-key "C-c h"))
   :config
-  (setq helm-split-window-in-side-p           nil ; don't open helm buffer inside current window
+  (setq helm-split-window-inside-p            nil ; don't open helm buffer inside current window
         helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
         helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
         helm-ff-file-name-history-use-recentf t ; use recent history
+        helm-ff-cache-mode-lighter            nil
+        helm-ff-cache-mode-lighter-sleep      nil
+        helm-ff-cache-mode-lighter-updating   nil
         )
   :bind (("C-c k" . 'helm-show-kill-ring) ;; Helm kill ring
          ("C-c i" . 'helm-semantic-or-imenu) ;; Use helm for listing symbols
