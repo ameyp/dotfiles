@@ -3,6 +3,8 @@
 *.elc
 *.dat
 .elpa
+.cache
+workspace
 elpa
 bookmarks
 eshell
