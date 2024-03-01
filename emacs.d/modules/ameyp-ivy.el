@@ -34,7 +34,7 @@
    ("C-c t" . counsel-load-theme)
    ("C-c F" . counsel-org-file)
    ("C-," . counsel-projectile-find-file)
-   ("C-c p s" . counsel-projectile-rg) ; C-c C-o to open results in new frame.
+   ("C-c p s" . counsel-projectile-git-grep) ; C-c C-o to open results in new frame.
    :map ivy-minibuffer-map
    ("TAB" . ivy-alt-done))
   :config
@@ -54,7 +54,10 @@
                    (append '("\\rg") ; used unaliased version of `rg': \rg
                            ameyp/rg-arguments
                            '("--null" ; output null separated results,
-                             "--files")) ; get file names matching the regex '' (all files)
+                             "--files" ; get file names matching the regex '' (all files)
+                             "--hidden" ; include hidden files and folders...
+                             "-g '!.git/'" ; ...except .git/
+                             ))
                    " "))
 
       (advice-add 'projectile-get-ext-command :override #'ameyp/advice-projectile-use-rg)))
