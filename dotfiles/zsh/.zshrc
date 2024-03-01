@@ -18,15 +18,13 @@ if ! zgen saved; then
   zgen prezto
 
   # Load a theme
-  # 'minimal' is pretty good too.
-  zgen prezto prompt theme 'nicoulaj'
+  zgen prezto prompt theme 'peepcode'
 
   # Prezto plugins to load.
   prezto_plugins=(
     completion
     git
     node
-    ruby
     python
     syntax-highlighting
   )
