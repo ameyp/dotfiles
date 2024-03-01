@@ -1,1 +1,2 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+HOMEBREW_BINARY=/opt/homebrew/bin/brew
+[[ -f $HOMEBREW_BINARY ]] && eval "$($HOMEBREW_BINARY shellenv)"
