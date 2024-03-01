@@ -82,6 +82,18 @@
     xkbVariant = "";
   };
 
+  # Enable picom compositor
+  services.picom = {
+    enable = true;
+    # inactiveOpacity = 0.8;
+    fade = true;
+    fadeDelta = 5;
+    backend = "glx";
+    settings = {
+      corner-radius = 8;
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -120,6 +132,9 @@
       chromium
       firefox
       pavucontrol
+      lens
+      xfce.thunar
+      xfce.thunar-volman
     ];
   };
 
@@ -140,10 +155,12 @@
     # wget
 
     # For XMonad
+    # launcher
+    rofi
+    # for displaying the wallpaper
     feh
-    haskellPackages.dbus
+    # status bar
     polybar
-    xmonad-log
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
