@@ -14,6 +14,12 @@
     };
     envExtra = ''
       [[ -f /opt/homebrew/bin/brew ]] && export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
+
+      # Nix
+      NIX_DAEMON="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+      if [ -e $NIX_DAEMON ]; then
+        . $NIX_DAEMON
+      fi
     '';
   };
 }
