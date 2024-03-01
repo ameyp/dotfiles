@@ -73,12 +73,11 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 ;; The order of the next three segments is *extremely* important.
 
 ;; 1. Load theme
-;; (use-package brutalist-theme
-;;   :config
-;;   (load-theme 'brutalist))
-(use-package color-theme-sanityinc-tomorrow
+(use-package modus-themes
+  :preface
+  (setq modus-themes-org-blocks 'gray-background)
   :config
-  (color-theme-sanityinc-tomorrow-eighties))
+  (load-theme 'modus-vivendi-deuteranopia :no-confirm))
 
 ;; (setq custom--inhibit-theme-enable nil)
 

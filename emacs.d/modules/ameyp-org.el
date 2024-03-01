@@ -13,38 +13,35 @@
         org-startup-truncated nil
         org-todo-keywords '((sequence "TODO" "REVIEW" "VERIFY" "|" "DONE" "DELEGATED"))
         org-todo-keywords '((sequence "TODO(t)" "REVIEW(r)" "VERIFY(v)" "|" "DONE(d)" "DELEGATED(l)")))
-  (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-  (let* ((variable-tuple
-          (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
-                ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-         (base-font-color     (face-foreground 'default nil 'default))
-         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+  ;; (let* ((variable-tuple
+  ;;         (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+  ;;               ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+  ;;               ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+  ;;               ((x-list-fonts "Verdana")         '(:font "Verdana"))
+  ;;               ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+  ;;               (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+  ;;        (base-font-color     (face-foreground 'default nil 'default))
+  ;;        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
-    (custom-theme-set-faces
-     'user
-     `(org-level-8 ((t (,@headline ,@variable-tuple))))
-     `(org-level-7 ((t (,@headline ,@variable-tuple))))
-     `(org-level-6 ((t (,@headline ,@variable-tuple))))
-     `(org-level-5 ((t (,@headline ,@variable-tuple))))
-     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.6))))
-     `(ivy-org ((t (:default))))
-     ;; My org-mode capture titles are appearing as bookmarks for some reason.
-     `(bookmark-face ((t (:default))))
-     `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))
-     `(org-block-begin-line ((t (:height 140 :weight thin :foreground "#888888"))))
-     `(org-block-end-line ((t (:height 140 :weight thin :foreground "#888888"))))
-     `(variable-pitch ((t (:family "Verdana" :height 160 :weight thin))))
-     ))
+  ;;   (custom-theme-set-faces
+  ;;    'user
+  ;;    `(org-level-8 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-7 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-6 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-5 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+  ;;    `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+  ;;    `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+  ;;    `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.6))))
+  ;;    `(ivy-org ((t (:default))))
+  ;;    ;; My org-mode capture titles are appearing as bookmarks for some reason.
+  ;;    `(bookmark-face ((t (:default))))
+  ;;    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))
+  ;;    `(org-block-begin-line ((t (:height 140 :weight thin :foreground "#888888"))))
+  ;;    `(org-block-end-line ((t (:height 140 :weight thin :foreground "#888888"))))
+  ;;    `(variable-pitch ((t (:family "Verdana" :height 160 :weight thin))))
+  ;;    ))
 
   (defconst ameyp/org-tasks-personal-file "~/Nextcloud/Documents/org-mode/tasks.org")
   (defconst ameyp/org-tasks-work-file "~/Nextcloud/Documents/org-mode/tetra-tasks.org")
@@ -107,7 +104,18 @@ See `org-capture-templates' for more information."
   :hook
   (org-mode . visual-line-mode))
 
-(use-package org-roam)
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "~/Sync/Documents/org-mode/RoamNotes")
+  (org-roam-completion-everywhere t)
+  :bind
+  (("C-c n f" . org-roam-node-find)
+   ("C-c n i" . org-roam-node-insert)
+   ("C-<tab>" . completion-at-point))
+  )
 
 (use-package ox-hugo
  :after ox)
