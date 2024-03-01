@@ -53,6 +53,9 @@
   (setq ivy-re-builders-alist
         ;; allow input not in order
         '((t   . ivy--regex-ignore-order)))
+  ;; Without this, I cannot create a new file whose name partially matches
+  ;; a completion candidate.
+  (setq ivy-use-selectable-prompt t)
   (setq ag-highlight-search t))
 
 (use-package counsel
