@@ -1,9 +1,8 @@
-(autoload 'python-mode "python" "Major mode for editing python files" t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    ;; Activate helm-dash docset
-	    (setq-local helm-dash-docsets '("Python 3"))))
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+  :ensure
+  :config
+  (setq helm-dash-docsets '("Python 3")))
 
 (provide 'ameyp-python)

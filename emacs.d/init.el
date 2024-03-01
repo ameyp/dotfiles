@@ -24,7 +24,6 @@
                    ameyp-elisp
                    ameyp-haskell
                    ameyp-markdown
-                   ameyp-opengl
                    ameyp-org
                    ameyp-python
                    ameyp-ruby
