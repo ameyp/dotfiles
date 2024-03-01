@@ -11,8 +11,6 @@
     )
   (revert-buffer))
 
-(epa-encrypt-file "~/tmp/test2.org" '("amey@wirywolf.com"))
-
 (ameyp-emacs-keybind dired-mode-map
   ": e" #'ameyp-dired-do-encrypt)
 
