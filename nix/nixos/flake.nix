@@ -8,9 +8,13 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs: {
+  outputs = { self, home-manager, nixpkgs, ... } @ inputs: {
     nixosConfigurations = {
       hyperv = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -23,8 +27,13 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          # ./xfce.nix
-          ./configuration.nix
+           ./xfce.nix
+
+	   home-manager.nixosModules.home-manager {
+	     home-manager.useGlobalPkgs = true;
+	     home-manager.useUserPackages = true;
+	     home-manager.users.amey = import ./home.nix;
+	   }
         ];
       };
      };
