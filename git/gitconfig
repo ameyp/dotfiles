@@ -40,6 +40,8 @@
         st = status
         rb = rebase
         br = branch
+        #cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
+        cleanup = "!git branch --merged | grep  -v '\\*\\|main' | xargs -n 1 -r echo"
 [amazon]
         append-cr-url = true
         pull-request-by-default = true
@@ -47,3 +49,5 @@
         helper = cache
 [pull]
         rebase = true
+[init]
+        defaultBranch = main

@@ -41,6 +41,7 @@
                    ameyp-lsp
                    ameyp-markdown
                    ameyp-org
+                   ameyp-protobuf
                    ameyp-python
                    ameyp-ruby
                    ameyp-rust
@@ -56,3 +57,4 @@
 ;; Load modules that live outside of my dotfiles.
 (if (file-readable-p "~/.emacs-extra/init.el")
     (load "~/.emacs-extra/init.el"))
+(put 'set-goal-column 'disabled nil)

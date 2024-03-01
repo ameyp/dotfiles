@@ -106,4 +106,6 @@ See `org-capture-templates' for more information."
 ;(use-package ox-hugo
 ;  :after ox)
 
+(use-package ox-pandoc)
+
 (provide 'ameyp-org)

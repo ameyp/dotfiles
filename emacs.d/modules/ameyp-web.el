@@ -15,11 +15,17 @@
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))
         web-mode-engines-alist '(("freemarker"    . "\\.html\\'"))
         indent-tabs-mode nil
-        web-mode-markup-indent-offset 2 ;; Markup
-        web-mode-css-indent-offset 2  ;; CSS
+        web-mode-markup-indent-offset 4 ;; Markup
+        web-mode-css-indent-offset 4  ;; CSS
         web-mode-code-indent-offset 4  ;; Script tags
+        web-mode-attr-indent-offset 4 ;; So that HTML/JSX attributes aren't aligned at their names
+        web-mode-enable-auto-quoting nil ;; So that attributes don't get an automatic quote after =
         jsx-indent-level 2)
-  :hook (javascript-mode . flycheck-mode))
+  :hook
+  (javascript-mode . flycheck-mode))
+
+(use-package lsp-mode
+  :hook (web-mode . lsp-deferred))
 
 (defun ameyp-web/html-encode ()
   (interactive)

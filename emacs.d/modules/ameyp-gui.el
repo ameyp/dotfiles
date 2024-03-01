@@ -32,6 +32,9 @@
   kept-old-versions 5    ; and how many of the old
   )
 
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs.d/autosaves/" t)))
+
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
