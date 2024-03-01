@@ -7,4 +7,10 @@
     # pkgs.emacsMacport
     pkgs.emacs
   ];
+
+  programs.zsh = {
+    shellAliases = {
+      hms = "home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixpkgs#amey@macos\"";
+    };
+  };
 }
