@@ -34,6 +34,7 @@ in
     pkgs.git
     pkgs.gopls
     pkgs.htop
+    pkgs.lsd
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.starship
@@ -174,6 +175,10 @@ in
             -x $(command -v rg) ]]; then
         export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+      fi
+
+      if [[ -x $(command -v lsd) ]]; then
+        alias ls='lsd'
       fi
 
       # Add local binaries to path.
