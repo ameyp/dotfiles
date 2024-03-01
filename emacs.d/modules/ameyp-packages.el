@@ -22,6 +22,7 @@
               coffee-mode
               company
               company-go
+              company-lsp
               company-tern
               dash
               enh-ruby-mode
@@ -29,6 +30,7 @@
               expand-region
               find-file-in-project
               flycheck
+              flycheck-lsp
               git-commit-mode
               git-rebase-mode
               glsl-mode
@@ -43,6 +45,8 @@
               inf-ruby
               jade-mode
               js2-mode
+              lsp-mode
+              lsp-ui
               lua-mode
               markdown-mode
               multiple-cursors
