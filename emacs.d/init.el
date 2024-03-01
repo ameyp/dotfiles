@@ -76,3 +76,10 @@
 (if (file-readable-p "~/.emacs-extra/init.el")
     (load "~/.emacs-extra/init.el"))
 (put 'set-goal-column 'disabled nil)
+
+;; Disable external pin entry for gpg so that Emacs will prompt me for the passphrase.
+(setenv "GPG_AGENT_INFO" nil)
+
+(setq epg-pinentry-mode 'loopback)
+(require 'epa-file)
+(epa-file-enable)
