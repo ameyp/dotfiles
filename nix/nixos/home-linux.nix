@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  # Home Manager needs a bit of information about you and the
+  # paths it should manage.
+  home.username = "amey";
+  home.homeDirectory = "/home/${config.home.username}";
+
   fonts.fontconfig.enable = true;
   targets.genericLinux.enable = true;
   xdg.mime.enable = true;

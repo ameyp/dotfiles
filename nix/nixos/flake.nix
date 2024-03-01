@@ -47,11 +47,18 @@
         overlays = common-overlays ++ [ overlay-macos-master ];
       };
       linux-system = ./system-linux.nix;
+      linux-system-vm = ./system-linux-vm.nix;
       linux-pkgs = import nixpkgs {
         system = "x86_64-linux";
         config = pkg-config // {
           # Enable Pulseaudio support
           pulseaudio = true;
+        };
+        overlays = common-overlays ++ [ overlay-linux-master ];
+      };
+      linux-pkgs-aarch64 = import nixpkgs {
+        system = "aarch64-linux";
+        config = pkg-config // {
         };
         overlays = common-overlays ++ [ overlay-linux-master ];
       };
@@ -70,6 +77,28 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
+                (import ./home-linux-gui.nix)
+                (import ./home-linux.nix)
+                (import ./home-personal.nix)
+                (import ./home.nix)
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.linux-vm = nixpkgs.lib.nixosSystem {
+        pkgs = linux-pkgs-aarch64;
+        system = "aarch64-linux";
+        modules = [
+          linux-system-vm
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.amey = {
+              imports = [
+                (import ./home-linux-vm.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
