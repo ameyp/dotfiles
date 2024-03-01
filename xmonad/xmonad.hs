@@ -21,11 +21,11 @@ main = do
   xmprocPolybar <- spawnPipe ("killall polybar; polybar --reload -c=~/.config/polybar/config.ini example")
   -- For the wallpaper
   xmprocFeh <- spawnPipe ("killall feh; feh --bg-scale ~/Pictures/wallpapers/6.jpeg")
-  xmonad $ docks . ewmhFullscreen . ewmh $ myConfig
+  xmonad $ docks . ewmh $ myConfig
 
 myConfig = def
     { modMask = mod4Mask -- Rebind Mod to the Super key
-    , layoutHook = avoidStruts $ spacingWithEdge 5 $ layoutHook def
+    , layoutHook = avoidStruts $ spacingWithEdge 3 $ layoutHook def
     , manageHook = manageHook def <+> manageDocks
     }
   `additionalKeysP`
