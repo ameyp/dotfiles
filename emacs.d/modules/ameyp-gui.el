@@ -52,7 +52,8 @@
              (t 105))))
   (progn (set-face-attribute 'default nil :height face-height)
          (set-face-attribute 'mode-line nil :height face-height)
-         (set-face-attribute 'mode-line-inactive nil :height face-height)))
+         (set-face-attribute 'mode-line-inactive nil :height face-height)
+         (set-face-attribute 'font-lock-type-face nil :underline nil)))
 
 (setq-default line-spacing 3)
 
