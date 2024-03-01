@@ -43,6 +43,7 @@
                    ameyp-java
                    ;ameyp-lsp
                    ameyp-markdown
+                   ameyp-nix
                    ameyp-org
                    ameyp-protobuf
                    ameyp-python
