@@ -235,6 +235,7 @@
     enable = true;
     relay.enable = false;
     systemService = true;
+    user = "amey";
   };
 
   services.safeeyes.enable = true;
