@@ -1,5 +1,3 @@
-;(package-initialize)
-
 ;; Disable the custom file altogether.
 (setq custom-file (make-temp-file "emacs-custom-"))
 
@@ -13,14 +11,18 @@
   (setq native-comp-async-report-warnings-errors 'silent)
   (setq native-compile-prune-cache t))
 
-(server-start)
+(require 'server)
+;; Disable showing instructions in the client about how to close it.
+(setq server-client-instructions nil)
+(unless (server-running-p)
+  (server-start))
 
 ;; Add custom paths to 'load-path
 (add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; Disable those god-awful documentation warnings
-                                        ;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+;;(eval-after-load 'flycheck (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 ;; Print complete messages for C-x C-e
 (setq eval-expression-print-length 10000)
