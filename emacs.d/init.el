@@ -53,6 +53,5 @@
                    ))
 
 ;; Load modules that live outside of my dotfiles.
-(add-to-list 'load-path "~/.emacs-custom")
-(if (file-readable-p "~/.emacs-custom/init.el")
-    (load "~/.emacs-custom/init.el"))
+(if (file-readable-p "~/.emacs-extra/init.el")
+    (load "~/.emacs-extra/init.el"))
