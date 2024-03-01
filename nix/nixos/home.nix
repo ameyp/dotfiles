@@ -37,6 +37,7 @@ in
   # Packages to install
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
+    pkgs.betterlockscreen
     pkgs.curl
     pkgs.direnv
     pkgs.discord
@@ -324,4 +325,11 @@ in
   home.file.".ripgreprc".source = ./ripgreprc;
 
   # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
+  # Lockscreen
+  # Initialize it with images by running
+  # betterlockscreen -b /path/to/folder/or/image
+  services.screen-locker = {
+    enable = true;
+    lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen -l blur";
+  };
 }
