@@ -1,0 +1,12 @@
+# https://starship.rs/config
+
+# `starship explain` can be used to explain the current prompt.
+
+[package]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[terraform]
+disabled = true
