@@ -227,6 +227,8 @@
       # Pyenv
       [ -x $(command -v pyenv) ] && eval "$(pyenv init -)"
 
+      [ -f ~/.zsh-extra ] && . ~/.zsh-extra
+
       ## Options
 
       # extended globbing patterns
