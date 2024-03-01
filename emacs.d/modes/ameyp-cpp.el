@@ -7,11 +7,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.h" . c++-mode))
 
-;; Add cscope.files to helm-cmd-t's repo types
-(if (eq system-type 'windows-nt)
-    (add-to-list 'helm-cmd-t-repo-types '("cscope" "cscope.files" "cd %d && type cscope.files"))
-  (add-to-list 'helm-cmd-t-repo-types '("cscope" "cscope.files" "cd %d && cat cscope.files")))
-
 ;; Clancs!
 ;(require 'clancs)
 ;(clancs-init)
