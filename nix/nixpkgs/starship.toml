@@ -10,3 +10,6 @@ disabled = true
 
 [terraform]
 disabled = true
+
+[swift]
+disabled = true
