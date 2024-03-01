@@ -25,15 +25,15 @@
 
 ;; Stop backups from polluting all directories
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
-  backup-by-copying t    ; Don't delink hardlinks
-  version-control t      ; Use version numbers on backups
-  delete-old-versions t  ; Automatically delete excess backups
-  kept-new-versions 20   ; how many of the newest versions to keep
-  kept-old-versions 5    ; and how many of the old
-  )
+      backup-by-copying t    ; Don't delink hardlinks
+      version-control t      ; Use version numbers on backups
+      delete-old-versions t  ; Automatically delete excess backups
+      kept-new-versions 20   ; how many of the newest versions to keep
+      kept-old-versions 5    ; and how many of the old
+      )
 
 (setq auto-save-file-name-transforms
-  `((".*" "~/.emacs.d/autosaves/" t)))
+      `((".*" "~/.emacs.d/autosaves/" t)))
 
 (setq visible-bell nil
       ring-bell-function 'ignore)
@@ -99,14 +99,11 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
 ;; 3. Set font size and line spacing
 (let ((face-height
-       (cond ((eq system-type 'darwin)
-              (cond
-               ;; Work machine
-               ((string-match "\.tetra\.ai" (system-name)) 150)
-               ;; Personal macOS
-               (t 130)))
-             ;; Default (linux/windows)
-             (t 115))))
+       (if (eq system-type 'darwin)
+           ;; macOS
+           150
+         ;; Default (linux/windows)
+         115)))
   (progn (set-face-attribute 'default nil :height face-height)
          (set-face-attribute 'mode-line nil :height face-height)
          (set-face-attribute 'mode-line-inactive nil :height face-height)
