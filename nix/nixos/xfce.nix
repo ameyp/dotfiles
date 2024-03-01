@@ -14,6 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable experimental features
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -138,6 +141,7 @@
     packages = with pkgs; [
       chromium
       firefox
+      jellyfin-media-player
       pavucontrol
       lens
     ];
@@ -155,9 +159,11 @@
     emacs29
     git
     kitty
+    nfs-utils
     usbutils
     vim
     xorg.xrandr
+    unzip
 
     # For Thunar
     xfce.thunar
@@ -194,6 +200,11 @@
   services.udisks2.enable = true; # DBus service that allows applications to query and manipulate storage devices
   services.gvfs.enable = true; # Mount, trash and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs29;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -242,6 +253,11 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # fileSystems."/mnt/backups" = {
+  #   device = "192.168.1.52:/mnt/nas/backups";
+  #   fsType = "nfs";
+  # };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -249,5 +265,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
