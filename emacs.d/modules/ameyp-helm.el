@@ -67,7 +67,8 @@
   (projectile-mode)
   (setq projectile-enable-caching nil
         projectile-completion-system 'helm
-        projectile-switch-project-action 'helm-projectile)
+        projectile-switch-project-action 'helm-projectile
+        projectile-globally-ignored-files '(".class"))
   :delight projectile-mode)
 
 ;; helm-projectile doesn't work without tramp, complains about void-variable tramp-methods.
