@@ -77,10 +77,10 @@ See `org-capture-templates' for more information."
         '(
           ("t" "Todo"
            entry (file+headline "~/Dropbox/org-mode/tasks.org" "Tasks")
-           "* TODO %? \nCREATED: %U")
+           "* TODO %? \nCREATED: %U\n")
           ("j" "Journal Entry"
            entry (file+datetree "~/Dropbox/org-mode/journal.org")
-           "* %(format-time-string \"%H:%M:%S\") %?"
+           "* %(format-time-string \"%H:%M:%S\") %?\n"
            :empty-lines 1)
           ("h" "Hugo post"
            entry
