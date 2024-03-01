@@ -1,5 +1,8 @@
 ;(package-initialize)
 
+;; Disable notifications when a buffer is auto-reverted.
+(setq auto-revert-verbose nil)
+
 ;; For native compilation
 (setq comp-speed 2)
 
