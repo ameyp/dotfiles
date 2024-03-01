@@ -1,3 +1,5 @@
+;(package-initialize)
+
 (server-start)
 
 ;; Remove toolbar, menubar and scrollbar
