@@ -18,6 +18,9 @@
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
+;; Show line numbers by default
+(global-display-line-numbers-mode)
+
 ;; The order of the next three segments is *extremely* important.
 
 ;; 1. Load theme
