@@ -5,7 +5,6 @@
 .elpa
 .cache
 .org-id-locations
-custom.el
 workspace
 elpa
 bookmarks
