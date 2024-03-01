@@ -69,13 +69,3 @@ fi
 if [[ -d $HOME/.iterm2_shell_integration ]]; then
   source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
-
-# Activate fzf if available.
-if [[ -e $HOME/.fzf.zsh ]]; then
-  source $HOME/.fzf.zsh
-fi
-
-# Enable linuxbrew if available.
-if [[ -e /home/linuxbrew/.linuxbrew ]]; then
-  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-fi
