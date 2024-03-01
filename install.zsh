@@ -66,6 +66,7 @@ function link-file { __mkdir "${2:h}"; rm -rf "$2"; ln -s "$PWD/$1" "$2" }
 link-file emacs.d ~/.emacs.d
 link-file git/gitconfig ~/.gitconfig
 link-file git/gitexcludes ~/.gitexcludes
+link-file xmonad ~/.xmonad
 link-file ruby/gemrc ~/.gemrc
 link-file slate/slate.js ~/.slate.js
 link-file zsh/zshrc ~/.zshrc
