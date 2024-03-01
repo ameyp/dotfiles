@@ -6,23 +6,28 @@
 ;; Inhibit startup screen
 (setq inhibit-startup-screen t)
 
-;; (cond ((eq system-type 'darwin)
-;;        (cond
-;;         ((string-match "\.amazon\.com" system-name)
-;;          (set-face-attribute 'default nil :height 160))
-;;         (t
-;;          (set-face-attribute 'default nil :height 140))))
-;;       ((eq system-type 'windows-nt)
-;;        (set-face-attribute 'default nil :height 130))
-;;       (t
-;;        (set-face-attribute 'default nil :height 130)))
+;; Set font size differently based on OS.
+(cond ((eq system-type 'darwin)
+       (cond
+        ((string-match "\.amazon\.com" system-name)
+         (set-face-font 'default "Hack-14" nil))
+        (t
+         (set-face-font 'default "Hack-13" nil))))
+      (t
+       (set-face-font 'default "Hack-11")))
 
-(add-to-list 'default-frame-alist '(font . "Hack-14" ))
-(set-face-font 'default "Hack-14" nil)
-;(set-face-font 'mode-line "Hack-14" nil)
 (setq-default line-spacing 3)
+
+;; Load theme
 (setq custom-theme-directory "~/.emacs.d/themes")
 (load-theme 'brutalist)
 
-;(require 'brutalist-theme)
+;; Instead of an annoying ding as a bell, flash the modeline instead.
+(defun flash-mode-line ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil #'invert-face 'mode-line))
+
+(setq visible-bell nil
+      ring-bell-function 'flash-mode-line)
+
 (provide 'ameyp-gui)
