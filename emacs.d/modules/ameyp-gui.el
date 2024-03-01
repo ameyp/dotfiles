@@ -15,6 +15,11 @@
 ;; (setq visible-bell nil
 ;;       ring-bell-function 'flash-mode-line)
 
+;; https://www.emacswiki.org/emacs/UndoTree
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
+
 (setq visible-bell nil
       ring-bell-function 'ignore
       pixel-scroll-precision-mode t)
