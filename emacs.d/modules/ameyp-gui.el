@@ -32,7 +32,23 @@
 ;; TODO Use this for centering text based on window size.
 ;; (set-window-margins (frame-selected-window) 50 50)
 
-;; Show line numbers by default
+;; Line numbers turned on by default, except in certain major modes
+(require 'display-line-numbers)
+
+(defcustom display-line-numbers-exempt-modes
+  '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode)
+  "Major modes on which to disable line numbers."
+  :group 'display-line-numbers
+  :type 'list
+  :version "green")
+
+(defun display-line-numbers--turn-on ()
+  "Turn on line numbers except for certain major modes.
+Exempt major modes are defined in `display-line-numbers-exempt-modes'."
+  (unless (or (minibufferp)
+              (member major-mode display-line-numbers-exempt-modes))
+    (display-line-numbers-mode)))
+
 (global-display-line-numbers-mode)
 
 ;; The order of the next three segments is *extremely* important.
