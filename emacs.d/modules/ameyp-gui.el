@@ -16,7 +16,8 @@
 ;;       ring-bell-function 'flash-mode-line)
 
 (setq visible-bell nil
-      ring-bell-function 'ignore)
+      ring-bell-function 'ignore
+      pixel-scroll-precision-mode t)
 
 ;; Resizes windows on splitting and unsplitting
 (defadvice split-window-right (after balance-out-windows activate)
