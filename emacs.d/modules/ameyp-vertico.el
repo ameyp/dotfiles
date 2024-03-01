@@ -37,14 +37,36 @@ folder, otherwise delete a character backward"
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+        completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;; Use Consult
 (use-package consult
   :bind (
          ("C-x b" . consult-buffer)
          ("C-c p s" . consult-ripgrep)
+         ("C-c k" . consult-yank-from-kill-ring)
          ))
+
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
+
+(use-package embark)
+
+(use-package embark-consult
+  :bind (
+         ("C-c C-o" . embark-export)))
 
 (use-package consult-projectile
   :straight (consult-projectile :type git :host gitlab :repo "OlMon/consult-projectile" :branch "master")
