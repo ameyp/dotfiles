@@ -104,6 +104,7 @@ in
       ".direnv"
       ".idea"
       ".envrc"
+      ".venv.*"
     ];
   };
 
