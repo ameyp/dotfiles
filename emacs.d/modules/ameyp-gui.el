@@ -34,7 +34,7 @@
 
 ;; Make file-visiting buffers automatically save to their files after
 ;; an interval of idleness instead of saving such buffers to a separate file.
-(setq auto-save-visited-interval 2)
+(setq auto-save-visited-interval 60) ; Interval is in seconds
 (setq remote-file-name-inhibit-auto-save-visited t)
 (auto-save-visited-mode 1)
 
