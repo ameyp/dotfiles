@@ -24,9 +24,11 @@
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
+                   ameyp-direnv
                    ameyp-text
                    ameyp-gui
                    ameyp-company
+                   ;ameyp-eglot
                    ameyp-flycheck
                    ameyp-ivy
 
@@ -35,12 +37,12 @@
                    ameyp-cmake
                    ameyp-coffee
                    ameyp-docker
-                   ;ameyp-eglot
                    ameyp-elisp
                    ameyp-git
                    ameyp-go
                    ameyp-haskell
                    ameyp-java
+                   ameyp-jsonnet
                    ;ameyp-lsp
                    ameyp-markdown
                    ameyp-nix
