@@ -73,7 +73,7 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
  `(lsp-face-highlight-textual ((t (:inherit lazy-highlight :underline nil))))
  `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
  `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
- `(mode-line-inactive ((t (:inherit default :foreground "#666666" :distant-foreground "#666666"))))
+ `(mode-line-inactive ((t (:inherit default :box '(:width 1) :foreground "#666666" :background "#fffff8"))))
  )
 
 ;; 3. Set font size and line spacing
