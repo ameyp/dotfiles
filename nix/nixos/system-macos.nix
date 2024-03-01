@@ -12,6 +12,14 @@ in {
     emacsAmeyWithPackages
   ];
 
+  # In order to add custom DNS servers using scutil, create a file with the following content:
+  # open
+  # d.init
+  # d.add ServerAddresses * 192.168.1.1 8.8.8.8
+  # quit
+  #
+  # Then run sudo scutil < filename
+
   homebrew = {
     enable = true;
     casks = [
