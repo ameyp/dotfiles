@@ -1,6 +1,9 @@
 ;; ---- whitespace-mode ---------------------
 (use-package whitespace)
 
+(use-package eldoc
+  :delight eldoc-mode)
+
 ;; expand-region
 (use-package expand-region
   :bind (("C-=" . 'er/expand-region)

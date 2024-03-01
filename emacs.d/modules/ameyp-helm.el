@@ -26,7 +26,8 @@
          ("C-z" . 'helm-select-action)
          ("<tab>" . 'helm-execute-persistent-action)
          ("C-i" . 'helm-execute-persistent-action)  ;; make TAB work in terminal
-         ))
+         )
+  :delight helm-ff-cache-mode)
 
 (use-package helm-buffers
   :ensure helm
@@ -63,7 +64,8 @@
   (projectile-mode)
   (setq projectile-enable-caching nil
         projectile-completion-system 'helm
-        projectile-switch-project-action 'helm-projectile))
+        projectile-switch-project-action 'helm-projectile)
+  :delight projectile-mode)
 
 ;; helm-projectile doesn't work without tramp, complains about void-variable tramp-methods.
 (use-package tramp)
