@@ -18,6 +18,7 @@ wget-log
 session.*
 recentf
 projectile-bookmarks.eld
+projectile.cache
 eln-cache
 request
 .dap-breakpoints
