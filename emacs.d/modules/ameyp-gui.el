@@ -40,6 +40,7 @@
  `(helm-ff-file ((t (:inherit default))))
  `(helm-keyword-face ((t (:inherit default))))
  `(helm-selection ((t (:inherit whitespace-line))))
+ `(lsp-face-highlight-textual ((t (:inherit lazy-highlight :underline nil))))
  `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
  `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
  `(mode-line-inactive ((t (:inherit default :foreground "#666666" :distant-foreground "#666666"))))

@@ -1,16 +1,18 @@
 ;; Install:
-; gem install pry pry-nav pry-stack_explorer termios
+; If on Mac, `rbenv install <latest stable>'
+; gem install solargraph
 
 (use-package enh-ruby-mode
   :mode "\\.rb\\'"
   :interpreter "ruby"
   :config
   (setq tab-width 4)
-  :hook (enh-ruby-mode . eldoc-mode))
+  :hook (enh-ruby-mode . (lambda ()
+                                        ;(require 'lsp-solargraph)
+                           (lsp)
+                           (eldoc-mode))))
 
 (use-package inf-ruby)
-
-(use-package robe)
 
 (use-package yard-mode)
 
