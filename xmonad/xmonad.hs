@@ -33,10 +33,15 @@ myLayoutHook = tiled ||| Grid ||| Mirror tiled ||| Full
     ratio = 1/2
     delta = 3/100
 
+myManageHook = composeAll
+  [ className =? "Safeeyes" --> doFloat
+  , manageDocks
+  ]
+
 myConfig = def
     { modMask = mod4Mask -- Rebind Mod to the Super key
     , layoutHook = avoidStruts $ spacingWithEdge 3 $ myLayoutHook
-    , manageHook = manageHook def <+> manageDocks
+    , manageHook = myManageHook <+> manageHook def
     }
   `additionalKeysP`
     [ ("M-f", spawn "firefox")

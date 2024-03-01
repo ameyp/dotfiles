@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Containerized downloaders
+      ./downloaders.nix
     ];
 
   # Bootloader.
@@ -235,6 +238,8 @@
     relay.enable = false;
     systemService = true;
   };
+
+  services.safeeyes.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
