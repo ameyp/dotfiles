@@ -140,8 +140,9 @@
     # wget
 
     # For XMonad
-    polybar
+    feh
     haskellPackages.dbus
+    polybar
     xmonad-log
   ];
 
