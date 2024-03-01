@@ -1,6 +1,5 @@
 ;; Markdown mode
 (use-package markdown-mode
-  :mode "\\.md\\'"
-  :ensure)
+  :mode "\\.md\\'")
 
 (provide 'ameyp-markdown)

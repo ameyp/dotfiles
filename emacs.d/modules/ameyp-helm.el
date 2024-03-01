@@ -29,6 +29,7 @@
          ))
 
 (use-package helm-buffers
+  :ensure helm
   :config
   (setq helm-buffers-fuzzy-matching t) ; fuzzy matching buffer names when non--nil
   :bind (("C-x C-b" . 'helm-buffers-list) ;; Use helm for big buffer switching
@@ -36,14 +37,14 @@
          ("M-d" . 'helm-buffer-run-kill-buffers)))
 
 (use-package helm-grep
-  :after (helm)
+  :ensure helm
   :config
   ;; Use ack-grep instead of grep
   (setq helm-grep-default-command "ack -Hn --no-group --no-color %e %p %f"
         helm-grep-default-recurse-command "ack -H --no-group --no-color %e %p %f"))
 
 (use-package helm-man
-  :after (helm)
+  :ensure helm
   :config
   ;; Enable man page at point with helm-man-woman (C-c h m)
   (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages))
@@ -66,7 +67,6 @@
 
 (use-package helm-projectile
   :after (projectile)
-  :ensure
   :bind ("C-," . helm-projectile-find-file)
   :config
   (helm-projectile-on)

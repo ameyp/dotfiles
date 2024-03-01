@@ -3,6 +3,7 @@
   :hook (clojure-mode . cider-mode))
 
 (use-package cider-mode
+  :ensure cider
   :after (clojure-mode)
   :config
   (setq nrepl-hide-special-buffers t)
@@ -11,6 +12,7 @@
   (cider-repl-mode . 'smartparens-strict-mode))
 
 (use-package cider-eldoc
+  :ensure cider
   :after (cider-mode)
   :hook (cider-mode . eldoc-mode))
 
