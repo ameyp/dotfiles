@@ -5,7 +5,11 @@
   (global-tree-sitter-mode)
   ;; you can easily see the difference tree-sitter-hl-mode makes for python, ts or tsx
   ;; by switching on and off
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+  )
+
 
 ;; (setq treesit-language-source-alist
 ;;       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
