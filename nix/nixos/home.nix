@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 let attrs = {
-  # Create this file manually for each installation.
-  user = import ./user.nix;
-};
+      user = {
+        name = "amey";
+        homeDirectory = "/home/amey";
+      };
+    };
 in
 {
   news.display = "silent";

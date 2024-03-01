@@ -43,14 +43,29 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+
+    # Set display resolution and refresh rate
+    displayManager.setupCommands = ''
+      xrandr --output DP-4 --mode 2560x1440 --rate 180
+    '';
+
+    # Enable the XFCE Desktop Environment.
+    displayManager.lightdm.enable = true;
+    # desktopManager.xfce.enable = true;
+
+    # Use XMonad
+    displayManager.defaultSession = "none+xmonad";
+
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      # Don't want to rebuild nixos everytime I want to update xmonad.
+      # config = builtins.readFile ../../xmonad/xmonad.hs;
+    };
+
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
   };
@@ -103,8 +118,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     emacs29
-    vim
     git
+    kitty
+    vim
+    xmobar
   #  wget
   ];
 
@@ -150,15 +167,15 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+  # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
