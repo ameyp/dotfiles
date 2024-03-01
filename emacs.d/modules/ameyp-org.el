@@ -44,9 +44,12 @@
   ;;    ))
 
   (defconst ameyp/org-tasks-personal-file "~/Sync/Documents/org-mode/tasks.org")
+  (defconst ameyp/org-tasks-work-file "~/Documents/org-mode/tasks.org")
   (defconst ameyp/org-journal-personal-file "~/Sync/Documents/org-mode/journal.org")
 
-  (setq org-agenda-files (list ameyp/org-tasks-personal-file))
+  (setq org-agenda-files (list ameyp/org-tasks-personal-file ameyp/org-tasks-work-file))
+  ;; Set this to t, otherwise org-mode complains when agenda files are missing.
+  (setq org-agenda-skip-unavailable-files t)
   (setq org-default-notes-file "~/Sync/Documents/org-mode/tasks.org")
 
   (defcustom hugo-post-root nil "Path to the folder in which you want Hugo posts to be stored.")
