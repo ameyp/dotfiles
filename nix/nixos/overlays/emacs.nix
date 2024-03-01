@@ -79,6 +79,8 @@ self: super: rec {
           "--with-xinput2"
         ];
       });
+  # On macOS, remember to do a fresh launch of emacs, not from the dock icon
+  # after adding to this list.
   emacsAmeyWithPackages =
     ((super.emacsPackagesFor emacsAmey).emacsWithPackages (epkgs: with epkgs; [
       # necessary to install through nix to get libenchant integration working
@@ -144,6 +146,7 @@ self: super: rec {
       apheleia
       jest-test-mode
       eglot-java
+      lsp-tailwindcss
 
       # For gpg
       pinentry

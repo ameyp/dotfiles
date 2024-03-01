@@ -40,6 +40,9 @@
 
     # PDF viewer that can read from stdin
     pkgs.zathura
+
+    # lsp
+    pkgs.tailwindcss-language-server
   ];
 
   # Enable direnv
