@@ -32,8 +32,11 @@
       kept-old-versions 5    ; and how many of the old
       )
 
-(setq auto-save-file-name-transforms
-      `((".*" "~/.emacs.d/autosaves/" t)))
+;; Make file-visiting buffers automatically save to their files after
+;; an interval of idleness instead of saving such buffers to a separate file.
+(setq auto-save-visited-interval 2)
+(setq remote-file-name-inhibit-auto-save-visited t)
+(auto-save-visited-mode 1)
 
 (setq visible-bell nil
       ring-bell-function 'ignore)
