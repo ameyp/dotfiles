@@ -1,14 +1,3 @@
-(defun dw/minibuffer-backward-kill (arg)
-  "When minibuffer is completing a file name delete up to parent
-folder, otherwise delete a character backward"
-  (interactive "p")
-  (if minibuffer-completing-file-name
-      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
-      (if (string-match-p "/." (minibuffer-contents))
-          (zap-up-to-char (- arg) ?/)
-        (delete-minibuffer-contents))
-      (delete-backward-char arg)))
-
 ;; Enable vertico
 (use-package vertico
   :init
@@ -25,8 +14,11 @@ folder, otherwise delete a character backward"
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
-  :bind (:map minibuffer-local-map
-         ("<left>" . dw/minibuffer-backward-kill))
+  :bind (
+         ("M-<up>" . vertico-previous-group)
+         ("M-<down>" . vertico-next-group)
+         :map minibuffer-local-map
+         ("C-w" . backward-kill-word))
   )
 
 ;; Optionally use the `orderless' completion style.
@@ -48,11 +40,15 @@ folder, otherwise delete a character backward"
          ))
 
 (use-package marginalia
-  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
-  ;; available in the *Completions* buffer, add it to the
-  ;; `completion-list-mode-map'.
-  :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+  ;; Bind `marginalia-cycle' locally in the minibuffer.
+  :bind
+  (:map minibuffer-local-map
+        ("M-A" . marginalia-cycle))
+  ;; To make the binding available in the *Completions* buffer,
+  ;; add it to the `completion-list-mode-map'.
+  (:map completion-list-mode-map
+        ("M-A" . marginalia-cycle))
+
 
   ;; The :init section is always executed.
   :init
@@ -70,7 +66,7 @@ folder, otherwise delete a character backward"
 
 (use-package consult-projectile
   :bind (
-         ("C-," . projectile-find-file)
+         ("C-," . consult-projectile-find-file)
          ))
 
 (provide 'ameyp-vertico)
