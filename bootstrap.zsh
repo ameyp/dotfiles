@@ -35,24 +35,6 @@ if [[ -d $HOME/.zgen ]]; then
   puts 'Installed' 'zgen'
 fi
 
-if [[ -f $HOME/.zshrc ]]; then
-  mv $HOME/.zshrc $HOME/.zshrc.preinstall
-fi
-
 echo $PWD
 
-stow emacs -t $HOME
-stow git -t $HOME
-stow zsh -t $HOME
-stow iterm2 -t $HOME
 exit
-
-
-if [ -d $HOME/.zgen.zsh ]; then
-  echo -e "\033[32m  ✔ Found         ❰ zgen ❱   \033[0m"
-else
-  echo -e "  ➤ Installing    ❰ zgen ❱   \033[0m"
-
-
-  echo -e "\033[32m    ✔ Installed   ❰ zgen ❱   \033[0m"
-fi
