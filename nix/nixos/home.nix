@@ -146,10 +146,7 @@
       export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
       # Nix
-      NIX_PROFILE="$HOME/.nix-profile/etc/profile.d/nix.sh"
-      [ -f "$NIX_PROFILE" ] && source "$NIX_PROFILE"
-
-      export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels
+      [ -f /etc/profile ] && source /etc/profile
 
       # XDG Base Directory Specification.
       export XDG_DATA_HOME=$HOME/.local/share
