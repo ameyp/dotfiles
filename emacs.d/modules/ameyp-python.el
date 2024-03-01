@@ -4,12 +4,9 @@
 
 (use-package pyenv-mode)
 
-(use-package lsp-pyright
+(use-package eglot
   :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp) ; or lsp-deferred
-                          )))
+  :hook (python-mode . eglot-ensure))
 
 (use-package auto-virtualenv
   :ensure t
