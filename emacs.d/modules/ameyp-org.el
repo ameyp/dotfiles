@@ -38,6 +38,8 @@
      `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
      `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.6))))
      `(ivy-org ((t (:default))))
+     ;; My org-mode capture titles are appearing as bookmarks for some reason.
+     `(bookmark-face ((t (:default))))
      `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))
      `(org-block-begin-line ((t (:height 140 :weight thin :foreground "#888888"))))
      `(org-block-end-line ((t (:height 140 :weight thin :foreground "#888888"))))
