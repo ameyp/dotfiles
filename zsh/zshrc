@@ -13,3 +13,4 @@ if [[ -d ${HOME}/.zsh-extra ]]; then
     source ${HOME}/.zsh-extra/$p
   done
 fi
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

@@ -40,6 +40,11 @@ if [[ -S $XDG_RUNTIME_DIR/ssh-agent.socket ]]; then
 fi
 
 # Add local binaries to path.
+
+if [[ -d $HOME/.local ]]; then
+  PATH=$HOME/.local:$PATH
+fi
+
 if [[ -d $HOME/.local/bin ]]; then
   PATH=$HOME/.local/bin:$PATH
 fi
