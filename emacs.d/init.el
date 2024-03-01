@@ -18,6 +18,9 @@
 ;; Print complete messages for C-x C-e
 (setq eval-expression-print-length 10000)
 
+;; Echo keystrokes faster in minibuffer
+(setq echo-keystrokes 0.01)
+
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
@@ -47,6 +50,11 @@
                    ameyp-web
                    ameyp-yaml
                    ameyp-zig))
+
+;; Load modules that live outside of my dotfiles.
+(add-to-list 'load-path "~/.emacs-custom")
+(if (file-readable-p "~/.emacs-custom/init.el")
+    (load "~/.emacs-custom/init.el"))
 
 ;; Set path
 (if (eq system-type 'windows-nt)
