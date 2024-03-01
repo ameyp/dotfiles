@@ -1,3 +1,5 @@
+(use-package counsel-projectile)
+
 (use-package ivy :ensure t
   :ensure t
   :diminish (ivy-mode . "")
@@ -33,7 +35,7 @@
    ("C-c t" . counsel-load-theme)
    ("C-c F" . counsel-org-file)
    ("C-," . counsel-projectile-find-file)
-   ("C-c p s" . counsel-projectile-ag)
+   ("C-c p s" . counsel-projectile-ag) ; C-c C-o to open results in new frame.
    :map ivy-minibuffer-map
    ("TAB" . ivy-alt-done))
   :config
@@ -50,7 +52,8 @@
   ;; configure regexp engine.
   (setq ivy-re-builders-alist
         ;; allow input not in order
-        '((t   . ivy--regex-ignore-order))))
+        '((t   . ivy--regex-ignore-order)))
+  (setq ag-highlight-search t))
 
 (use-package counsel
   :ensure t)
