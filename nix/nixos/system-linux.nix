@@ -17,7 +17,7 @@
   # Enable experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos-desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -66,6 +66,9 @@
 
   services.tailscale = {
     enable = true;
+    extraUpFlags = [
+      "--hostname=nixos-desktop"
+    ];
   };
 
   # Enable the X11 windowing system.
