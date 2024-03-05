@@ -9,6 +9,9 @@ Change directory to where you cloned the repo
 Run the bootstrap script
     sh install.sh
 
+## Restore AGE private key
+Download `key-encrypted.key` from warden to `~/.age/key.age` with permissions `0400`. It is age-encrypted with a passphrase, which is also in warden.
+
 ## Restore GPG private key
 
 ```bash

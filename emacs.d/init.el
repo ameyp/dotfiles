@@ -53,6 +53,21 @@ DEFINITIONS is a sequence of string and command pairs."
                 `(define-key map (kbd ,key) ,command))))
           (cl-mapcar #'cons keys commands)))))
 
+;; Function for spawning a process and passing a string to its stdin.
+(defun ameyp-spawn-process-with-stdin (name command args stdin &optional cleanup)
+  "Spawn a process NAME with the specified COMMAND and ARGS, and write STDIN to its stdin.
+If CLEANUP is specified, it must be a function or lambda. It is invoked when the process exits."
+  (let ((process (make-process :name name
+                               :command `(,command ,@args)
+                               :connection-type 'pipe)))
+    (set-process-query-on-exit-flag process nil)
+    (set-process-sentinel process (lambda (proc event)
+                                    (when (memq (process-status proc) '(exit signal))
+                                      (message "Process %s %s" (process-name proc) event)
+                                      (if (boundp 'cleanup) (cleanup)))))
+    (process-send-string process stdin)
+    (process-send-eof process)))
+
 ;; Load config files
 (mapcar 'require '(;; load the essential packages first
                    ameyp-packages
@@ -98,11 +113,3 @@ DEFINITIONS is a sequence of string and command pairs."
 (if (file-readable-p "~/.emacs-extra/init.el")
     (load "~/.emacs-extra/init.el"))
 (put 'set-goal-column 'disabled nil)
-
-;; Disable external pin entry for gpg so that Emacs will prompt me for the passphrase.
-(setenv "GPG_AGENT_INFO" nil)
-
-(setq epg-pinentry-mode 'loopback)
-(require 'epa-file)
-(epa-file-enable)
-

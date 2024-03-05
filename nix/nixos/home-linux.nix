@@ -11,12 +11,13 @@
   xdg.mime.enable = true;
 
   # Only supported on linux.
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "curses";
-    extraConfig = ''
-      allow-emacs-pinentry
-      allow-loopback-pinentry
-    '';
-  };
+  # TODO delete once I'm happy with my age setup.
+  # services.gpg-agent = {
+  #   enable = true;
+  #   pinentryFlavor = "curses";
+  #   extraConfig = ''
+  #     allow-emacs-pinentry
+  #     allow-loopback-pinentry
+  #   '';
+  # };
 }

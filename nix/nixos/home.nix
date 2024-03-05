@@ -37,6 +37,9 @@
     pkgs.wget
 
     pkgs.master.gnupg
+    pkgs.age
+    pkgs.rage
+    pkgs.pinentry-gtk2
 
     # PDF viewer that can read from stdin
     pkgs.zathura

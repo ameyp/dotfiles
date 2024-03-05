@@ -151,6 +151,8 @@ self: super: rec {
       # For gpg
       pinentry
 
+      age
+
       # For icons
       nerd-icons
       nerd-icons-dired
