@@ -16,6 +16,8 @@
     };
   };
 
+  xdg.mime.enable = true;
+
   services.xidlehook = {
     enable = true;
     not-when-audio = true;

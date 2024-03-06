@@ -62,6 +62,13 @@
     enable = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    relay.enable = false;
+    systemService = true;
+    user = "amey";
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 

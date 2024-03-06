@@ -16,8 +16,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # Doesn't work on linux, maybe not needed anymore even for Mac?
-  # programs.home-manager.path = "$HOME/Applications/home-manager";
 
   # Packages to install
   home.packages = [
@@ -36,7 +34,6 @@
     pkgs.starship
     pkgs.wget
 
-    pkgs.master.gnupg
     pkgs.age
     pkgs.rage
     pkgs.pinentry-gtk2
@@ -54,9 +51,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
-  # Temporarily enabled until gpg 2.4.4 is in the release channel.
-  programs.gpg.package = pkgs.master.gnupg;
 
   # Git config
   programs.git = {
@@ -119,9 +113,6 @@
   };
 
   # ZSH
-  # Disabled due to https://github.com/nix-community/home-manager/issues/2995
-  # https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enable
-
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";

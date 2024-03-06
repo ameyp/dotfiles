@@ -6,9 +6,7 @@
   home.username = "amey";
   home.homeDirectory = "/home/${config.home.username}";
 
-  fonts.fontconfig.enable = true;
   targets.genericLinux.enable = true;
-  xdg.mime.enable = true;
 
   # Only supported on linux.
   # TODO delete once I'm happy with my age setup.
