@@ -71,54 +71,6 @@
     ];
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-
-    # Set display resolution and refresh rate
-    # displayManager.setupCommands = ''
-    #   xrandr --output DP-4 --mode 2560x1440 --rate 180
-    # '';
-
-    # Use Awesome
-    displayManager = {
-      sddm.enable = true;
-      defaultSession = "none+xmonad";
-    };
-
-    # windowManager.awesome = {
-    #   enable = true;
-    #   luaModules = with pkgs.luaPackages; [
-    #     luarocks
-    #     luadbi-mysql
-    #   ];
-    # };
-
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      # Don't want to rebuild nixos everytime I want to update xmonad.
-      # config = builtins.readFile ../../xmonad/xmonad.hs;
-      extraPackages = haskellPackages: [ haskellPackages.dbus ];
-    };
-
-    # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable picom compositor
-  services.picom = {
-    enable = true;
-    # inactiveOpacity = 0.8;
-    fade = true;
-    fadeDelta = 5;
-    backend = "glx";
-    settings = {
-      corner-radius = 8;
-    };
-  };
-
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
@@ -182,20 +134,11 @@
     nfs-utils
     usbutils
     vim
-    xorg.xrandr
     unzip
 
     # For Thunar
     xfce.thunar
     xfce.thunar-volman
-
-    # For XMonad
-    # launcher
-    rofi
-    # for displaying the wallpaper
-    feh
-    # status bar
-    polybar
 
     mullvad-vpn
   ];

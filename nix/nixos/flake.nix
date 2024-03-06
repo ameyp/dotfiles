@@ -46,7 +46,6 @@
         config = pkg-config;
         overlays = common-overlays ++ [ overlay-macos-master ];
       };
-      linux-system = ./system-linux.nix;
       linux-system-vm = ./system-linux-vm.nix;
       linux-pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -68,7 +67,8 @@
         pkgs = linux-pkgs;
         system = "x86_64-linux";
         modules = [
-          linux-system
+          ./system-linux.nix
+          ./system-linux-x11.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -77,7 +77,7 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
-                (import ./home-linux-gui.nix)
+                (import ./home-linux-x11.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
