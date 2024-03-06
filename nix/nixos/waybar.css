@@ -1,0 +1,31 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Hack;
+}
+
+#waybar {
+    background: rgba(43, 48, 59, 0.5);
+    color: white;
+}
+
+#workspaces,
+#submap,
+#taskbar,
+#window,
+#pulseaudio,
+#temperature,
+#clock,
+#tray {
+    margin: 0 10px;
+}
+
+#workspaces > button {
+    background: rgba(60, 60, 60, 0.5);
+    color: white;
+}
+
+#workspaces > button.active {
+    background: rgba(180, 180, 180, 0.5);
+    color: black;
+}

@@ -68,7 +68,6 @@
         system = "x86_64-linux";
         modules = [
           ./system-linux.nix
-          ./system-linux-x11.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -77,7 +76,7 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
-                (import ./home-linux-x11.nix)
+                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
@@ -138,6 +137,7 @@
           # the path to your home.nix.
           modules = [
             ./home-linux-personal.nix
+            ./home-linux-hyprland.nix
             ./home-linux.nix
             ./home-personal.nix
             ./home.nix

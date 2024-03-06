@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      ./greetd.nix
     ];
 
   # Bootloader.
@@ -107,6 +109,11 @@
   # Enable zsh
   programs.zsh.enable = true;
 
+  # Enable dconf
+  # Started encountering this after adding a theme to home-manager.
+  # https://github.com/nix-community/home-manager/issues/3113
+  programs.dconf.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amey = {
     isNormalUser = true;
@@ -121,6 +128,19 @@
       tmux
     ];
     shell = pkgs.zsh;
+  };
+
+  xdg.mime.enable = true;
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   # List packages installed in system profile. To search, run:
