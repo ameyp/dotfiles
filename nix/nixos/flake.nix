@@ -13,9 +13,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, sops-nix, emacs-overlay, nix-darwin, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, sops-nix, disko, emacs-overlay, nix-darwin, ... }:
     let
       pkg-config = {
         allowUnfree = true;
@@ -46,7 +50,6 @@
         config = pkg-config;
         overlays = common-overlays ++ [ overlay-macos-master ];
       };
-      linux-system-vm = ./system-linux-vm.nix;
       linux-pkgs = import nixpkgs {
         system = "x86_64-linux";
         config = pkg-config // {
@@ -67,8 +70,36 @@
         pkgs = linux-pkgs;
         system = "x86_64-linux";
         modules = [
+          ./system-linux-common.nix
+          ./system-linux-hyprland.nix
           ./system-linux.nix
           sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.amey = {
+              imports = [
+                (import ./home-linux-personal.nix)
+                (import ./home-linux-hyprland.nix)
+                (import ./home-linux.nix)
+                (import ./home-personal.nix)
+                (import ./home.nix)
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.linux-thinkpad = nixpkgs.lib.nixosSystem {
+        pkgs = linux-pkgs;
+        system = "x86_64-linux";
+        modules = [
+          ./system-linux-common.nix
+          ./system-linux-hyprland.nix
+          ./system-linux-thinkpad.nix
+          sops-nix.nixosModules.sops
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -90,7 +121,7 @@
         pkgs = linux-pkgs-aarch64;
         system = "aarch64-linux";
         modules = [
-          linux-system-vm
+          ./system-linux-vm.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

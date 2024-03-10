@@ -17,67 +17,19 @@ self: super: rec {
     withImageMagick = true;
     # have to force this; lib.version check wrong or because emacsGit?
     withTreeSitter = true;
+    withNativeCompilation = true;
   };
   emacsAmey =
     if super.stdenv.isDarwin
     then
       emacsGitAmeyGeneric.overrideAttrs (old: {
         patches =
-          (old.patches or [])
-          ++ [
-            # Don't raise another frame when closing a frame
-            # (super.fetchpatch {
-            #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-frame-refocus-cocoa.patch";
-            #   sha256 = "QLGplGoRpM4qgrIAJIbVJJsa4xj34axwT3LiWt++j/c=";
-            # })
-            # # Fix OS window role so that yabai can pick up Emacs
-            # (super.fetchpatch {
-            #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
-            #   sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
-            # })
-            # # Use poll instead of select to get file descriptors
-            # (super.fetchpatch {
-            #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-29/poll.patch";
-            #   sha256 = "jN9MlD8/ZrnLuP2/HUXXEVVd6A+aRZNYFdZF8ReJGfY=";
-            # })
-            # # Add setting to enable rounded window with no decoration (still
-            # # have to alter default-frame-alist)
-            # (super.fetchpatch {
-            #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/round-undecorated-frame.patch";
-            #   sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
-            # })
-            # # Make Emacs aware of OS-level light/dark mode
-            # # https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
-            # (super.fetchpatch {
-            #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/system-appearance.patch";
-            #   sha256 = "oM6fXdXCWVcBnNrzXmF0ZMdp8j0pzkLE66WteeCutv8=";
-            # })
-          ];
+          (old.patches or []);
       })
     else
-      # TODO nix's lucid reports the wrong mm-size (breaks textsize package):
-      # (frame-monitor-attribute 'mm-size (selected-frame))
       (emacsGitAmeyGeneric.override {
-        withX = true;
-        # lucid
-        # withGTK2 = false;
-        withGTK3 = true;
+        withPgtk = true;
         withXinput2 = true;
-      }).overrideAttrs(_: {
-        # for full control/testing (e.g. can't do lucid without cairo using
-        # builtin withs)
-        configureFlags = [
-          # for a (more) reproducible build
-          "--disable-build-details"
-          "--with-modules"
-          "--with-x-toolkit=gtk3"
-          "--with-xft"
-          "--with-cairo"
-          "--with-xaw3d"
-          "--with-native-compilation"
-          "--with-imagemagick"
-          "--with-xinput2"
-        ];
       });
   # On macOS, remember to do a fresh launch of emacs, not from the dock icon
   # after adding to this list.

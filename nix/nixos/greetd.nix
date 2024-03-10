@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  # Without this, no mouse cursor is visible with an Nvidia GPU.
-  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-
   # Login greeter
   services.greetd = {
     enable = true;

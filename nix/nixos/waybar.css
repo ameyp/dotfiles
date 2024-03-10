@@ -16,7 +16,8 @@
 #pulseaudio,
 #temperature,
 #clock,
-#tray {
+#tray
+#battery {
     margin: 0 10px;
 }
 
@@ -28,4 +29,8 @@
 #workspaces > button.active {
     background: rgba(180, 180, 180, 0.5);
     color: black;
+}
+
+#battery {
+    margin-right: 30px;
 }

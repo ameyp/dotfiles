@@ -51,10 +51,22 @@
         height = 32;
         output = [
           "DP-3"
+          "LVDS-1"
         ];
         modules-left = [ "hyprland/workspaces" "hyprland/submap" "wlr/taskbar" ];
         modules-center = [ "hyprland/window" ];
-        modules-right = [ "pulseaudio" "temperature" "clock" "tray" ];
+        modules-right = [ "pulseaudio" "battery" "temperature" "clock" "tray" ];
+        battery = {
+          bat = "BAT0";
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-icons = ["" "" "" "" ""];
+          max-length = 30;
+        };
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
@@ -105,7 +117,10 @@
     enable = true;
     settings = {
       "$mod" = "SUPER";
-      monitor = "DP-3,2560x1440@120,0x0,1";
+      monitor = [
+        "DP-3,2560x1440@120,0x0,1"
+        "LVDS-1,2560x1440@60,0x0,1.6"
+      ];
       "exec-once" = [
         "swaybg -m fill -i ~/Pictures/wallpapers/6.jpeg"
         "waybar"
