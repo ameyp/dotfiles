@@ -137,12 +137,19 @@
           "$mod, F, exec, firefox"
           "$mod, C, exec, kitty"
           "$mod, E, exec, emacsclient -c"
-          "$mod, W, killactive"
-          "$mod, TAB, cyclenext"
           "$mod, Q, exec, hyprctl reload"
           "$mod, P, exec, wofi --show=run"
           "$mod_SHIFT, Q, exit"
           "$mod_SHIFT, F, fullscreen"
+          "$mod, W, killactive"
+          # Focus
+          "$mod, TAB, cyclenext"
+          "$mod_SHIFT, TAB, cyclenext, prev"
+          # Move windows
+          "$mod, UP, movewindow, u"
+          "$mod, DOWN, movewindow, d"
+          "$mod, LEFT, movewindow, l"
+          "$mod, RIGHT, movewindow, r"
           ", Print, exec, grimblast copy area"
         ]
         ++ (
