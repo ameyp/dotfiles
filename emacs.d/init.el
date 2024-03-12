@@ -83,6 +83,7 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-clojure
                    ameyp-cmake
                    ameyp-coffee
+                   ameyp-denote
                    ameyp-dired
                    ameyp-docker
                    ameyp-elisp

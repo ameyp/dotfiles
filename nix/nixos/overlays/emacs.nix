@@ -35,78 +35,69 @@ self: super: rec {
   # after adding to this list.
   emacsAmeyWithPackages =
     ((super.emacsPackagesFor emacsAmey).emacsWithPackages (epkgs: with epkgs; [
-      # necessary to install through nix to get libenchant integration working
-      jinx
-
-      use-package
-      vterm
-      multi-vterm
-      exec-path-from-shell
-      package-build
       ag
-      markdown-mode
+      age
+      apheleia
+      auto-virtualenv
       clojure-mode
-      dockerfile-mode
-      swift-mode
-      eglot
-      projectile
-      terraform-mode
-      jsonnet-mode
-      company
-      undo-tree
-      modus-themes
-      spacious-padding
-      pulsar
-      counsel-projectile
-      ivy
-      counsel
-      rustic
       cmake-mode
-      protobuf-mode
-      yaml-mode
-
+      company
+      consult
+      consult-projectile
+      counsel
+      counsel-projectile
+      denote
+      direnv
+      dockerfile-mode
+      eglot
+      eglot-java
+      eldoc
+      embark
+      embark-consult
+      exec-path-from-shell
+      expand-region
+      go-mode
+      haskell-mode
+      ivy
+      jest-test-mode
+      jinx
+      jsonnet-mode
+      lsp-tailwindcss
+      magit
+      marginalia
+      markdown-mode
+      modus-themes
+      multi-vterm
+      nerd-icons
+      nerd-icons-dired
+      nix-mode
+      orderless
       org
       org-roam
       ox-hugo
       ox-pandoc
-      zig-mode
-      go-mode
-      haskell-mode
-      magit
-      nix-mode
+      package-build
+      pinentry
+      projectile
+      protobuf-mode
+      pulsar
+      pyenv-mode
+      python
+      python-pytest
+      rainbow-delimiters
+      rustic
+      smartparens
+      spacious-padding
+      swift-mode
+      terraform-mode
       tree-sitter
       treesit-grammars.with-all-grammars
-      direnv
-      vertico
-      orderless
-      consult
-      marginalia
-      embark
-      embark-consult
-      consult-projectile
-      python
-      pyenv-mode
-      auto-virtualenv
-      python-pytest
-      # whitespace
-      eldoc
-      expand-region
-      smartparens
-      rainbow-delimiters
       typescript-mode
-      # tsi
-      apheleia
-      jest-test-mode
-      eglot-java
-      lsp-tailwindcss
-
-      # For gpg
-      pinentry
-
-      age
-
-      # For icons
-      nerd-icons
-      nerd-icons-dired
+      undo-tree
+      use-package
+      vertico
+      vterm
+      yaml-mode
+      zig-mode
     ]));
 }
