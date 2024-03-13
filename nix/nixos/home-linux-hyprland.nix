@@ -120,7 +120,7 @@
         "LVDS-1,2560x1440@60,0x0,1.6"
       ];
       "exec-once" = [
-        "swaybg -m fill -i ~/Pictures/wallpapers/6.jpeg"
+        "swaybg -m fill -i ./wallpapers/artorias.jpeg"
         "waybar"
       ];
       general = {
