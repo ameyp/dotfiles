@@ -5,10 +5,57 @@
   home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
+    hyprlock
     swaybg
     wofi
     xss-lock
   ];
+
+  home.file.".config/hypr/hyprlock.conf".text = ''
+    background {
+      monitor =
+      path = ${./wallpapers/artorias.png}
+      blur_passes = 2
+      blur_size = 7
+      noise = 0.0117
+    }
+
+    input-field {
+      monitor =
+      size = 250, 50
+      position = 0, -20
+      halign = center
+      valign = center
+
+      outline_thickness = 3
+      dots_size = 0.33
+      dots_spacing = 0.15
+      dots_rounding = -1
+      outer_color = rgb(151515)
+      inner_color = rgb(200, 200, 200)
+      font_color = rgb(10, 10, 10)
+      fade_on_empty = true
+      fade_timeout = 3000
+      placeholder_text = <i>Password</i>
+      hide_input = false
+      rounding = -1
+      check_color = rgb(204, 136, 34)
+      fail_color = rgb(204, 34, 34)
+      fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
+      fail_transition = 300
+    }
+
+    label {
+      monitor =
+      text = Current time: $TIME
+      color = rgba(200, 200, 200, 1.0)
+      font_size = 30
+
+      position = 0, 80
+      halign = center
+      valign = center
+    }
+  '';
 
   gtk = {
     enable = true;
@@ -120,7 +167,7 @@
         "LVDS-1,2560x1440@60,0x0,1.6"
       ];
       "exec-once" = [
-        "swaybg -m fill -i ./wallpapers/artorias.jpeg"
+        "swaybg -m fill -i ./wallpapers/artorias.png"
         "waybar"
       ];
       general = {
