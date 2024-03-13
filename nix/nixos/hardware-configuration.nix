@@ -13,6 +13,10 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # Copied from https://wiki.hyprland.org/Nvidia/#fixing-suspendwakeup-issues
+  # Described at https://download.nvidia.com/XFree86/Linux-x86_64/435.17/README/powermanagement.html
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/775b6e5c-3c6d-4b73-a69e-6296df287491";
       fsType = "ext4";
