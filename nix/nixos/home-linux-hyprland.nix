@@ -5,8 +5,6 @@
   home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
-    betterlockscreen
-    discord
     swaybg
     wofi
     xss-lock

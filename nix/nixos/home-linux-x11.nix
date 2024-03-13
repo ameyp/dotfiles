@@ -6,7 +6,6 @@
 
   home.packages = [
     pkgs.betterlockscreen
-    pkgs.discord
     pkgs.xss-lock
   ];
 

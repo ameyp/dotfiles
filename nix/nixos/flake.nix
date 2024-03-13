@@ -121,6 +121,8 @@
         pkgs = linux-pkgs-aarch64;
         system = "aarch64-linux";
         modules = [
+          ./system-linux-common.nix
+          ./system-linux-hyprland.nix
           ./system-linux-vm.nix
           home-manager.nixosModules.home-manager
           {
@@ -129,6 +131,7 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-vm.nix)
+                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
