@@ -124,6 +124,7 @@
           ./system-linux-common.nix
           ./system-linux-hyprland.nix
           ./system-linux-vm.nix
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

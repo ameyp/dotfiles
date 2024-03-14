@@ -94,10 +94,6 @@
         layer = "top";
         position = "top";
         height = 32;
-        output = [
-          "DP-3"
-          "LVDS-1"
-        ];
         modules-left = [ "hyprland/workspaces" "hyprland/submap" "wlr/taskbar" ];
         modules-center = [ "hyprland/window" ];
         modules-right = [ "pulseaudio" "battery" "temperature" "clock" "tray" ];
@@ -165,6 +161,7 @@
       monitor = [
         "DP-3,2560x1440@120,0x0,1"
         "LVDS-1,2560x1440@60,0x0,1.6"
+        "Virtual-1,2560x1440@120,0x0,1"
       ];
       "exec-once" = [
         "swaybg -m fill -i ./wallpapers/artorias.png"

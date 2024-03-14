@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, disko, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration-vm.nix
+      ./disko-config-vm.nix
     ];
 
   networking.hostName = "nixos-vm"; # Define your hostname.
@@ -28,6 +29,7 @@
     relay.enable = false;
     systemService = true;
     user = "amey";
+    dataDir = "/home/amey";
   };
 
   # Enable the OpenSSH daemon.
