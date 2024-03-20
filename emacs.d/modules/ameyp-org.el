@@ -97,6 +97,18 @@ See `org-capture-templates' for more information."
   (add-to-list 'org-structure-template-alist '("src" . "src"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 
+  ;; Convenient function for copying the content of cells.
+  (bind-key (kbd "C-c y")
+            (lambda()(interactive)
+              (when (org-at-table-p)
+                (kill-new
+                 (string-trim
+                  (substring-no-properties(org-table-get-field))))
+                (message "copied cell: @%d$%d"
+                         (org-table-current-line)
+                         (org-table-current-column) )))
+            org-mode-map)
+
   (require 'org-tempo)
 
   :bind (("C-c l" . org-store-link)
