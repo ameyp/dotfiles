@@ -46,7 +46,7 @@ in {
   nix.settings.experimental-features = "nix-command flakes";
 
   # Necessary for netskope.
-  nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";
+  # nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
