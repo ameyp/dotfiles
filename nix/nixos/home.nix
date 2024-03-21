@@ -297,6 +297,20 @@
     enable = true;
   };
 
+  # Kitty
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableZshIntegration = true;
+    settings = {
+      # https://sw.kovidgoyal.net/kitty/conf
+      font_family = "Hack Nerd Font Mono";
+      font_size = "14.0";
+      scrollback_lines = "-1";
+      macos_option_as_alt = "yes";
+      cursor_blink_interval = "0";
+    };
+  };
+
   # Starship
   home.file.".config/starship.toml".source = ./starship.toml;
 

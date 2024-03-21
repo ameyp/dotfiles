@@ -65,7 +65,6 @@
     emacsAmeyWithPackages
     firefox
     git
-    kitty
     mullvad-vpn
     nfs-utils
     tmux
