@@ -40,4 +40,7 @@
   ": e" #'ameyp-dired-do-encrypt
   ": o" #'ameyp-dired-open-age-pdf)
 
+;; Quickly move files when two different windows are open.
+(setq dired-dwim-target t)
+
 (provide 'ameyp-dired)
