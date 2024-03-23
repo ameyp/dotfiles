@@ -307,12 +307,12 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
+    theme = "Modus Vivendi";
     settings = {
       # https://sw.kovidgoyal.net/kitty/conf
       font_family = "Hack Nerd Font Mono";
-      font_size = "14.0";
+      font_size = "12.0";
       scrollback_lines = "-1";
-      macos_option_as_alt = "yes";
       cursor_blink_interval = "0";
     };
   };
