@@ -88,7 +88,11 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
   :preface
   (setq modus-themes-org-blocks 'gray-background)
   :config
-  (load-theme 'modus-vivendi :no-confirm))
+  ;; Light theme
+  ;; (load-theme 'modus-operandi :no-confirm)
+  ;; Dark theme
+  (load-theme 'modus-vivendi :no-confirm)
+  )
 
 ;; (setq custom--inhibit-theme-enable nil)
 
