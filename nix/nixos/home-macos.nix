@@ -1,12 +1,9 @@
-{ config, pkgs, ... }:
-
-{
-  home.packages = [
-  ];
-
+{ config, pkgs, ... }: let
+  hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos\"";
+in {
   programs.zsh = {
     shellAliases = {
-      hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos\"";
+      hms = hms;
       nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos\"";
     };
     envExtra = ''
@@ -18,5 +15,11 @@
         . $NIX_DAEMON
       fi
     '';
+  };
+
+  programs.fish = {
+    shellAbbrs = {
+      hms = hms;
+    };
   };
 }

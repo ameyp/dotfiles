@@ -26,6 +26,7 @@
     pkgs.fzf
     pkgs.git
     pkgs.gopls
+    pkgs.grc
     pkgs.htop
     pkgs.lsd
     pkgs.pandoc
@@ -303,6 +304,18 @@
     enable = true;
   };
 
+  # Fish
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+      # Enable a plugin (here grc for colorized command output) from nixpkgs
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+    ];
+  };
+
   # Kitty
   programs.kitty = {
     enable = true;
@@ -314,6 +327,7 @@
       font_size = "12.0";
       scrollback_lines = "-1";
       cursor_blink_interval = "0";
+      shell = "${pkgs.fish}/bin/fish --interactive --login";
     };
   };
 
