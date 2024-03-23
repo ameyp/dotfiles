@@ -88,10 +88,18 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
   :preface
   (setq modus-themes-org-blocks 'gray-background)
   :config
-  ;; Light theme
-  ;; (load-theme 'modus-operandi :no-confirm)
-  ;; Dark theme
-  (load-theme 'modus-vivendi :no-confirm)
+  ;; Convenience function for quickly using my currently-chose light theme.
+  (defun ameyp-use-dark-theme ()
+    (interactive)
+    (load-theme 'modus-vivendi :no-confirm))
+
+  ;; Convenience function for quickly using my currently-chose dark theme.
+  (defun ameyp-use-light-theme ()
+    (interactive)
+    (load-theme 'modus-operandi :no-confirm))
+
+  ;; Load dark theme by default.
+  (ameyp-use-dark-theme)
   )
 
 ;; (setq custom--inhibit-theme-enable nil)
