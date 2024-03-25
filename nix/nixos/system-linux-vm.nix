@@ -20,6 +20,8 @@
     setSocketVariable = true;
   };
 
+  virtualisation.vmware.guest.enable = true;
+
   services.tailscale = {
     enable = true;
   };
