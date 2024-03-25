@@ -44,6 +44,9 @@
   # Enable zsh
   programs.zsh.enable = true;
 
+  # Enable fish
+  programs.fish.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amey = {
     isNormalUser = true;

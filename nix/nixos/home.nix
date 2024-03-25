@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   news.display = "silent";
 
   # Enable font management
@@ -138,8 +138,9 @@
       compinit
     '';
     shellAliases = {
-      gca = "git commit -a --amend --no-edit";
-      ec = "emacsclient -c";
+      gca = "${pkgs.git}/bin/git commit -a --amend --no-edit";
+      ec = "${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c";
+      ls = "${pkgs.lsd}/bin/lsd";
     };
     envExtra = ''
       export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
@@ -161,27 +162,19 @@
       fi
 
       # Set editor.
-      export EDITOR='emacsclient -c'
+      export EDITOR='${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
 
       # Set git editor.
-      export GIT_EDITOR='emacsclient -c'
+      export GIT_EDITOR='${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
 
       # Configure ripgrep defaults
       export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
       # Set fzf default command.
-      if [[ -x $(command -v fzf) && \
-            -x $(command -v rg) ]]; then
-        export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-      fi
-
-      if [[ -x $(command -v lsd) ]]; then
-        alias ls='lsd'
-      fi
+      export FZF_DEFAULT_COMMAND='${pkgs.ripgrep}/bin/rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
       # Add local binaries to path.
-
       if [[ -d $HOME/.local ]]; then
         PATH=$HOME/.local:$PATH
       fi
@@ -223,13 +216,13 @@
     initExtra = ''
       ## Late-init environment variables
       # Direnv
-      [ -x $(command -v direnv) ] && eval "$(direnv hook zsh)"
+      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
 
       # Starship
-      [ -x $(command -v starship) ] && eval "$(starship init zsh)"
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
 
       # Pyenv
-      [ -x $(command -v pyenv) ] && eval "$(pyenv init -)"
+      eval "$(${pkgs.pyenv}/bin/pyenv init -)"
 
       [ -f ~/.zsh-extra ] && . ~/.zsh-extra
 
@@ -293,7 +286,7 @@
 
       # Delete local branches that have been merged to main.
       function gitprune () {
-        git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done
+        ${pkgs.git}/bin/git checkout -q main && ${pkgs.git}/bin/git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(${pkgs.git}/bin/git merge-base main $branch) && [[ $(${pkgs.git}/bin/git cherry main $(${pkgs.git}/bin/git commit-tree $(${pkgs.git}/bin/git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && ${pkgs.git}/bin/git branch -D $branch; done
       }
     '';
   };
@@ -307,12 +300,73 @@
   # Fish
   programs.fish = {
     enable = true;
+    shellAbbrs = {
+      gca = "${pkgs.git}/bin/git commit -a --amend --no-edit";
+      ec = "${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c";
+    };
+    shellAliases = {
+      ls = "${pkgs.lsd}/bin/lsd";
+    };
+    shellInit = ''
+      set -x XDG_DATA_HOME $HOME/.local/share
+      set -x XDG_CONFIG_HOME $HOME/.config
+      set -x XDG_DATA_DIRS $HOME/.nix-profile/share/applications:/usr/local/share/:/usr/share/
+      set -x XDG_CONFIG_DIRS /etc/xdg
+      set -x XDG_CACHE_HOME $HOME/.cache
+
+      # Set editor.
+      set -x EDITOR '${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
+
+      # Set git editor.
+      set -x GIT_EDITOR '${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
+
+      # Configure ripgrep defaults
+      set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+
+      # Set fzf default command.
+      set -x FZF_DEFAULT_COMMAND '${pkgs.ripgrep}/bin/rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+      set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+
+      if test -d "$HOME/.local"
+        fish_add_path "$HOME/.local"
+      end
+
+      if test -d "$HOME/.local/bin"
+        fish_add_path "$HOME/.local/bin"
+      end
+
+      if test -d "$HOME/.npm/bin"
+        fish_add_path "$HOME/.npm/bin"
+      end
+
+      eval (${pkgs.direnv}/bin/direnv hook fish)
+
+      if test -f "$HOME/.fish-extra"
+        source "$HOME/.fish-extra"
+      end
+    '';
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+
+      # https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+      # The documentation says to execute this interactively.
+      if test -d "$HOME/.pyenv"
+        set -Ux PYENV_ROOT "$HOME/.pyenv"
+        fish_add_path "$PYENV_ROOT/bin"
+      end
     '';
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      {
+        name = "nvm";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "nvm.fish";
+          rev = "c69e5d1017b21bcfca8f42c93c7e89fff6141a8a";
+          sha256 = "LV5NiHfg4JOrcjW7hAasUSukT43UBNXGPi1oZWPbnCA=";
+        };
+      }
     ];
   };
 
@@ -324,7 +378,7 @@
     settings = {
       # https://sw.kovidgoyal.net/kitty/conf
       font_family = "Hack Nerd Font Mono";
-      font_size = "12.0";
+      font_size = lib.mkDefault "12.0";
       scrollback_lines = "-1";
       cursor_blink_interval = "0";
       shell = "${pkgs.fish}/bin/fish --interactive --login";
