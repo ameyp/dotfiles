@@ -110,6 +110,15 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-zig
                    ))
 
+;; This packages implements the kitty keyboard protocol for emacs, making it possible to use keybinds
+;; like C-, even in terminal windows. By default, kitty needs terminal programs to implement its protocol
+;; and doesn't implement https://www.leonerd.org.uk/hacks/fixterms/ in legacy mode.
+(use-package kkp
+  :ensure t
+  :config
+  ;; (setq kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
+  (global-kkp-mode +1))
+
 ;; Load modules that live outside of my dotfiles.
 (if (file-readable-p "~/.emacs-extra/init.el")
     (load "~/.emacs-extra/init.el"))

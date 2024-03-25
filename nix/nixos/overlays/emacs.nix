@@ -62,6 +62,7 @@ self: super: rec {
       jest-test-mode
       jinx
       jsonnet-mode
+      kkp # For kitty keyboard protocol, so that my keybinds work in terminal emacs.
       lsp-tailwindcss
       magit
       marginalia
