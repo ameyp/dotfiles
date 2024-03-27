@@ -383,6 +383,7 @@
               set prompt_status $status_color "[" $last_status "]" $normal
           end
 
+          echo ""
           echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
           echo -n -s $status_color $suffix ' ' $normal
       end
