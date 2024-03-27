@@ -409,6 +409,7 @@
     theme = "Modus Vivendi";
     settings = {
       # https://sw.kovidgoyal.net/kitty/conf
+      adjust_line_height = "105%";
       font_family = "Hack Nerd Font Mono";
       font_size = lib.mkDefault "12.0";
       scrollback_lines = "-1";
