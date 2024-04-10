@@ -122,179 +122,25 @@
   # ZSH
   programs.zsh = {
     enable = true;
-    defaultKeymap = "emacs";
-    history = {
-      extended = true;
-      ignoreDups = true;
-      ignoreSpace = true;
-      path = "$XDG_CACHE_HOME/zsh/history";
-      save = 10000;
-      size = 10000;
-      share = true;
-    };
-    completionInit = ''
-      autoload compinit
-      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-      compinit
-    '';
-    shellAliases = {
-      gca = "${pkgs.git}/bin/git commit -a --amend --no-edit";
-      ec = "${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c";
-      ls = "${pkgs.lsd}/bin/lsd";
-    };
-    envExtra = ''
-      export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
-
-      # Nix
-      [ -f /etc/profile ] && source /etc/profile
-
-      # XDG Base Directory Specification.
-      export XDG_DATA_HOME=$HOME/.local/share
-      export XDG_CONFIG_HOME=$HOME/.config
-      export XDG_DATA_DIRS=$HOME/.nix-profile/share/applications:/usr/local/share/:/usr/share/
-      export XDG_CONFIG_DIRS=/etc/xdg
-      export XDG_CACHE_HOME=$HOME/.cache
-      ! [ -d $XDG_CACHE_HOME/zsh ] && mkdir -p $XDG_CACHE_HOME/zsh
-
-      # Set ssh-agent socket.
-      if [[ -S $XDG_RUNTIME_DIR/ssh-agent.socket ]]; then
-        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-      fi
-
-      # Set editor.
-      export EDITOR='${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
-
-      # Set git editor.
-      export GIT_EDITOR='${pkgs.emacsAmeyWithPackages}/bin/emacsclient -c'
-
-      # Configure ripgrep defaults
-      export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-
-      # Set fzf default command.
-      export FZF_DEFAULT_COMMAND='${pkgs.ripgrep}/bin/rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-      # Add local binaries to path.
-      if [[ -d $HOME/.local ]]; then
-        PATH=$HOME/.local:$PATH
-      fi
-
-      if [[ -d $HOME/.local/bin ]]; then
-        PATH=$HOME/.local/bin:$PATH
-      fi
-
-      # Add npm installed binaries to path.
-      if [[ -d $HOME/.npm/bin ]]; then
-        PATH=$HOME/.npm/bin:$PATH
-      fi
-
-      # Disable fancy prompts for tramp to work.
-      if [[ "$TERM" == "dumb" ]]; then
-          unsetopt zle
-          PS1='$ '
-      fi
-
-      if [[ -d $HOME/Applications/android-sdk ]]; then
-          export ANDROID_HOME=$HOME/Applications/android-sdk
-          export PATH=$ANDROID_HOME/platform-tools:$PATH
-      fi
-
-      if [[ -d $HOME/Developer && -d $HOME/Developer/go ]]; then
-          export GOPATH=$HOME/Developer/go
-          export PATH=$GOPATH/bin:$PATH
-      fi
-
-      if [[ -d $HOME/.pyenv ]]; then
-          export PATH=$HOME/.pyenv/bin:$PATH
-      fi
-
-      if [[ -d $HOME/.config/nvm ]]; then
-          export NVM_DIR="$HOME/.config/nvm"
-          . "$NVM_DIR/nvm.sh"
-      fi
-          '';
     initExtra = ''
-      ## Late-init environment variables
-      # Direnv
-      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-
-      # Starship
-      eval "$(${pkgs.starship}/bin/starship init zsh)"
-
-      # Pyenv
-      eval "$(${pkgs.pyenv}/bin/pyenv init -)"
-
-      [ -f ~/.zsh-extra ] && . ~/.zsh-extra
-
-      ## Options
-
-      # extended globbing patterns
-      setopt extendedglob
-
-      # not just at the end
-      setopt completeinword
-
-      # Don't send SIGHUP to background processes when the shell exits.
-      setopt nohup
-
-      # make cd push the old directory onto the directory stack.
-      setopt auto_pushd
-
-      # avoid "beep"ing
-      setopt nobeep
-
-      # don't push the same dir twice.
-      setopt pushd_ignore_dups
-
-      # use zsh style word splitting
-      setopt noshwordsplit
-
-      # What zsh identifies as a word delimiter
-      autoload -U select-word-style
-      select-word-style bash
-
-      ## Functions
-
-      # Find: [f]ile by name.
-      function ff () {
-        if ! [[ -n "$1" ]]; then
-          echo 'Must specify a search string.'
-          return 1
-        fi
-
-        find . -name "$1"
-      }
-
-      # Find: name [a]ll.
-      function fa () { ff "*$1*" }
-
-      # Find: name [s]tarts with.
-      function fs () { ff "$1*" }
-
-      # Find name [e]nds with.
-      function fe () { ff "*$1" }
-
-      # Create a new tar archive.
-      function tarz () {
-        if ! [[ -n "$1" ]]; then
-          echo 'Must specify directory to use.'
-          return 1
-        fi
-
-        tar -czf $1.tar.gz $1
-      }
-
-      # Delete local branches that have been merged to main.
-      function gitprune () {
-        ${pkgs.git}/bin/git checkout -q main && ${pkgs.git}/bin/git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(${pkgs.git}/bin/git merge-base main $branch) && [[ $(${pkgs.git}/bin/git cherry main $(${pkgs.git}/bin/git commit-tree $(${pkgs.git}/bin/git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && ${pkgs.git}/bin/git branch -D $branch; done
-      }
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        [[ -o login ]] && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
     '';
   };
 
   # Bash
-  programs.bash = let bash_attrs = {
-  }; in {
+  programs.bash = {
     enable = true;
+    initExtra = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
 
   # Fish
