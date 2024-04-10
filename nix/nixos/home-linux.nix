@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "amey";
-  home.homeDirectory = "/home/${config.home.username}";
+  home.username = lib.mkDefault "amey";
+  home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
   targets.genericLinux.enable = true;
 

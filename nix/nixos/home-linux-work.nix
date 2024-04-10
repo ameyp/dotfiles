@@ -4,7 +4,7 @@ in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "aparulek";
-  home.homeDirectory = "/home/${config.home.username}";
+  home.homeDirectory = "/usr2/${config.home.username}";
 
   programs.zsh.shellAliases = {
     hms = hms;
