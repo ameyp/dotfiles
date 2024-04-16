@@ -233,6 +233,17 @@
           echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
           echo -n -s $status_color $suffix ' ' $normal
       end
+
+      # Necessary for emacs tramp to work.
+      if test "$TERM" = "dumb"
+        function fish_prompt
+          echo "\$ "
+        end
+
+        function fish_right_prompt; end
+        function fish_greeting; end
+        function fish_title; end
+      end
     '';
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
