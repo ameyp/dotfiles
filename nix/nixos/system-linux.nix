@@ -12,6 +12,18 @@
 
   networking.hostName = "nixos-desktop"; # Define your hostname.
 
+  # Add wirywolf-media user and group so that I can access NFS shares from my desktop.
+  users.groups.wirywolf-media = {
+    gid = 5001;
+  };
+  users.users.wirywolf-media = {
+    uid = 5001;
+    isNormalUser = true;
+    description = "wirywolf-media";
+    extraGroups = [ "wirywolf-media" ];
+    shell = pkgs.zsh;
+  };
+
   # Enable docker daemon
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
