@@ -176,12 +176,12 @@
       };
       bind =
         [
-          "$mod, F, exec, firefox"
           "$mod, C, exec, kitty"
           "$mod, E, exec, emacsclient -c"
           "$mod, Q, exec, hyprctl reload"
           "$mod, P, exec, wofi --show=run"
           "$mod_SHIFT, Q, exit"
+          "$mod, F, fakefullscreen"
           "$mod_SHIFT, F, fullscreen"
           "$mod, W, killactive"
           # Focus
