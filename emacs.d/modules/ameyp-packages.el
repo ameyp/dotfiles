@@ -2,11 +2,11 @@
 
 (require 'use-package)
 
-(use-package exec-path-from-shell)
-(exec-path-from-shell-initialize)
+;;(use-package exec-path-from-shell)
+;;(exec-path-from-shell-initialize)
 
-                                        ;(require 'use-package-ensure)
-                                        ;(setq use-package-always-ensure t)
+;;(require 'use-package-ensure)
+;;(setq use-package-always-ensure t)
 
 (use-package package-build)
 
