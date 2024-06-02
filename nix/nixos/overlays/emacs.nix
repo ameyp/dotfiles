@@ -79,6 +79,7 @@ self: super: rec {
       ox-pandoc
       package-build
       pinentry
+      prisma-mode
       projectile
       protobuf-mode
       pulsar
