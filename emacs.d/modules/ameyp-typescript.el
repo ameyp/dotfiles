@@ -16,9 +16,14 @@
   :commands jest-test-mode
   :hook (typescript-mode js-mode typescript-tsx-mode))
 
-;; Not working, getting an internal server error.
-;; (use-package lsp-tailwindcss
-;;   :config
-;;   (setq lsp-tailwindcss-add-on-mode t))
+;; https://github.com/merrickluo/lsp-tailwindcss
+(use-package lsp-tailwindcss
+  :init
+  (setq lsp-tailwindcss-add-on-mode t)
+  :config
+  (add-to-list 'eglot-server-programs '((txs-ts-mode :language-id "tsx") . ("tailwindcss-language-server")))
+  (add-to-list 'eglot-server-programs
+               '((tsx-ts-mode :language-id "tsx") . ("tailwindcss-language-server" "--stdio")))
+  )
 
 (provide 'ameyp-typescript)
