@@ -26,7 +26,8 @@
     user = "amey";
   };
 
-  services.safeeyes.enable = true;
+  # Disabled because of the python3.12 fiasco.
+  # services.safeeyes.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

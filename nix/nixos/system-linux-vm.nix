@@ -45,7 +45,6 @@
 
   hardware.opengl = {
     # enable = lib.mkForce false;
-    # driSupport = lib.mkForce false;
     # 32-bit doesn't make sense on an aarch64 machine.
     driSupport32Bit = lib.mkForce false;
   };

@@ -110,7 +110,8 @@
     user = "amey";
   };
 
-  services.safeeyes.enable = true;
+  # Disabled because of the python3.12 fiasco.
+  # services.safeeyes.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -122,10 +123,9 @@
   # networking.firewall.enable = false;
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # This value determines the NixOS release from which the default

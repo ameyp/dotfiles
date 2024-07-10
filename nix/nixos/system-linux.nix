@@ -48,7 +48,7 @@
   services.printing = {
     enable = true;
     browsing = true;
-    drivers = [ pkgs.hplipWithPlugin ];
+    drivers = [ pkgs.brlaser ];
   };
 
   sound.enable = true;
@@ -56,9 +56,6 @@
     enable = true;
     support32Bit = true;
   };
-
-  # Without this, no mouse cursor is visible with an Nvidia GPU.
-  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -85,7 +82,7 @@
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
+    # powerManagement.enable = false;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
@@ -105,7 +102,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # This value determines the NixOS release from which the default

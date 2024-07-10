@@ -72,7 +72,7 @@
     };
 
     iconTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
 
@@ -162,6 +162,8 @@
         "DP-3,2560x1440@120,0x0,1"
         "LVDS-1,2560x1440@60,0x0,1.6"
         "Virtual-1,2560x1440@120,0x0,1"
+        # This monitor showed up recently, seems like an Nvidia driver issue.
+        "Unknown-1,disable"
       ];
       "exec-once" = [
         "swaybg -m fill -i ./wallpapers/artorias.png"
