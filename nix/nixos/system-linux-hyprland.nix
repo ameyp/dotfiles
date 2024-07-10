@@ -11,6 +11,10 @@
   # https://github.com/nix-community/home-manager/issues/3113
   programs.dconf.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    android-studio
+  ];
+
   xdg.portal = {
     enable = true;
     config = {
