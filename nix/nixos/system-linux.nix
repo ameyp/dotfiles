@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./services-dropbox.nix
     ];
 
   networking.hostName = "nixos-desktop"; # Define your hostname.

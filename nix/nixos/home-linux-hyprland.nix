@@ -162,6 +162,7 @@
         "DP-3,2560x1440@120,0x0,1"
         "LVDS-1,2560x1440@60,0x0,1.6"
         "Virtual-1,2560x1440@120,0x0,1"
+        "eDP-1,1920x1080@144,0x0,1"
         # This monitor showed up recently, seems like an Nvidia driver issue.
         "Unknown-1,disable"
       ];

@@ -81,6 +81,7 @@
         modules = [
           ./system-linux-common.nix
           ./system-linux-hyprland.nix
+          ./system-linux-desktop.nix
           ./system-linux.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -107,6 +108,32 @@
           ./system-linux-common.nix
           ./system-linux-hyprland.nix
           ./system-linux-thinkpad.nix
+          sops-nix.nixosModules.sops
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.amey = {
+              imports = [
+                (import ./home-linux-personal.nix)
+                (import ./home-linux-hyprland.nix)
+                (import ./home-linux.nix)
+                (import ./home-personal.nix)
+                (import ./home.nix)
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.linux-laptop = nixpkgs.lib.nixosSystem {
+        pkgs = linux-pkgs;
+        system = "x86_64-linux";
+        modules = [
+          ./system-linux-common.nix
+          ./system-linux-hyprland.nix
+          ./system-linux-laptop.nix
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
