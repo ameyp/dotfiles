@@ -39,9 +39,6 @@
     pkgs.rage
     pkgs.pinentry-gtk2
 
-    # PDF viewer that can read from stdin
-    pkgs.zathura
-
     # lsp
     pkgs.tailwindcss-language-server
   ];
@@ -282,6 +279,14 @@
 
   # Ripgrep
   home.file.".ripgreprc".source = ./ripgreprc;
+
+  # Zathura, PDF viewer
+  programs.zathura = {
+    enable = true;
+    options = {
+      database = "sqlite";
+    };
+  };
 
   # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
   # Lockscreen

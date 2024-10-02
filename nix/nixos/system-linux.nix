@@ -52,12 +52,6 @@
     drivers = [ pkgs.brlaser ];
   };
 
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    support32Bit = true;
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
