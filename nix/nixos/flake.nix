@@ -145,6 +145,7 @@
                 (import ./home-linux-personal.nix)
                 (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
+                (import ./home-linux-laptop.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
               ];
