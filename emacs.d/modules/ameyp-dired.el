@@ -1,6 +1,17 @@
 (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 
+;; List for what external programs are invoked when ! or & is pressed.
+(setq dired-guess-shell-alist-user
+      (list
+       ;; (list "\\.pdf$" "zathura")  ; fixed rule
+       ;; possibly more rules...
+       (list "\\.pdf$"  ; rule with condition test
+             '(cond ((eq system-type 'darwin) "open")
+                    ((eq system-type 'gnu/linux) "zathura"))
+             )))
+
+
 (setq amey-age-public-key "age1vwx5jpt3remv9l0yvvj5v4qzkp9jfr42kds3uv9ynecntzlrgezqdj7zth")
 
 (use-package age
