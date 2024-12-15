@@ -26,9 +26,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty.url = "github:clo4/ghostty-hm-module";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, sops-nix, disko, emacs-overlay, nix-darwin, ... }:
+  outputs = inputs@{ self, ghostty, home-manager, nixpkgs, nixpkgs-master, sops-nix, disko, emacs-overlay, nix-darwin, ... }:
     let
       pkg-config = {
         allowUnfree = true;
@@ -190,6 +191,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.aparulek = {
               imports = [
+                ghostty.homeModules.default
                 (import ./home-macos-work.nix)
                 (import ./home-macos.nix)
                 (import ./home-work.nix)
@@ -233,6 +235,7 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
+            ghostty.homeModules.default
             ./home-macos-work.nix
             ./home-macos.nix
             ./home-work.nix

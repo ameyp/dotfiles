@@ -260,22 +260,22 @@
     ];
   };
 
-  # Kitty
-  programs.kitty = {
+  programs.ghostty = {
     enable = true;
-    shellIntegration.enableZshIntegration = true;
-    theme = "Modus Vivendi";
     settings = {
-      # https://sw.kovidgoyal.net/kitty/conf
-      adjust_line_height = "105%";
-      font_family = "Hack Nerd Font Mono";
-      font_size = lib.mkDefault "12.0";
-      scrollback_lines = "-1";
-      cursor_blink_interval = "0";
-      shell = "${pkgs.fish}/bin/fish --interactive --login";
+      font-family = "Iosevka";
+      font-style = "Heavy";
+      font-size = 14;
+      font-thicken = false;
+      cursor-style-blink = false;
+      shell-integration = "fish";
+      command = "/etc/profiles/per-user/aparulek/bin/fish --interactive --login";
+      # theme = Adventure
+      theme = "Banana Blueberry";
+      macos-option-as-alt = true;
     };
     keybindings = {
-      "ctrl+shift+p" = "detach_tab";
+      "ctrl+z" = "reload_config";
     };
   };
 
