@@ -6,8 +6,8 @@ set -x
 # Install nix
 
 if ! [[ -x $(command -v nix) ]]; then
-    curl -L https://nixos.org/nix/install | sh
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
 if ! [[ -x $(command -v home-manager) ]]; then
