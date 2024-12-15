@@ -23,7 +23,6 @@
     pkgs.curl
     pkgs.direnv
     pkgs.fd
-    pkgs.fzf
     pkgs.git
     pkgs.gopls
     pkgs.grc
@@ -32,7 +31,6 @@
     pkgs.pandoc
     pkgs.pyenv
     pkgs.ripgrep
-    pkgs.starship
     pkgs.wget
 
     pkgs.age
@@ -166,10 +164,6 @@
       # Configure ripgrep defaults
       set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 
-      # Set fzf default command.
-      set -x FZF_DEFAULT_COMMAND '${pkgs.ripgrep}/bin/rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-      set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-
       if test -d "$HOME/.local"
         fish_add_path "$HOME/.local"
       end
@@ -191,13 +185,21 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
+      if test -n "$GHOSTTY_RESOURCES_DIR"
+        source $GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+      end
+
       # https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
       # The documentation says to execute this interactively.
       if test -d "$HOME/.pyenv"
         set -Ux PYENV_ROOT "$HOME/.pyenv"
         fish_add_path "$PYENV_ROOT/bin"
         pyenv init - | source
+        fish_add_path "$PYENV_ROOT/shims"
       end
+
+      # https://github.com/atuinsh/atuin?tab=readme-ov-file#fish
+      ${pkgs.atuin}/bin/atuin init fish | source
 
       # Fish executes a fish_prompt function whenever it needs to show the prompt.
       function fish_prompt --description 'Write out the prompt'
@@ -272,10 +274,10 @@
       cursor_blink_interval = "0";
       shell = "${pkgs.fish}/bin/fish --interactive --login";
     };
+    keybindings = {
+      "ctrl+shift+p" = "detach_tab";
+    };
   };
-
-  # Starship
-  home.file.".config/starship.toml".source = ./starship.toml;
 
   # Ripgrep
   home.file.".ripgreprc".source = ./ripgreprc;
@@ -288,6 +290,14 @@
     };
   };
 
+  # Atuin https://github.com/atuinsh/atuin
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = false;
+    };
+  };
+  
   # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
   # Lockscreen
   # Initialize it with images by running

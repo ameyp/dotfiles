@@ -46,6 +46,7 @@
   (defconst ameyp/org-tasks-personal-file "~/Sync/Documents/org-mode/tasks.org")
   (defconst ameyp/org-tasks-work-file "~/Documents/org-mode/tasks.org")
   (defconst ameyp/org-journal-personal-file "~/Sync/Documents/org-mode/journal.org")
+  (defconst ameyp/org-journal-work-file "~/OneDrive - Qualcomm/Documents/journal.org")
 
   (setq org-agenda-files (list ameyp/org-tasks-personal-file ameyp/org-tasks-work-file))
   ;; Set this to t, otherwise org-mode complains when agenda files are missing.
@@ -82,7 +83,11 @@ See `org-capture-templates' for more information."
            entry (file+headline "~/Sync/Documents/org-mode/tasks.org" "Tasks")
            "* TODO %? \nCREATED: %U\n")
           ("j" "Journal Entry"
-           entry (file+datetree "~/Sync/Documents/org-mode/journal.org")
+           entry (file+datetree ameyp/org-journal-personal-file)
+           "* %(format-time-string \"%H:%M:%S\") %?\n"
+           :empty-lines 1)
+          ("w" "Work Journal Entry"
+           entry (file+datetree ameyp/org-journal-work-file)
            "* %(format-time-string \"%H:%M:%S\") %?\n"
            :empty-lines 1)
           ("h" "Hugo post"

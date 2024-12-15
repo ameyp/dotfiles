@@ -103,6 +103,7 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-swift
                    ameyp-syntax
                    ameyp-terraform
+                   ameyp-tramp
                    ameyp-typescript
                    ameyp-vertico
                    ameyp-warnings
