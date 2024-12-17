@@ -18,6 +18,8 @@ in {
       emacsAmeyWithPackages
     ];
 
+    users.users."${cfg.username}".home = "/Users/${cfg.username}";
+
     # In order to add custom DNS servers using scutil, create a file with the following content:
     # open
     # d.init
