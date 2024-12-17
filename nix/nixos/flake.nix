@@ -184,7 +184,31 @@
       darwinConfigurations.macos = nix-darwin.lib.darwinSystem {
         pkgs = darwin-pkgs;
         modules = [
-          darwin-system
+          darwin-system {
+            systemMacOs.username = "amey";
+          }
+          # This should work, but complains about systemd being a missing attribute.
+          home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.amey = {
+              imports = [
+                ghostty.homeModules.default
+                (import ./home-macos.nix)
+                (import ./home-personal.nix)
+                (import ./home.nix)
+              ];
+            };
+          }
+        ];
+      };
+
+      darwinConfigurations.macos-work = nix-darwin.lib.darwinSystem {
+        pkgs = darwin-pkgs;
+        modules = [
+          darwin-system {
+            systemMacOs.username = "aparulek";
+          }
           # This should work, but complains about systemd being a missing attribute.
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -230,6 +254,18 @@
           ];
         };
         "macos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = darwin-pkgs;
+
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            ghostty.homeModules.default
+            ./home-macos.nix
+            ./home-personal.nix
+            ./home.nix
+          ];
+        };
+        "macos-work" = home-manager.lib.homeManagerConfiguration {
           pkgs = darwin-pkgs;
 
           # Specify your home configuration modules here, for example,

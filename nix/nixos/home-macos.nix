@@ -1,11 +1,14 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
   hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos\"";
   nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos\"";
 in {
+  home.username = lib.mkDefault "amey";
+  home.homeDirectory = lib.mkDefault "/Users/${config.home.username}";
+
   programs.zsh = {
     shellAliases = {
-      hms = hms;
-      nds = nds;
+      hms = lib.mkDefault hms;
+      nds = lib.mkDefault nds;
     };
     envExtra = ''
       [[ -f /opt/homebrew/bin/brew ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH

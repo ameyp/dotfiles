@@ -1,79 +1,85 @@
 { pkgs, config, lib, ... }: let
   username = "aparulek";
+  cfg = config.systemMacOs;
 in {
-
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    # ((emacsPackagesFor emacs).emacsWithPackages (
-    #   epkgs: with epkgs; [
-    #   ]
-    # ))
-    emacsAmeyWithPackages
-  ];
-
-  # In order to add custom DNS servers using scutil, create a file with the following content:
-  # open
-  # d.init
-  # d.add ServerAddresses * 192.168.1.1 8.8.8.8
-  # quit
-  #
-  # Then run sudo scutil < filename
-
-  homebrew = {
-    enable = true;
-    casks = [
-      # sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
-      "iterm2"
-      "raycast"
-      "stretchly"
-    ];
-    # Did not work for stretchly
-    # caskArgs = {
-    #   no_quarantine = true;
-    # };
-    taps = [
-    ];
-    brews = [
-      "difftastic"
-    ];
+  options.systemMacOs.username = lib.mkOption {
+    type = lib.types.str;
+    default = "amey";
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  config = {
+    # List packages installed in system profile. To search by name, run:
+    # $ nix-env -qaP | grep wget
+    environment.systemPackages = with pkgs; [
+      # ((emacsPackagesFor emacs).emacsWithPackages (
+      #   epkgs: with epkgs; [
+      #   ]
+      # ))
+      emacsAmeyWithPackages
+    ];
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+    # In order to add custom DNS servers using scutil, create a file with the following content:
+    # open
+    # d.init
+    # d.add ServerAddresses * 192.168.1.1 8.8.8.8
+    # quit
+    #
+    # Then run sudo scutil < filename
 
-  # Necessary for netskope.
-  # nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";
+    homebrew = {
+      enable = true;
+      casks = [
+        # sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
+        "iterm2"
+        "raycast"
+        "stretchly"
+      ];
+      # Did not work for stretchly
+      # caskArgs = {
+      #   no_quarantine = true;
+      # };
+      taps = [
+      ];
+      brews = [
+        "difftastic"
+      ];
+    };
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
+    # Auto upgrade nix package and the daemon service.
+    services.nix-daemon.enable = true;
+    # nix.package = pkgs.nix;
 
-  # Same for fish.
-  programs.fish.enable = true;
+    # Necessary for using flakes on this system.
+    nix.settings.experimental-features = "nix-command flakes";
 
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = config.rev or config.dirtyRev or null;
+    # Necessary for netskope.
+    # nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+    # Create /etc/zshrc that loads the nix-darwin environment.
+    programs.zsh.enable = true;  # default shell on catalina
 
-  # Nix-darwin does not link installed applications to the user environment. This means apps will not show up
-  # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
-  # Upstream issue: https://github.com/LnL7/nix-darwin/issues/214
-  system.activationScripts.applications.text = lib.mkForce ''
+    # Same for fish.
+    programs.fish.enable = true;
+
+    # Set Git commit hash for darwin-version.
+    system.configurationRevision = config.rev or config.dirtyRev or null;
+
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    system.stateVersion = 4;
+
+    # Nix-darwin does not link installed applications to the user environment. This means apps will not show up
+    # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
+    # Upstream issue: https://github.com/LnL7/nix-darwin/issues/214
+    system.activationScripts.applications.text = lib.mkForce ''
     echo "setting up ~/Applications..." >&2
-    applications="/Users/${username}/Applications"
+    applications="/Users/${cfg.username}/Applications"
     nix_apps="$applications/Nix Apps"
 
     # Needs to be writable by the user so that home-manager can symlink into it
     if ! test -d "$applications"; then
         mkdir -p "$applications"
-        chown ${username}: "$applications"
+        chown ${cfg.username}: "$applications"
         chmod u+w "$applications"
     fi
 
@@ -86,6 +92,7 @@ in {
         done
   '';
 
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
+    # The platform the configuration will be used on.
+    nixpkgs.hostPlatform = "aarch64-darwin";
+  };
 }

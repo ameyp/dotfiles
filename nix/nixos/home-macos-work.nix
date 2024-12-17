@@ -1,9 +1,18 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: let
+  hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos-work\"";
+  nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos\"";
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "aparulek";
+  home.username = lib.mkForce "aparulek";
   home.homeDirectory = lib.mkForce "/Users/${config.home.username}";
 
+  programs.zsh = {
+    shellAliases = {
+      hms = lib.mkOverride 51 hms;
+      nds = lib.mkOverride 51 nds;
+    };
+  };
   programs.kitty.settings = {
     # I need bigger fonts on macOS.
     font_size = "14.0";
