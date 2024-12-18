@@ -53,6 +53,7 @@ in {
 
     # Necessary for using flakes on this system.
     nix.settings.experimental-features = "nix-command flakes";
+    nix.channel.enable = false;
 
     # Necessary for netskope.
     # nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";
