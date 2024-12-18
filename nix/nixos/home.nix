@@ -114,30 +114,6 @@
     ];
   };
 
-  # ZSH
-  programs.zsh = {
-    enable = true;
-    initExtra = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        [[ -o login ]] && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
-
-  # Bash
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
-
   # Fish
   programs.fish = {
     enable = true;
@@ -269,7 +245,7 @@
       font-thicken = false;
       cursor-style-blink = false;
       shell-integration = "fish";
-      command = "/etc/profiles/per-user/aparulek/bin/fish --interactive --login";
+      command = "${pkgs.fish}/bin/fish --interactive --login";
       # theme = Adventure
       theme = "Banana Blueberry";
       macos-option-as-alt = true;
