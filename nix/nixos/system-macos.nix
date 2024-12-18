@@ -32,9 +32,9 @@ in {
       enable = true;
       casks = [
         # sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
-        "iterm2"
+        "breaktimer"
+        "keepingyouawake"
         "raycast"
-        "stretchly"
       ];
       # Did not work for stretchly
       # caskArgs = {
