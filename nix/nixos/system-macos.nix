@@ -33,6 +33,7 @@ in {
       casks = [
         # sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
         "breaktimer"
+        "discord"
         "keepingyouawake"
         "raycast"
       ];
