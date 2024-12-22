@@ -27,6 +27,7 @@
     pkgs.gopls
     pkgs.grc
     pkgs.htop
+    pkgs.iosevka-comfy.comfy
     pkgs.lsd
     pkgs.pandoc
     pkgs.pyenv
@@ -239,8 +240,8 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      font-family = "Iosevka";
-      font-style = "Heavy";
+      font-family = "Iosevka Comfy";
+      font-style = "Regular";
       font-size = 14;
       font-thicken = false;
       cursor-style-blink = false;
@@ -273,7 +274,7 @@
       auto_sync = false;
     };
   };
-  
+
   # xdg.configFile."xmonad".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/xmonad";
   # Lockscreen
   # Initialize it with images by running

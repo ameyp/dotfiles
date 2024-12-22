@@ -44,9 +44,11 @@ self: super: rec {
       company
       consult
       consult-projectile
+      corfu
       counsel
       counsel-projectile
       denote
+      dired-subtree
       direnv
       dockerfile-mode
       eglot
@@ -70,6 +72,8 @@ self: super: rec {
       modus-themes
       multi-vterm
       nerd-icons
+      nerd-icons-completion
+      nerd-icons-corfu
       nerd-icons-dired
       nix-mode
       orderless
@@ -92,6 +96,7 @@ self: super: rec {
       spacious-padding
       swift-mode
       terraform-mode
+      trashed
       tree-sitter
       treesit-grammars.with-all-grammars
       typescript-mode

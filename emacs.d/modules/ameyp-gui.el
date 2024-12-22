@@ -81,6 +81,37 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 
 (global-display-line-numbers-mode)
 
+;; Deleted selected text upon text insertion
+(use-package delsel
+  :ensure nil ; no need to install it as it is built-in
+  :hook (after-init . delete-selection-mode))
+
+(defun prot/keyboard-quit-dwim ()
+  "Do-What-I-Mean behaviour for a general `keyboard-quit'.
+
+The generic `keyboard-quit' does not do the expected thing when
+the minibuffer is open.  Whereas we want it to close the
+minibuffer, even without explicitly focusing it.
+
+The DWIM behaviour of this command is as follows:
+
+- When the region is active, disable it.
+- When a minibuffer is open, but not focused, close the minibuffer.
+- When the Completions buffer is selected, close it.
+- In every other case use the regular `keyboard-quit'."
+  (interactive)
+  (cond
+   ((region-active-p)
+    (keyboard-quit))
+   ((derived-mode-p 'completion-list-mode)
+    (delete-completion-window))
+   ((> (minibuffer-depth) 0)
+    (abort-recursive-edit))
+   (t
+    (keyboard-quit))))
+
+(define-key global-map (kbd "C-g") #'prot/keyboard-quit-dwim)
+
 ;; The order of the next three segments is *extremely* important.
 
 ;; 1. Load theme
@@ -120,17 +151,22 @@ Exempt major modes are defined in `display-line-numbers-exempt-modes'."
 ;;  `(mode-line-inactive ((t (:inherit default :box '(:width 1) :foreground "#666666" :background "#fffff8"))))
 ;;  )
 
-;; 3. Set font size and line spacing
-(let ((face-height
+;; 3. Set font family, font size and line spacing
+(let ((mono-spaced-font "Iosevka Comfy")
+      (proportionately-spaced-font "Sans")
+      (face-height
        (if (eq system-type 'darwin)
            ;; macOS
-           150
+           170
          ;; Default (linux/windows)
          115)))
-  (progn (set-face-attribute 'default nil :height face-height)
-         (set-face-attribute 'mode-line nil :height face-height)
-         (set-face-attribute 'mode-line-inactive nil :height face-height)
-         (set-face-attribute 'font-lock-type-face nil :underline nil)))
+  (progn (set-face-attribute 'default nil :family mono-spaced-font :height face-height)
+         (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
+         (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0)
+         (set-face-attribute 'mode-line nil :family mono-spaced-font :height 1.0)
+         (set-face-attribute 'mode-line-inactive nil :family mono-spaced-font :height 1.0)
+         (set-face-attribute 'font-lock-type-face nil :family mono-spaced-font :underline nil)
+         ))
 
 (setq-default line-spacing 3)
 
@@ -698,6 +734,8 @@ Specific to the current window's mode line.")
                 "  "
                 ameyp-modeline-flymake))
 
+;; Set up icons
+(use-package nerd-icons :ensure t)
 
 (provide 'ameyp-gui)
 

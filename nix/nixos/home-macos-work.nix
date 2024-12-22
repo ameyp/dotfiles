@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
   hms = "${pkgs.home-manager}/bin/home-manager switch --flake \"path:$HOME/.dotfiles/nix/nixos#macos-work\"";
-  nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos\"";
+  nds = "darwin-rebuild switch --flake \"$HOME/.dotfiles/nix/nixos#macos-work\"";
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -9,8 +9,8 @@ in {
 
   programs.zsh = {
     shellAliases = {
-      hms = lib.mkOverride 51 hms;
-      nds = lib.mkOverride 51 nds;
+      hms = lib.mkForce hms;
+      nds = lib.mkForce nds;
     };
   };
   programs.kitty.settings = {

@@ -64,7 +64,6 @@
   (:map completion-list-mode-map
         ("M-A" . marginalia-cycle))
 
-
   ;; The :init section is always executed.
   :init
 
@@ -72,6 +71,12 @@
   ;; the mode gets enabled right away. Note that this forces loading the
   ;; package.
   (marginalia-mode))
+
+(use-package nerd-icons-completion
+  :ensure t
+  :after marginalia
+  :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 (use-package embark)
 
