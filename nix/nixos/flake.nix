@@ -26,10 +26,9 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty.url = "github:clo4/ghostty-hm-module";
   };
 
-  outputs = inputs@{ self, ghostty, home-manager, nixpkgs, nixpkgs-master, sops-nix, disko, emacs-overlay, nix-darwin, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, sops-nix, disko, emacs-overlay, nix-darwin, ... }:
     let
       pkg-config = {
         allowUnfree = true;
@@ -49,8 +48,8 @@
       };
       common-overlays = [
         (import (builtins.fetchTarball {
-          url = https://github.com/nix-community/emacs-overlay/archive/3ab303101f287c1769f0a0dc4f7ec5473e61f94f.tar.gz;
-          sha256 = "12ha034fi88zshmjniwcslkxwmv66jdz5cn54sqfcf174gx85jli";
+          url = https://github.com/nix-community/emacs-overlay/archive/b8e32860b5c94c75e9efb1779b9b5a4bd4a7d655.tar.gz;
+          sha256 = "0b204pshb402kdkhrsvc9wk4r5yvidycnbrfydv9qrsrljm12x2y";
         }))
         (import ./overlays/emacs.nix)
       ];
@@ -193,7 +192,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.amey = {
               imports = [
-                ghostty.homeModules.default
                 (import ./home-macos.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
@@ -215,7 +213,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.aparulek = {
               imports = [
-                ghostty.homeModules.default
                 (import ./home-macos-work.nix)
                 (import ./home-macos.nix)
                 (import ./home-work.nix)
@@ -259,7 +256,6 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ghostty.homeModules.default
             ./home-macos.nix
             ./home-personal.nix
             ./home.nix
@@ -271,7 +267,6 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ghostty.homeModules.default
             ./home-macos-work.nix
             ./home-macos.nix
             ./home-work.nix

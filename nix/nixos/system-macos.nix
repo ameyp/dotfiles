@@ -36,6 +36,7 @@ in {
         "discord"
         "keepingyouawake"
         "raycast"
+        "tailscale"
       ];
       # Did not work for stretchly
       # caskArgs = {
@@ -91,7 +92,7 @@ in {
     rm -rf "$nix_apps"
     mkdir -p "$nix_apps"
     find ${config.system.build.applications}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-        while read src; do
+        while read -r src; do
             ln -sf "$src" "$nix_apps"
         done
   '';

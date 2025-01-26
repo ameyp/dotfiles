@@ -40,4 +40,29 @@ in {
       end
     '';
   };
+
+  services.syncthing = {
+    enable = true;
+    settings = {
+      options = {
+        relaysEnabled = false;
+        urAccepted = false;
+        # Disabled until https://github.com/nix-community/home-manager/pull/6104 is merged.
+        overrideDevices = false;
+        overrideFolders = false;
+      };
+      devices = {
+        "nixos44" = {
+          id = "TIAM3PH-OTIFZ7P-Q5T6EMQ-AHFNE7U-H6MLRMX-EFSMRRI-PSTSUTE-PLFU4QF";
+          addresses = ["tcp://syncthing.wirywolf.com:22000"];
+        };
+      };
+      folders = {
+        "/Users/amey/Denote" = {
+          id = "g6y7v-gvlnh";
+          devices = ["nixos44"];
+        };
+      };
+    };
+  };
 }
