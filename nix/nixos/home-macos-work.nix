@@ -13,6 +13,12 @@ in {
       nds = lib.mkForce nds;
     };
   };
+  programs.fish = {
+    shellAbbrs = {
+      hms = lib.mkForce hms;
+      nds = lib.mkForce nds;
+    };
+  };
   programs.kitty.settings = {
     # I need bigger fonts on macOS.
     font_size = "14.0";
