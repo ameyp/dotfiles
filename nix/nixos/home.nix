@@ -257,19 +257,17 @@
   #   };
   # };
   home.file."${config.xdg.configHome}/ghostty/config".text = ''
-      font-family = "Iosevka Comfy";
-      font-style = "Regular";
-      font-size = 16;
-      font-thicken = false;
-      cursor-style-blink = false;
-      shell-integration = "fish";
-      command = "${pkgs.fish}/bin/fish --interactive --login";
+      font-family = "Iosevka Comfy"
+      font-style = "Regular"
+      font-size = 15
+      font-thicken = false
+      cursor-style-blink = false
+      shell-integration = "fish"
+      command = "${pkgs.fish}/bin/fish --interactive --login"
       # theme = Adventure
-      theme = "Banana Blueberry";
-      macos-option-as-alt = true;
-      keybind = [
-        "ctrl+z=reload_config"
-      ];
+      theme = "Banana Blueberry"
+      macos-option-as-alt = true
+      keybind = ctrl+z=reload_config
   '';
 
 
