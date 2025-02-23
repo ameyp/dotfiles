@@ -16,6 +16,4 @@
 
 (use-package package-build)
 
-(use-package ag)
-
 (provide 'ameyp-packages)

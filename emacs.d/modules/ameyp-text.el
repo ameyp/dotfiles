@@ -33,6 +33,10 @@
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 
+;; Emacs defaults to requiring two spaces after a sentence to treat it as
+;; an end of sentence. Have it treat a single period as an end of sentence.
+(setq sentence-end-double-space nil)
+
 ;; Before saving:
 ;; 1. Untabify if indent-tabs-mode is off
 ;; 2. Delete trailing whitespace

@@ -35,7 +35,6 @@ self: super: rec {
   # after adding to this list.
   emacsAmeyWithPackages =
     ((super.emacsPackagesFor emacsAmey).emacsWithPackages (epkgs: with epkgs; [
-      ag
       age
       apheleia
       auto-virtualenv
@@ -51,6 +50,7 @@ self: super: rec {
       dired-subtree
       direnv
       dockerfile-mode
+      ef-themes
       eglot
       eglot-java
       eldoc
@@ -58,6 +58,7 @@ self: super: rec {
       embark-consult
       exec-path-from-shell
       expand-region
+      focus
       go-mode
       haskell-mode
       ivy
@@ -76,6 +77,7 @@ self: super: rec {
       nerd-icons-corfu
       nerd-icons-dired
       nix-mode
+      olivetti
       orderless
       org
       org-roam
@@ -103,6 +105,7 @@ self: super: rec {
       undo-tree
       use-package
       vertico
+      visual-fill-column
       vterm
       yaml-mode
       zig-mode

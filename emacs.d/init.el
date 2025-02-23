@@ -87,6 +87,7 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-dired
                    ameyp-docker
                    ameyp-elisp
+                   ameyp-focus-mode
                    ameyp-git
                    ameyp-go
                    ameyp-haskell
@@ -103,6 +104,7 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-swift
                    ameyp-syntax
                    ameyp-terraform
+                   ameyp-themes
                    ameyp-tramp
                    ameyp-typescript
                    ameyp-vertico

@@ -1,5 +1,5 @@
 (use-package dired
-  :ensure nil
+  :ensure t
   :commands (dired)
   :hook
   ((dired-mode . dired-hide-details-mode)

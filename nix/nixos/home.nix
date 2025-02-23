@@ -28,6 +28,7 @@
     pkgs.grc
     pkgs.htop
     pkgs.iosevka-comfy.comfy
+    pkgs.ia-writer-duospace
     pkgs.lsd
     pkgs.pandoc
     pkgs.pyenv
