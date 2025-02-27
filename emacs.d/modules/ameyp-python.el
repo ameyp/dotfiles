@@ -16,8 +16,7 @@
   (use-package pyvenv
     :ensure t)
   :config
-  (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
-  (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)  ;; If using projectile
+  (auto-virtualenv-setup)
   )
 
 (use-package python-pytest)
