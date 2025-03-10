@@ -59,7 +59,7 @@ in {
       };
       folders = {
         "/Users/amey/Denote" = {
-          id = "g6y7v-gvlnh";
+          id = "quamc-7jxpj";
           devices = ["nixos44"];
         };
       };
