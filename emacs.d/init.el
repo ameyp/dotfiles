@@ -91,6 +91,7 @@ If CLEANUP is specified, it must be a function or lambda. It is invoked when the
                    ameyp-git
                    ameyp-go
                    ameyp-haskell
+                   ameyp-hugo
                    ameyp-java
                    ameyp-jsonnet
                    ameyp-markdown
