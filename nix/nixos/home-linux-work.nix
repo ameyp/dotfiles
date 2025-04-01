@@ -6,6 +6,10 @@ in {
   home.username = "aparulek";
   home.homeDirectory = "/usr2/${config.home.username}";
 
+  home.packages = [
+    pkgs.emacsAmeyWithPackages
+  ];
+
   programs.zsh.shellAliases = {
     hms = hms;
   };
