@@ -49,13 +49,11 @@ in {
       ];
     };
 
-    # Auto upgrade nix package and the daemon service.
-    services.nix-daemon.enable = true;
-    # nix.package = pkgs.nix;
-
     # Necessary for using flakes on this system.
     nix.settings.experimental-features = "nix-command flakes";
     nix.channel.enable = false;
+
+    ids.gids.nixbld = 350;
 
     # Necessary for netskope.
     # nix.settings.ssl-cert-file = "/Library/Application Support/Netskope/STAgent/download/nscacert_combined.pem";

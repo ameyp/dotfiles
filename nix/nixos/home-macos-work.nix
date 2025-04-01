@@ -7,18 +7,24 @@ in {
   home.username = lib.mkForce "aparulek";
   home.homeDirectory = lib.mkForce "/Users/${config.home.username}";
 
+  services.syncthing = {
+    enable = lib.mkForce false;
+  };
+
   programs.zsh = {
     shellAliases = {
       hms = lib.mkForce hms;
       nds = lib.mkForce nds;
     };
   };
+
   programs.fish = {
     shellAbbrs = {
       hms = lib.mkForce hms;
       nds = lib.mkForce nds;
     };
   };
+
   programs.kitty.settings = {
     # I need bigger fonts on macOS.
     font_size = "14.0";
