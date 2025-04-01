@@ -14,7 +14,12 @@ in {
     hms = hms;
   };
 
-  programs.fish.shellAbbrs = {
-    hms = hms;
+  programs.fish = {
+    shellAbbrs = {
+      hms = hms;
+    };
+    shellInit = ''
+      set -x GIT_SSH_COMMAND "ssh -T -o ConnectTimeout=2"
+    '';
   };
 }
