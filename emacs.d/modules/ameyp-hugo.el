@@ -105,3 +105,5 @@
               (ameyp/org-hugo-export))
             (dired-get-marked-files))
       )))
+
+(provide 'ameyp-hugo)
