@@ -17,7 +17,9 @@ self: super: rec {
     withImageMagick = true;
     # have to force this; lib.version check wrong or because emacsGit?
     withTreeSitter = true;
-    withNativeCompilation = true;
+    # Native compilation temporarily disabled because of
+    # https://github.com/NixOS/nixpkgs/issues/395169
+    withNativeCompilation = false;
   };
   emacsAmey =
     if super.stdenv.isDarwin
