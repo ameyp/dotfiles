@@ -46,7 +46,7 @@ in {
     settings = {
       options = {
         relaysEnabled = false;
-        urAccepted = false;
+        urAccepted = -1;
         # Disabled until https://github.com/nix-community/home-manager/pull/6104 is merged.
         overrideDevices = false;
         overrideFolders = false;

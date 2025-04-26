@@ -31,17 +31,12 @@ in {
     homebrew = {
       enable = true;
       casks = [
-        # sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
         "breaktimer"
         "discord"
         "keepingyouawake"
         "raycast"
         "tailscale"
       ];
-      # Did not work for stretchly
-      # caskArgs = {
-      #   no_quarantine = true;
-      # };
       taps = [
       ];
       brews = [
@@ -52,6 +47,9 @@ in {
     # Necessary for using flakes on this system.
     nix.settings.experimental-features = "nix-command flakes";
     nix.channel.enable = false;
+
+    # Necessary for using cachix
+    nix.settings.trusted-users = ["amey" "aparulek"];
 
     ids.gids.nixbld = 350;
 
