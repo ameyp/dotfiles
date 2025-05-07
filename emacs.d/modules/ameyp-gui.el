@@ -106,31 +106,13 @@ The DWIM behaviour of this command is as follows:
   (ameyp-use-dark-theme)
   )
 
-;; (setq custom--inhibit-theme-enable nil)
-
-;; 2. Customize theme
-;; (custom-theme-set-faces
-;;  'brutalist
-;;  `(default ((t (:family "Hack Nerd Font"))))
-;;  `(fixed-pitch ((t (:family "Hack Nerd Font"))))
-;;  `(helm-bookmark-file ((t (:inherit default))))
-;;  `(helm-buffer-file ((t (:inherit default))))
-;;  `(helm-ff-file ((t (:inherit default))))
-;;  `(helm-keyword-face ((t (:inherit default))))
-;;  `(helm-selection ((t (:inherit whitespace-line))))
-;;  `(lsp-face-highlight-textual ((t (:inherit lazy-highlight :underline nil))))
-;;  `(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline nil))))
-;;  `(lsp-face-highlight-write ((t (:inherit lazy-highlight :underline nil :weight bold))))
-;;  `(mode-line-inactive ((t (:inherit default :box '(:width 1) :foreground "#666666" :background "#fffff8"))))
-;;  )
-
-;; 3. Set font family, font size and line spacing
-(let ((mono-spaced-font "iA Writer Duospace")
-      (proportionately-spaced-font "Sans")
+;; 2. Set font family, font size and line spacing
+(let ((mono-spaced-font "NotoSansM Nerd Font Mono")
+      (proportionately-spaced-font "NotoSansM Nerd Font Propo")
       (face-height
        (if (eq system-type 'darwin)
            ;; macOS
-           170
+           150
          ;; Default (linux/windows)
          115)))
   (progn (set-face-attribute 'default nil :family mono-spaced-font :height face-height)
@@ -163,14 +145,12 @@ The DWIM behaviour of this command is as follows:
            :header-line-width 4
            :mode-line-width 6
            :tab-width 4
-           :right-divider-width 30
+           :right-divider-width 20
            :scroll-bar-width 8))
 
   ;; Read the doc string of `spacious-padding-subtle-mode-line' as it
   ;; is very flexible and provides several examples.
-  (setq spacious-padding-subtle-mode-line
-        `( :mode-line-active 'default
-           :mode-line-inactive vertical-border))
+  (setq spacious-padding-subtle-mode-line nil)
 
   (spacious-padding-mode 1)
   )

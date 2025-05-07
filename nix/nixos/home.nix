@@ -19,7 +19,12 @@
 
   # Packages to install
   home.packages = [
-    pkgs.nerd-fonts.hack
+    pkgs.nerd-fonts.profont
+    pkgs.nerd-fonts.noto
+    pkgs.nerd-fonts.meslo-lg
+    pkgs.nerd-fonts.lilex
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.inconsolata
     pkgs.curl
     pkgs.direnv
     pkgs.fd
@@ -27,8 +32,6 @@
     pkgs.gopls
     pkgs.grc
     pkgs.htop
-    pkgs.iosevka-comfy.comfy
-    pkgs.ia-writer-duospace
     pkgs.lsd
     pkgs.pandoc
     pkgs.pyenv
@@ -258,7 +261,8 @@
   #   };
   # };
   home.file."${config.xdg.configHome}/ghostty/config".text = ''
-      font-family = "Iosevka Comfy"
+      # font-family = "MesloLGM Nerd Font Mono"
+      font-family = "NotoSansM Nerd Font Mono"
       font-style = "Regular"
       font-size = 15
       font-thicken = false
