@@ -1,0 +1,279 @@
+* Kitty configuration
+
+This section configures git. The configuration is tangled to ~/.config/kitty/kitty.conf
+#+begin_src conf :tangle "~/.config/kitty/kitty.conf" :mkdirp yes :file-mode #o444 :noweb yes
+  # Configure the shell
+  shell /usr/bin/fish --interactive --login
+  shell_integration enabled
+
+  # Appearance
+  font_family NotoSansM Nerd Font Mono
+  font_size 11
+  cursor_blink_interval 0
+  cursor_shape beam
+  cursor_beam_thickness 8
+
+  tab_bar_style powerline
+
+  # Behavior
+  ## MB, 4GB is max. This only affects the scrollback buffer accessed with ctrl+shift+h.
+  ## Making the instant scrollback size larger hampers performance.
+  scrollback_pager_history_size 4000
+
+  # Keybinds
+  map ctrl+z load_config_file
+
+  # OS-specific
+  macos_thicken_font 0
+  macos_option_as_alt both
+#+end_src
+
+
+* Git Configuration
+This file configures git. It is tangled from [[file:./git.org][git.org]].
+
+** Tangle
+#+begin_src shell :tangle no
+emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "nix/nixos/git.org")'
+#+end_src
+
+** Machine Detection
+#+NAME: machine-type
+#+BEGIN_SRC elisp :results value
+(cond
+ ((string= (user-login-name) "aparulek") "work")
+ (t "home"))
+#+END_SRC
+
+** Git Config
+#+NAME: email-for-machine
+#+BEGIN_SRC elisp :var machine=machine-type :results value
+(cond
+ ((string= machine "work") "aparulek@qti.qualcomm.com")
+ (t "amey@wirywolf.com"))
+#+END_SRC
+
+This section configures git. The configuration is tangled to ~/.config/git/config.
+#+begin_src conf :tangle "~/.config/git/config" :mkdirp yes :file-mode #o444 :noweb yes
+  [user]
+    name = Amey Parulekar
+    email = <<email-for-machine()>>
+  [core]
+    fileMode = false
+    pager = less -FMRiX
+    editor = emacsclient -c
+    excludesfile = ~/.config/git/ignore
+  [push]
+    default = current
+  [remote]
+    pushDefault = origin
+  [color]
+    ui = auto
+  [credential]
+    helper = cache
+  [pull]
+    rebase = true
+  [init]
+    defaultBranch = main
+  [diff]
+    tool = difftastic
+  [difftool]
+    prompt = false
+  [difftool "difftastic"]
+    cmd = difft --background=dark "$LOCAL" "$REMOTE"
+  [alias]
+    dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)"%an" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+    co = checkout
+    st = status
+    rb = rebase
+    br = branch
+    ec = emacsclient
+    dft = difftool
+#+end_src
+
+** Git Ignore
+This section configures the global gitignore file. The configuration is tangled to ~/.config/git/ignore.
+#+begin_src conf :tangle "~/.config/git/ignore" :mkdirp yes :file-mode #o444
+*.~undo-tree~
+*.iml
+*.pyc
+*.class
+*.bak
+build
+.DS_Store
+.rakeTasks
+._.DS_Store
+.classpath
+.gradle
+.project
+eclipse-bin
+.bemol
+.settings
+.solargraph.yml
+.direnv
+.idea
+.envrc
+.venv.*
+#+end_src
+
+* Fish Configuration
+** Introduction
+
+This file configures the fish shell. It is meant to be tangled from this Org file.
+The configuration is split into multiple files for better organization.
+
+** Core Configuration
+:PROPERTIES:
+:header-args:fish: :tangle /home/amey/.config/fish/config.fish :mkdirp yes :file-mode #o444
+:END:
+
+This is the main configuration file for fish.
+
+*** Variables and Environment
+
+#+begin_src fish
+  # XDG Base Directory Specification
+  set -x XDG_DATA_HOME $HOME/.local/share
+  set -x XDG_CONFIG_HOME $HOME/.config
+  set -x XDG_DATA_DIRS $HOME/.nix-profile/share/applications:/usr/local/share/:/usr/share/
+  set -x XDG_CONFIG_DIRS /etc/xdg
+  set -x XDG_CACHE_HOME $HOME/.cache
+
+  # Set editor
+  set -x EDITOR 'emacsclient -c'
+  set -x GIT_EDITOR 'emacsclient -c'
+
+  # Configure ripgrep defaults
+  set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+#+end_src
+
+*** Path
+
+#+begin_src fish
+  if test -d "$HOME/.local"
+    fish_add_path "$HOME/.local"
+  end
+
+  if test -d "$HOME/.local/bin"
+    fish_add_path "$HOME/.local/bin"
+  end
+
+  if test -d "$HOME/.npm/bin"
+    fish_add_path "$HOME/.npm/bin"
+  end
+#+end_src
+
+*** Aliases and Abbreviations
+
+#+begin_src fish
+  # Abbreviations
+  abbr --add gca "git commit -a --amend --no-edit"
+  abbr --add ec "emacsclient -c"
+
+  # Aliases
+  alias ls "lsd"
+#+end_src
+
+*** Integrations
+
+#+begin_src fish
+  # direnv
+  direnv hook fish | source
+
+  # Extra local config
+  if test -f "$HOME/.fish-extra"
+    source "$HOME/.fish-extra"
+  end
+#+end_src
+
+*** Interactive Session
+
+#+begin_src fish
+  if status is-interactive
+    set fish_greeting # Disable greeting
+
+    if test -n "$GHOSTTY_RESOURCES_DIR"
+      source $GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+    end
+
+    # pyenv
+    # https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+    if test -d "$HOME/.pyenv"
+      set -Ux PYENV_ROOT "$HOME/.pyenv"
+      fish_add_path "$PYENV_ROOT/bin"
+      pyenv init - | source
+      fish_add_path "$PYENV_ROOT/shims"
+    end
+
+    # atuin
+    # https://github.com/atuinsh/atuin?tab=readme-ov-file#fish
+    atuin init fish | source
+  end
+#+end_src
+
+** Prompt
+:PROPERTIES:
+:header-args:fish: :tangle /home/amey/.config/fish/functions/fish_prompt.fish :mkdirp yes :file-mode #o444
+:END:
+
+This file defines the fish prompt.
+
+#+begin_src fish
+  # Fish executes a fish_prompt function whenever it needs to show the prompt.
+  function fish_prompt --description 'Write out the prompt'
+      set -l last_status $status
+      set -l normal (set_color normal)
+      set -l status_color (set_color brgreen)
+      set -l cwd_color (set_color $fish_color_cwd)
+      set -l vcs_color (set_color brpurple)
+      set -l prompt_status ""
+
+      # Since we display the prompt on a new line allow the directory names to be longer.
+      set -q fish_prompt_pwd_dir_length
+      or set -lx fish_prompt_pwd_dir_length 0
+
+      # Color the prompt differently when we're root
+      set -l suffix '❯'
+      if functions -q fish_is_root_user; and fish_is_root_user
+          if set -q fish_color_cwd_root
+              set cwd_color (set_color $fish_color_cwd_root)
+          end
+          set suffix '#'
+      end
+
+      # Color the prompt in red on error
+      if test $last_status -ne 0
+          set status_color (set_color $fish_color_error)
+          set prompt_status $status_color "[" $last_status "]" $normal
+      end
+
+      echo ""
+      echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
+      echo -n -s $status_color $suffix ' ' $normal
+  end
+
+  # Necessary for emacs tramp to work.
+  if test "$TERM" = "dumb"
+    function fish_prompt
+      echo "\$ "
+    end
+
+    function fish_right_prompt; end
+    function fish_greeting; end
+    function fish_title; end
+  end
+#+end_src
+
+** Plugins
+
+The following plugins were configured via home-manager. To manage them with fish, you can use a plugin manager like [[https://github.com/jorgebucaran/fisher][fisher]].
+
+- ~grc~: for colorized command output.
+- ~nvm~: for managing node versions.
+
+With fisher, you could install nvm with:
+#+begin_src sh
+  fisher install jorgebucaran/nvm.fish
+#+end_src
+
+For grc, you would need to ensure ~grc~ is on your path and then you can use the wrapper script provided by the fish plugin. The home-manager module is simple, it just does ~source /nix/store/...-grc-3/share/fish/vendor_conf.d/grc.fish~. You could replicate this by finding where ~grc.fish~ is installed on your system and sourcing it.
