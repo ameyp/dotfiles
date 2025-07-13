@@ -28,3 +28,10 @@
 
 (setq gcmh-idle-delay-factor 20)
 (setq jit-lock-defer-time 0.05)
+
+;; Initialise installed packages at this early stage, by using the
+;; available cache.  I had tried a setup with this set to nil in the
+;; early-init.el, but (i) it ended up being slower and (ii) various
+;; package commands, like `describe-package', did not have an index of
+;; packages to work with, requiring a `package-refresh-contents'.
+(setq package-enable-at-startup t)
