@@ -277,3 +277,10 @@ With fisher, you could install nvm with:
 #+end_src
 
 For grc, you would need to ensure ~grc~ is on your path and then you can use the wrapper script provided by the fish plugin. The home-manager module is simple, it just does ~source /nix/store/...-grc-3/share/fish/vendor_conf.d/grc.fish~. You could replicate this by finding where ~grc.fish~ is installed on your system and sourcing it.
+
+* Ripgrep
+
+#+begin_src conf :tangle "~/.ripgreprc" :mkdirp yes :file-mode #o444 :noweb yes
+--hidden
+--glob=!.git/
+#+end_src
