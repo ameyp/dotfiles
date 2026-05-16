@@ -56,7 +56,7 @@
   # Git config
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       core = {
         fileMode = false;
         pager = "less -FMRiX";
@@ -80,20 +80,14 @@
       init = {
         defaultBranch = "main";
       };
-    };
-    # https://difftastic.wilfred.me.uk/git.html
-    difftastic = {
-      enable = true;
-      background = "dark";
-    };
-    aliases = {
-      dag = "log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\\\"%an\\\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order";
-      co = "checkout";
-      st = "status";
-      rb = "rebase";
-      br = "branch";
-      ec = "emacsclient";
-      dft = "difftool";
+      alias = {
+        dag = "log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\\\"%an\\\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order";
+        co = "checkout";
+        st = "status";
+        rb = "rebase";
+        br = "branch";
+        ec = "emacsclient";
+      };
     };
     ignores = [
       "*.~undo-tree~"
@@ -262,15 +256,15 @@
   # };
   home.file."${config.xdg.configHome}/ghostty/config".text = ''
       # font-family = "MesloLGM Nerd Font Mono"
-      font-family = "NotoSansM Nerd Font Mono"
-      font-style = "Regular"
-      font-size = 15
+      # font-family = "NotoSansM Nerd Font Mono"
+      # font-style = "Regular"
+      # font-size = 12
       font-thicken = false
       cursor-style-blink = false
       shell-integration = "fish"
       command = "${pkgs.fish}/bin/fish --interactive --login"
       # theme = Adventure
-      theme = "Banana Blueberry"
+      # theme = "Banana Blueberry"
       macos-option-as-alt = true
       keybind = ctrl+z=reload_config
   '';

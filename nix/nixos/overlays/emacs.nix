@@ -14,7 +14,6 @@ self: super: rec {
   emacsGitAmeyGeneric = super.emacs-unstable.override {
     withSQLite3 = true;
     withWebP = true;
-    withImageMagick = true;
     # have to force this; lib.version check wrong or because emacsGit?
     withTreeSitter = true;
     # Native compilation temporarily disabled because of

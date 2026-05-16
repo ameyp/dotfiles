@@ -48,8 +48,8 @@
       };
       common-overlays = [
         (import (builtins.fetchTarball {
-          url = https://github.com/nix-community/emacs-overlay/archive/b8e32860b5c94c75e9efb1779b9b5a4bd4a7d655.tar.gz;
-          sha256 = "0b204pshb402kdkhrsvc9wk4r5yvidycnbrfydv9qrsrljm12x2y";
+          url = https://github.com/nix-community/emacs-overlay/archive/d563e40d245fb24f0f3017a3c8eb573322eeacde.tar.gz;
+          sha256 = "0jkwk2r030y5vk9ak9kasxvcmvxm4lm2dax4km64k3siv4x1vm57";
         }))
         (import ./overlays/emacs.nix)
       ];
@@ -80,7 +80,6 @@
         system = "x86_64-linux";
         modules = [
           ./system-linux-common.nix
-          ./system-linux-hyprland.nix
           ./system-linux-desktop.nix
           ./system-linux.nix
           sops-nix.nixosModules.sops
@@ -91,7 +90,6 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
-                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
@@ -106,7 +104,6 @@
         system = "x86_64-linux";
         modules = [
           ./system-linux-common.nix
-          ./system-linux-hyprland.nix
           ./system-linux-thinkpad.nix
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
@@ -117,7 +114,6 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
-                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
@@ -132,7 +128,6 @@
         system = "x86_64-linux";
         modules = [
           ./system-linux-common.nix
-          ./system-linux-hyprland.nix
           ./system-linux-laptop.nix
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
@@ -143,7 +138,6 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-personal.nix)
-                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-linux-laptop.nix)
                 (import ./home-personal.nix)
@@ -159,7 +153,6 @@
         system = "aarch64-linux";
         modules = [
           ./system-linux-common.nix
-          ./system-linux-hyprland.nix
           ./system-linux-vm.nix
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
@@ -169,7 +162,6 @@
             home-manager.users.amey = {
               imports = [
                 (import ./home-linux-vm.nix)
-                (import ./home-linux-hyprland.nix)
                 (import ./home-linux.nix)
                 (import ./home-personal.nix)
                 (import ./home.nix)
@@ -232,7 +224,6 @@
           # the path to your home.nix.
           modules = [
             ./home-linux-personal.nix
-            ./home-linux-hyprland.nix
             ./home-linux.nix
             ./home-personal.nix
             ./home.nix

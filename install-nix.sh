@@ -27,12 +27,14 @@ rm -f $HOME/.bashrc $HOME/.profile
 if [[ $(uname) == "linux" || $(uname) == "Linux" ]]; then
     nix run home-manager --extra-experimental-features "nix-command flakes" -- \
         switch --flake "path:$HOME/.dotfiles/nix/nixos#linux" \
-        --extra-experimental-features "nix-command flakes"
+        --extra-experimental-features "nix-command flakes" \
+        -b backup
 else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
     nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake "path:$HOME/.dotfiles/nix/nixos#macos"
     nix run home-manager --extra-experimental-features "nix-command flakes" -- \
         switch --flake "path:$HOME/.dotfiles/nix/nixos#macos" \
-        --extra-experimental-features "nix-command flakes"
+        --extra-experimental-features "nix-command flakes" \
+        -b backup
 fi

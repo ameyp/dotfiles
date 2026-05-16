@@ -1,7 +1,6 @@
-
 {
-  programs.git = {
-    userName = "Amey Parulekar";
-    userEmail = "aparulek@qti.qualcomm.com";
+  programs.git.settings.user = {
+    name = "Amey Parulekar";
+    email = "aparulek@qti.qualcomm.com";
   };
 }

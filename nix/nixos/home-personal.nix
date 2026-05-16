@@ -1,6 +1,6 @@
 {
-  programs.git = {
-    userName = "Amey Parulekar";
-    userEmail = "amey@wirywolf.com";
+  programs.git.settings.user = {
+    name = "Amey Parulekar";
+    email = "amey@wirywolf.com";
   };
 }
