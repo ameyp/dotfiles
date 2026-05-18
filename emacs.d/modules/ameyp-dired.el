@@ -38,14 +38,7 @@
 
 ;; List for what external programs are invoked when ! or & is pressed.
 (setq dired-guess-shell-alist-user
-      (list
-       ;; (list "\\.pdf$" "zathura")  ; fixed rule
-       ;; possibly more rules...
-       (list "\\.pdf$"  ; rule with condition test
-             '(cond ((eq system-type 'darwin) "open")
-                    ((eq system-type 'gnu/linux) "zathura"))
-             )))
-
+      (list))
 
 (setq amey-age-public-key "age1vwx5jpt3remv9l0yvvj5v4qzkp9jfr42kds3uv9ynecntzlrgezqdj7zth")
 
@@ -71,16 +64,6 @@
          context source-file recipients (concat source-file ".age"))
         ))
     (revert-buffer)))
-
-(defun ameyp-dired-open-age-pdf ()
-  "Decrypt an encrypted PDF and open it in zathura."
-  (interactive)
-  (let ((context (age-make-context)))
-    (ameyp-spawn-process-with-stdin
-     "zathura" ; process name
-     "zathura" '("-") ; process and arguments
-     (age-decrypt-file (age-make-context) (dired-get-file-for-visit) nil)))
-  )
 
 (ameyp-emacs-keybind dired-mode-map
   ": e" #'ameyp-dired-do-encrypt

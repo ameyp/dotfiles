@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }: {
   news.display = "silent";
 
-  # Enable font management
-  fonts.fontconfig.enable = true;
-
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -272,14 +269,6 @@
 
   # Ripgrep
   home.file.".ripgreprc".source = ./ripgreprc;
-
-  # Zathura, PDF viewer
-  programs.zathura = {
-    enable = true;
-    options = {
-      database = "sqlite";
-    };
-  };
 
   # Atuin https://github.com/atuinsh/atuin
   programs.atuin = {
