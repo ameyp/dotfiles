@@ -10,6 +10,10 @@ if ! [[ -x $(command -v nix) ]]; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
+echo 'extra-trusted-substituters = https://nix-community.cachix.org' | sudo tee -a /etc/nix/nix.custom.conf
+echo 'extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCUSeBc=' | sudo tee -a /etc/nix/nix.custom.conf
+sudo systemctl restart nix-daemon
+
 if ! [[ -x $(command -v home-manager) ]]; then
     # Install Home Manager
     nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
