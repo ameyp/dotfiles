@@ -102,8 +102,8 @@ The DWIM behaviour of this command is as follows:
     (interactive)
     (load-theme 'ef-day :no-confirm))
 
-  ;; Load dark theme by default.
-  (ameyp-use-dark-theme)
+  ;; Load light theme by default.
+  (ameyp-use-light-theme)
   )
 
 ;; 2. Set font family, font size and line spacing
